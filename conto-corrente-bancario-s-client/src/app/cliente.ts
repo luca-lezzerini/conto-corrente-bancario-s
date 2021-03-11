@@ -3,7 +3,6 @@ export class Cliente {
     nome: "";
     cognome: "";
     codiceFiscale: "";
-    dataDiNascita: Date;
     indirizzo: "";
     telefono: "";
 
