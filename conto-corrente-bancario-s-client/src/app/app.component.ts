@@ -11,7 +11,7 @@ export class AppComponent {
   cliente: Cliente = new Cliente();
   clienti: Cliente[] = [];
 
-  constructor(private htttp: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
 nuovo(){
 
