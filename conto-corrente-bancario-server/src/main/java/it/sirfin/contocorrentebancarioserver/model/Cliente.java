@@ -35,7 +35,7 @@ public class Cliente implements Serializable {
     @Column
     private String telefono;
     @OneToMany(mappedBy = "cliente")
-    private Set<Cliente> clienti;
+    private Set<ContoCorrente> contiCorrente;
 
     public Cliente() {
     }
@@ -96,15 +96,12 @@ public class Cliente implements Serializable {
         this.telefono = telefono;
     }
 
-    public Set<Cliente> getClienti() {
-        if (clienti == null) {
-            clienti = new HashSet<>();
-        }
-        return clienti;
+    public Set<ContoCorrente> getContiCorrente() {
+        return contiCorrente;
     }
 
-    public void setClienti(Set<Cliente> clienti) {
-        this.clienti = clienti;
+    public void setContiCorrente(Set<ContoCorrente> contiCorrente) {
+        this.contiCorrente = contiCorrente;
     }
 
     @Override

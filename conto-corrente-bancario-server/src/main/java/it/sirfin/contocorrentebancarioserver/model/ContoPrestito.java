@@ -22,5 +22,6 @@ public class ContoPrestito {
     private Long id;
     @Column
     private String codice;
+    
 
 }
