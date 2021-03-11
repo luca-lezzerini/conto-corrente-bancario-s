@@ -33,14 +33,20 @@ public class ContoCorrente {
     private Cliente cliente;
     @OneToMany
     @JoinColumn(referencedColumnName = "id")
-    private Set<MovimentiContoCorrente> contiCorrente;
+    private Set<MovimentiContoCorrente> MovimentiContoCorrente;
+    @OneToMany
+    @JoinColumn(referencedColumnName = "id")
+    private Set<MovimentiContoDeposito> MovimentiContoDeposito;
+    @OneToMany
+    @JoinColumn(referencedColumnName = "id")
+    private Set<MovimentiContoPrestito> MovimentiContoPrestito;
 
     public ContoCorrente() {
     }
 
-    public ContoCorrente(String numeroConto, Cliente cliente) {
+    public ContoCorrente(String numeroConto) {
         this.numeroConto = numeroConto;
-        this.cliente = cliente;
+
     }
 
     public Long getId() {
@@ -67,18 +73,47 @@ public class ContoCorrente {
         this.cliente = cliente;
     }
 
-    public Set<MovimentiContoCorrente> getContiCorrente() {
-        if (contiCorrente == null) {
-            contiCorrente = new HashSet<>();
+    public Set<MovimentiContoCorrente> getMovimentiContoCorrente() {
+        if (MovimentiContoCorrente == null) {
+            MovimentiContoCorrente = new HashSet<>();
         }
-        return contiCorrente;
+        return MovimentiContoCorrente;
     }
 
-    public void setContiCorrente(Set<MovimentiContoCorrente> contiCorrente) {
-        if (contiCorrente == null) {
-            contiCorrente = new HashSet<>();
+    public void setMovimentiContoCorrente(Set<MovimentiContoCorrente> MovimentiContoCorrente) {
+        if (MovimentiContoCorrente == null) {
+            MovimentiContoCorrente = new HashSet<>();
         }
-        this.contiCorrente = contiCorrente;
+        this.MovimentiContoCorrente = MovimentiContoCorrente;
+    }
+
+    public Set<MovimentiContoDeposito> getMovimentiContoDeposito() {
+        if (MovimentiContoDeposito == null) {
+            MovimentiContoDeposito = new HashSet<>();
+        }
+        return MovimentiContoDeposito;
+    }
+
+    public void setMovimentiContoDeposito(Set<MovimentiContoDeposito> MovimentiContoDeposito) {
+        if (MovimentiContoDeposito == null) {
+            MovimentiContoDeposito = new HashSet<>();
+        }
+        this.MovimentiContoDeposito = MovimentiContoDeposito;
+    }
+
+    public Set<MovimentiContoPrestito> getMovimentiContoPrestito() {
+        if (MovimentiContoPrestito == null) {
+            MovimentiContoPrestito = new HashSet<>();
+        }
+
+        return MovimentiContoPrestito;
+    }
+
+    public void setMovimentiContoPrestito(Set<MovimentiContoPrestito> MovimentiContoPrestito) {
+        if (MovimentiContoPrestito == null) {
+            MovimentiContoPrestito = new HashSet<>();
+        }
+        this.MovimentiContoPrestito = MovimentiContoPrestito;
     }
 
 }

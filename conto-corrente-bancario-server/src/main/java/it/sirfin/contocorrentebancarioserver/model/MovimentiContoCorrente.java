@@ -29,7 +29,7 @@ public class MovimentiContoCorrente {
     @Column
     private String tipoMovimento;
     @Column
-    private double importo;
+    private double importoMov;
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
     private ContoCorrente contoCorrente;
@@ -40,7 +40,7 @@ public class MovimentiContoCorrente {
     public MovimentiContoCorrente(LocalDate dataMov, String tipoMovimento, double importo) {
         this.dataMov = dataMov;
         this.tipoMovimento = tipoMovimento;
-        this.importo = importo;
+        this.importoMov = importo;
     }
 
     public Long getId() {
@@ -67,12 +67,12 @@ public class MovimentiContoCorrente {
         this.tipoMovimento = tipoMovimento;
     }
 
-    public double getImporto() {
-        return importo;
+    public double getImportoMov() {
+        return importoMov;
     }
 
-    public void setImporto(double importo) {
-        this.importo = importo;
+    public void setImportoMov(double importoMov) {
+        this.importoMov = importoMov;
     }
 
     public ContoCorrente getContoCorrente() {

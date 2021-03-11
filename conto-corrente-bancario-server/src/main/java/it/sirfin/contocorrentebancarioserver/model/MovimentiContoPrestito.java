@@ -19,7 +19,8 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 public class MovimentiContoPrestito {
-      @Id
+
+    @Id
     @GeneratedValue
     private Long id;
     @Column
@@ -27,10 +28,13 @@ public class MovimentiContoPrestito {
     @Column
     private String tipoMovimento;
     @Column
-    private double importo;
+    private double importoMov;
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
     private ContoCorrente contoCorrente;
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
+    private ContoPrestito contoPrestito;
 
     public MovimentiContoPrestito() {
     }
@@ -38,7 +42,7 @@ public class MovimentiContoPrestito {
     public MovimentiContoPrestito(LocalDate dataMov, String tipoMovimento, double importo, ContoCorrente contoCorrente) {
         this.dataMov = dataMov;
         this.tipoMovimento = tipoMovimento;
-        this.importo = importo;
+        this.importoMov = importo;
         this.contoCorrente = contoCorrente;
     }
 
@@ -66,12 +70,12 @@ public class MovimentiContoPrestito {
         this.tipoMovimento = tipoMovimento;
     }
 
-    public double getImporto() {
-        return importo;
+    public double getImportoMov() {
+        return importoMov;
     }
 
-    public void setImporto(double importo) {
-        this.importo = importo;
+    public void setImportoMov(double importoMov) {
+        this.importoMov = importoMov;
     }
 
     public ContoCorrente getContoCorrente() {
@@ -81,8 +85,13 @@ public class MovimentiContoPrestito {
     public void setContoCorrente(ContoCorrente contoCorrente) {
         this.contoCorrente = contoCorrente;
     }
-    
-    
-    
-    
+
+    public ContoPrestito getContoPrestito() {
+        return contoPrestito;
+    }
+
+    public void setContoPrestito(ContoPrestito contoPrestito) {
+        this.contoPrestito = contoPrestito;
+    }
+
 }

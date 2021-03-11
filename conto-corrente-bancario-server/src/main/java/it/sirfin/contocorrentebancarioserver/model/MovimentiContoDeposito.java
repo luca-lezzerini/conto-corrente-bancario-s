@@ -19,7 +19,8 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 public class MovimentiContoDeposito {
-      @Id
+
+    @Id
     @GeneratedValue
     private Long id;
     @Column
@@ -27,7 +28,7 @@ public class MovimentiContoDeposito {
     @Column
     private String tipoMovimento;
     @Column
-    private double importo;
+    private double importoMov;
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
     private ContoDeposito contoDeposito;
@@ -38,7 +39,7 @@ public class MovimentiContoDeposito {
     public MovimentiContoDeposito(LocalDate dataMov, String tipoMovimento, double importo) {
         this.dataMov = dataMov;
         this.tipoMovimento = tipoMovimento;
-        this.importo = importo;
+        this.importoMov = importo;
     }
 
     public MovimentiContoDeposito() {
@@ -68,12 +69,12 @@ public class MovimentiContoDeposito {
         this.tipoMovimento = tipoMovimento;
     }
 
-    public double getImporto() {
-        return importo;
+    public double getImportoMov() {
+        return importoMov;
     }
 
-    public void setImporto(double importo) {
-        this.importo = importo;
+    public void setImportoMov(double importoMov) {
+        this.importoMov = importoMov;
     }
 
     public ContoDeposito getContoDeposito() {
@@ -91,9 +92,5 @@ public class MovimentiContoDeposito {
     public void setContoCorrente(ContoCorrente contoCorrente) {
         this.contoCorrente = contoCorrente;
     }
-    
-    
-    
-   
-    
+
 }
