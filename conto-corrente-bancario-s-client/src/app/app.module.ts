@@ -5,11 +5,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InserisciComponent } from './inserisci/inserisci.component';
+import { GestioneCcComponent } from './gestione-cc/gestione-cc.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    InserisciComponent
+    InserisciComponent,
+    GestioneCcComponent
   ],
   imports: [
     BrowserModule,

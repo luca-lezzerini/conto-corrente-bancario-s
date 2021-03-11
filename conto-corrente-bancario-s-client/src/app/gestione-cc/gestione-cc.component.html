@@ -1,0 +1,19 @@
+<input type="text" placeholder="numConto">
+<!-- <div *ngIf="showForm"> -->
+<button (click)="new()">New</button>
+<!-- </div> -->
+<button (click)="aggiungi()">Aggiungi</button>
+<br>
+<br>
+<table>
+    <tr>
+        <th>numConto</th>
+        <th>Elimina</th>
+        <th>Modifica</th>
+    </tr>
+    <tr *ngFor="let n of conti">
+        <td>{{numConto}}</td>
+        <td><button (clik)="elimina(n)">X</button></td>
+        <td><button (clik)="modifica(n)">Edit</button></td>
+    </tr>
+</table>
