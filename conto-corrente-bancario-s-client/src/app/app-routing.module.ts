@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomePageComponent } from './home-page/home-page.component';
 import { InserisciComponent } from './inserisci/inserisci.component';
 
 const routes: Routes = [
-  { path: 'inserisci-page', component: InserisciComponent }
+  { path: 'app-inserisci', component: InserisciComponent },
+  { path: 'app-home-page', component: HomePageComponent }
+
 ];
 
 @NgModule({

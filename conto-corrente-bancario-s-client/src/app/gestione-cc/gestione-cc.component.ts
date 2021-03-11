@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ContoCorrente } from './cc';
 
 @Component({
@@ -12,7 +12,7 @@ export class GestioneCcComponent implements OnInit {
   cc: ContoCorrente[] = [];
   conto = new ContoCorrente();
 
-  constructor(private route: Route, private http: HttpClient) { }
+  constructor(private route: Router, private http: HttpClient) { }
   // showForm = false;
   ngOnInit(): void {
   }

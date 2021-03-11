@@ -1,0 +1,32 @@
+<p>home-page works!</p>
+<br><br>
+Nome <input type="text" [(ngModel)]="cliente.nome" placeholder="nome">
+Cognome <input type="text" [(ngModel)]="cliente.cognome" placeholder="cognome">
+<button (click)="nuovo()">nuovo</button>
+<br><br><br>
+Codice fiscale <input type="text" [(ngModel)]="cliente.codiceFiscale" placeholder="codice Fiscale">
+Indirizzo <input type="text" [(ngModel)]="cliente.indirizzo" placeholder="indirizzo">
+<button (click)="aggiungi()">aggiungi</button>
+<br><br><br>
+Telefono <input type="text" [(ngModel)]="cliente.telefono" placeholder="telefono">
+<br><br><br>
+<table>
+    <tr>
+        <th>Nome</th>
+        <th>Cognome</th>
+        <th>Codice Fiscale</th>
+        <th>Indirizzo</th>
+        <th>Telefono</th>
+        <th>Gestisci</th>
+    </tr>
+    <tr *ngFor="let c of clienti">
+        <!-- da implementare il ts e aggiornare le interpolazioni -->
+        <td> {{c.nome}} </td>
+        <td> {{c.cognome}} </td>
+        <td> {{c.codiceFiscale}} </td>
+        <td> {{c.indirizzo}} </td>
+        <td> {{c.telefono}} </td>
+        <td> <button (click)="modifica(c)">Modifica</button> </td>
+        <td> <button (click)="cancella(c)">Cancella</button> </td>
+    </tr>
+</table>

@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InserisciComponent } from './inserisci/inserisci.component';
 import { GestioneCcComponent } from './gestione-cc/gestione-cc.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InserisciComponent,
-    GestioneCcComponent
+    GestioneCcComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
