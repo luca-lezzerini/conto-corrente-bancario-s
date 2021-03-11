@@ -6,17 +6,20 @@
 package it.sirfin.contocorrentebancarioserver.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author marco
  */
 @Entity
-public class Cliente implements Serializable{
+public class Cliente implements Serializable {
 
     @Id
     @GeneratedValue
@@ -31,6 +34,8 @@ public class Cliente implements Serializable{
     private String indirizzo;
     @Column
     private String telefono;
+    @OneToMany(mappedBy = "cliente")
+    private Set<Cliente> clienti;
 
     public Cliente() {
     }
@@ -89,6 +94,17 @@ public class Cliente implements Serializable{
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    public Set<Cliente> getClienti() {
+        if (clienti == null) {
+            clienti = new HashSet<>();
+        }
+        return clienti;
+    }
+
+    public void setClienti(Set<Cliente> clienti) {
+        this.clienti = clienti;
     }
 
     @Override

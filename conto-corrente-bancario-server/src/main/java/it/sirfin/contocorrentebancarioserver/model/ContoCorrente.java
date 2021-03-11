@@ -9,6 +9,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -22,9 +24,42 @@ public class ContoCorrente {
     private Long id;
     @Column
     private String numeroConto;
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
+    private Cliente cliente;
 
     public ContoCorrente() {
     }
 
+    public ContoCorrente(String numeroConto, Cliente cliente) {
+        this.numeroConto = numeroConto;
+        this.cliente = cliente;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNumeroConto() {
+        return numeroConto;
+    }
+
+    public void setNumeroConto(String numeroConto) {
+        this.numeroConto = numeroConto;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
     
+    
+
 }
