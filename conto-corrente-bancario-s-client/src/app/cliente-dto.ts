@@ -1,5 +1,5 @@
 import { Cliente } from "./cliente";
 
 export class ClienteDto {
-    cliente = new Cliente();
+    cliente: Cliente = new Cliente();
 }
