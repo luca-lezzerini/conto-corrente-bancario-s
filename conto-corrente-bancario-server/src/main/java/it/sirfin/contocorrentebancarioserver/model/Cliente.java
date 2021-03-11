@@ -6,6 +6,7 @@
 package it.sirfin.contocorrentebancarioserver.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,18 +32,22 @@ public class Cliente implements Serializable{
     private String indirizzo;
     @Column
     private String telefono;
+    @Column
+    private LocalDate dataDiNascita;
 
     public Cliente() {
     }
 
-    public Cliente(String nome, String cognome, String codiceFiscale, String indirizzo, String telefono) {
+    public Cliente(String nome, String cognome, String codiceFiscale, String indirizzo, String telefono, LocalDate dataDiNascita) {
         this.nome = nome;
         this.cognome = cognome;
         this.codiceFiscale = codiceFiscale;
         this.indirizzo = indirizzo;
         this.telefono = telefono;
+        this.dataDiNascita = dataDiNascita;
     }
 
+    
     public Long getId() {
         return id;
     }
@@ -91,8 +96,18 @@ public class Cliente implements Serializable{
         this.telefono = telefono;
     }
 
+    public LocalDate getDataDiNascita() {
+        return dataDiNascita;
+    }
+
+    public void setDataDiNascita(LocalDate dataDiNascita) {
+        this.dataDiNascita = dataDiNascita;
+    }
+
     @Override
     public String toString() {
-        return "Cliente{" + "id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", codiceFiscale=" + codiceFiscale + ", indirizzo=" + indirizzo + ", telefono=" + telefono + '}';
+        return "Cliente{" + "id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", codiceFiscale=" + codiceFiscale + ", indirizzo=" + indirizzo + ", telefono=" + telefono + ", dataDiNascita=" + dataDiNascita + '}';
     }
+
+    
 }
