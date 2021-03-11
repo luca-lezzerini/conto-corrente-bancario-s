@@ -1,1 +1,6 @@
 
+Quando si finisce un ticket e non se ne hanno altri, ci si può assegnare un qualsiasi ticket che non sia stato già assegnato ma bisona seguire questo ordine per i casi d'uso:
+- Gruppo Account Management
+- Gruppo Movement Management
+
+Per ticket diversi dai casi d'uso se ne può scegliere uno qualsiasi (purché non assegnato).
