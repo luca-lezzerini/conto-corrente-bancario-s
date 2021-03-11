@@ -2,13 +2,13 @@
 
 #Ruoli di progetto
 
-Galli: Comitogianni
+Galli: Comitogianni (ValeriaCom)
 
-Macedoni: Bonaccorso
+Macedoni: Bonaccorso (marcobonaccorso)
 
-Hispanici: Capponi
+Hispanici: Capponi (capponiFelice92)
 
-Illirici: Gargano
+Illirici: Gargano (Giulia2Gargano)
 
 
-Controllo configurazione: Fastelli
+Controllo configurazione: Fastelli (Daniele-bit)
