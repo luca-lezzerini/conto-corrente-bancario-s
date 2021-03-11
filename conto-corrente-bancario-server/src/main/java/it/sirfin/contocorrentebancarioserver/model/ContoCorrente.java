@@ -23,4 +23,8 @@ public class ContoCorrente {
     @Column
     private String numeroConto;
 
+    public ContoCorrente() {
+    }
+
+    
 }

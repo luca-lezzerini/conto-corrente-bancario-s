@@ -1,9 +1,7 @@
 package it.sirfin.contocorrentebancarioserver.serviceImpl;
 
 import it.sirfin.contocorrentebancarioserver.model.Cliente;
-import it.sirfin.contocorrentebancarioserver.model.ContoCorrente;
-import it.sirfin.contocorrentebancarioserver.model.ContoDeposito;
-import it.sirfin.contocorrentebancarioserver.model.ContoPrestito;
+import it.sirfin.contocorrentebancarioserver.repository.ClienteRepository;
 import it.sirfin.contocorrentebancarioserver.repository.ContoCorrenteRepository;
 import it.sirfin.contocorrentebancarioserver.repository.ContoDepositoRepository;
 import it.sirfin.contocorrentebancarioserver.repository.ContoPrestitoRepository;
@@ -13,33 +11,28 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ConteCorrenteServiceImpl implements ContoCorrenteSevice {
-     @Autowired
-ClientiRepository clientiRepository
-
-     @Autowired
-ContoCorrenteRepository contoCorrenteRepository;
 
     @Autowired
-ContoDepositoRepository contoDepositoRepository;
+    ClienteRepository clienteRepository;
 
     @Autowired
-ContoPrestitoRepository contoPrestitoRepsitory;
+    ContoCorrenteRepository contoCorrenteRepository;
 
+    @Autowired
+    ContoDepositoRepository contoDepositoRepository;
 
+    @Autowired
+    ContoPrestitoRepository contoPrestitoRepsitory;
 
- @Override
-    public void conto bancario(){
+    @Override
+    public void demo() {
 
-clientiRepository.deleteAllInBatch();
-contoCorrenteRepository.deleteAllInBatch();
-contoDepositoRepository.deleteAllInBatch();
-contoPrestitoRepsitory.deleteAllInBatch();
+        clienteRepository.deleteAllInBatch();
+        contoCorrenteRepository.deleteAllInBatch();
+        contoDepositoRepository.deleteAllInBatch();
+        contoPrestitoRepsitory.deleteAllInBatch();
 
-Cliente c1= new Cliente("Marco","Bonaccorso","","","");
-ContoCorrente cC1=new ContoCorrente("");
-ContoPrestito cP1=new ContoPrestito("");
-ContoDeposito cD1= new ContoDeposito("");
-}
-
+        Cliente c1 = new Cliente("Marco", "Bonaccorso", "", "", "");
+    }
 
 }
