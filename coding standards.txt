@@ -1,0 +1,2 @@
+I controller e i servizi hanno il nome per gruppi di casi d'uso (vedere raggruppamento su UC diagram UML). Es. MovementManagementController e MovementManagementController
+I repository hanno il nome per entità.
