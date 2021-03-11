@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package it.sirfin.contocorrentebancarioserver.model;
-
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -27,6 +26,7 @@ public class ContoCorrente {
     private Long id;
     @Column
     private String numeroConto;
+
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
     private Cliente cliente;
@@ -34,8 +34,10 @@ public class ContoCorrente {
     @JoinColumn(referencedColumnName = "id")
     private Set<MovimentiContoCorrente> contiCorrente;
 
+
     public ContoCorrente() {
     }
+
 
     public ContoCorrente(String numeroConto, Cliente cliente) {
         this.numeroConto = numeroConto;
@@ -79,5 +81,6 @@ public class ContoCorrente {
         }
         this.contiCorrente = contiCorrente;
     }
+
 
 }

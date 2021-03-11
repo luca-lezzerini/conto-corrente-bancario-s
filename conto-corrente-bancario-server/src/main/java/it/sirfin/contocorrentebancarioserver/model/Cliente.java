@@ -6,20 +6,18 @@
 package it.sirfin.contocorrentebancarioserver.model;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 /**
  *
  * @author marco
  */
 @Entity
-public class Cliente implements Serializable {
+public class Cliente implements Serializable{
 
     @Id
     @GeneratedValue
@@ -34,24 +32,22 @@ public class Cliente implements Serializable {
     private String indirizzo;
     @Column
     private String telefono;
-    @OneToMany(mappedBy = "cliente")
-    private Set<ContoCorrente> contiCorrente;
-    @OneToMany(mappedBy = "cliente")
-    private Set<ContoPrestito> contiPrestito;
-    @OneToMany(mappedBy = "cliente")
-    private Set<ContoDeposito> contiDeposito;
+    @Column
+    private LocalDate dataDiNascita;
 
     public Cliente() {
     }
 
-    public Cliente(String nome, String cognome, String codiceFiscale, String indirizzo, String telefono) {
+    public Cliente(String nome, String cognome, String codiceFiscale, String indirizzo, String telefono, LocalDate dataDiNascita) {
         this.nome = nome;
         this.cognome = cognome;
         this.codiceFiscale = codiceFiscale;
         this.indirizzo = indirizzo;
         this.telefono = telefono;
+        this.dataDiNascita = dataDiNascita;
     }
 
+    
     public Long getId() {
         return id;
     }
@@ -100,50 +96,18 @@ public class Cliente implements Serializable {
         this.telefono = telefono;
     }
 
-    public Set<ContoCorrente> getContiCorrente() {
-        if (contiCorrente == null) {
-            contiCorrente = new HashSet<>();
-        }
-        return contiCorrente;
+    public LocalDate getDataDiNascita() {
+        return dataDiNascita;
     }
 
-    public void setContiCorrente(Set<ContoCorrente> contiCorrente) {
-        if (contiCorrente == null) {
-            contiCorrente = new HashSet<>();
-        }
-        this.contiCorrente = contiCorrente;
-    }
-
-    public Set<ContoPrestito> getContiPrestito() {
-        if (contiPrestito == null) {
-            contiPrestito = new HashSet<>();
-        }
-        return contiPrestito;
-    }
-
-    public void setContiPrestito(Set<ContoPrestito> contiPrestito) {
-        if (contiPrestito == null) {
-            contiPrestito = new HashSet<>();
-        }
-        this.contiPrestito = contiPrestito;
-    }
-
-    public Set<ContoDeposito> getContiDeposito() {
-        if (contiDeposito == null) {
-            contiDeposito = new HashSet<>();
-        }
-        return contiDeposito;
-    }
-
-    public void setContiDeposito(Set<ContoDeposito> contiDeposito) {
-        if (contiDeposito == null) {
-            contiDeposito = new HashSet<>();
-        }
-        this.contiDeposito = contiDeposito;
+    public void setDataDiNascita(LocalDate dataDiNascita) {
+        this.dataDiNascita = dataDiNascita;
     }
 
     @Override
     public String toString() {
-        return "Cliente{" + "id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", codiceFiscale=" + codiceFiscale + ", indirizzo=" + indirizzo + ", telefono=" + telefono + '}';
+        return "Cliente{" + "id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", codiceFiscale=" + codiceFiscale + ", indirizzo=" + indirizzo + ", telefono=" + telefono + ", dataDiNascita=" + dataDiNascita + '}';
     }
+
+    
 }

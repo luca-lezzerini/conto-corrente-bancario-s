@@ -1,16 +1,18 @@
 package it.sirfin.contocorrentebancarioserver.serviceImpl;
 
+import it.sirfin.contocorrentebancarioserver.dto.ListaClientiDto;
 import it.sirfin.contocorrentebancarioserver.model.Cliente;
 import it.sirfin.contocorrentebancarioserver.repository.ClienteRepository;
 import it.sirfin.contocorrentebancarioserver.repository.ContoCorrenteRepository;
 import it.sirfin.contocorrentebancarioserver.repository.ContoDepositoRepository;
 import it.sirfin.contocorrentebancarioserver.repository.ContoPrestitoRepository;
-import it.sirfin.contocorrentebancarioserver.service.ContoCorrenteSevice;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import it.sirfin.contocorrentebancarioserver.service.ContoCorrenteService;
 
 @Service
-public class ConteCorrenteServiceImpl implements ContoCorrenteSevice {
+public class ConteCorrenteServiceImpl implements ContoCorrenteService {
 
     @Autowired
     ClienteRepository clienteRepository;
@@ -31,8 +33,21 @@ public class ConteCorrenteServiceImpl implements ContoCorrenteSevice {
         contoCorrenteRepository.deleteAllInBatch();
         contoDepositoRepository.deleteAllInBatch();
         contoPrestitoRepsitory.deleteAllInBatch();
-
-        Cliente c1 = new Cliente("Marco", "Bonaccorso", "", "", "");
     }
+
+    @Override
+    public ListaClientiDto aggiungi(Cliente c) {
+        clienteRepository.save(c);
+        return aggiorna();
+    }
+
+    @Override
+    public ListaClientiDto aggiorna() {
+        List<Cliente> clienti = clienteRepository.findAll();
+        return new ListaClientiDto(clienti);
+    }
+    
+    
+    
 
 }

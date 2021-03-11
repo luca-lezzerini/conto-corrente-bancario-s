@@ -24,7 +24,8 @@ public class ContoPrestito {
     private Long id;
     @Column
     private String codice;
-     @ManyToOne
+
+    @ManyToOne
     @JoinColumn(referencedColumnName = "id")
     private Cliente cliente;
 
