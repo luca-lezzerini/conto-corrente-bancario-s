@@ -20,7 +20,6 @@ public class AccountManagementController {
     @RequestMapping("/aggiungi-cc")
     @ResponseBody
     public ListaContiCorrenteDto aggiungiCc(@RequestBody ContoCorrenteDto dto) {
-        //return accountManagementService.aggiungiCc(dto.getContoCorrente());
-        throw new UnsupportedOperationException();
+        return accountManagementService.aggiungiCc(dto.getContoCorrente());
     }
 }

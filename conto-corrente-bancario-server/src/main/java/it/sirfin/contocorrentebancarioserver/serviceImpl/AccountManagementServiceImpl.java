@@ -1,5 +1,6 @@
 package it.sirfin.contocorrentebancarioserver.serviceImpl;
 
+import it.sirfin.contocorrentebancarioserver.dto.ListaContiCorrenteDto;
 import it.sirfin.contocorrentebancarioserver.model.Cliente;
 import it.sirfin.contocorrentebancarioserver.model.ContoCorrente;
 import it.sirfin.contocorrentebancarioserver.model.ContoDeposito;
@@ -10,6 +11,7 @@ import it.sirfin.contocorrentebancarioserver.repository.ContoDepositoRepository;
 import it.sirfin.contocorrentebancarioserver.repository.ContoPrestitoRepository;
 import it.sirfin.contocorrentebancarioserver.service.AccountManagementService;
 import java.time.LocalDate;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -70,6 +72,15 @@ public class AccountManagementServiceImpl implements AccountManagementService {
         cCD1 = contoDepositoRepository.save(cCD1);
         cCD2 = contoDepositoRepository.save(cCD2);
         cCD3 = contoDepositoRepository.save(cCD3);
+    }
+
+    @Override
+    public ListaContiCorrenteDto aggiungiCc(ContoCorrente cc) {
+        //salvo su db
+        contoCorrenteRepository.save(cc);
+        //implementare in seguito il metodo aggiorna
+        List<ContoCorrente> lista = contoCorrenteRepository.findAll();
+        return new ListaContiCorrenteDto(lista);
     }
 
 }
