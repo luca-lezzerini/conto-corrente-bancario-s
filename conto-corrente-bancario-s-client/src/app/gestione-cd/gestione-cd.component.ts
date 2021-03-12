@@ -14,9 +14,18 @@ export class GestioneCdComponent implements OnInit {
   contoDeposito = new ContoDeposito();
   contiDepositi: ContoDeposito[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    this.aggiorna();
+  }
 
   ngOnInit(): void {
+  }
+
+  aggiorna(){
+    let oss = this.http.get<ListaContiDepositoDto>("http://localhost:8080/aggiorna-cd");
+    oss.subscribe(c =>
+      this.contiDepositi = c.listaConti
+    );
   }
 
   aggiungi() {

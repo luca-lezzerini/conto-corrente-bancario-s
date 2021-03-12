@@ -23,11 +23,15 @@ public class ContoCorrenteBancarioController {
         return contoCorrenteService.aggiungi(dto.getCliente());
     }
 
-    @RequestMapping("/aggiorna")
+    @RequestMapping("/aggiorna-cliente")
     @ResponseBody
-    public ListaClientiDto aggiorna(@RequestBody ClienteDto dto) {
+    public ListaClientiDto aggiorna() {
+        System.out.println("siamo in aggiorna");
         return contoCorrenteService.aggiorna();
     }
+    
+    
+     
 
     @RequestMapping("/cancella")
     @ResponseBody

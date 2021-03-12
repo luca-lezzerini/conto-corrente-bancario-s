@@ -14,9 +14,19 @@ export class GestioneClientiComponent implements OnInit {
   cliente = new Cliente();
   clienti: Cliente[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.aggiorna();
+   }
 
   ngOnInit(): void {
+    
+  }
+
+  aggiorna(){
+    let oss = this.http.get<ListaClientiDto>("http://localhost:8080/aggiorna-cliente");
+    oss.subscribe(c =>
+      this.clienti = c.listaClienti
+    );
   }
 
   aggiungi() {

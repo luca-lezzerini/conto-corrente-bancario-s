@@ -59,7 +59,13 @@ public class AccountManagementController {
     public ListaContiDepositoDto eliminaContodeposito(@RequestBody ContoDepositoDto dto) {
         return accountManagementService.eliminaCd(dto.getContoDeposito());
     }
-
+    
+    @RequestMapping("/aggiorna-cd")
+    @ResponseBody
+    public ListaContiDepositoDto aggiornaContiDeposito() {
+        return accountManagementService.aggiornaContiDeposito();
+    }
+    
     @RequestMapping("/aggiungi-cp")
     @ResponseBody
     public ListaContiPrestitoDto aggiungiContoPrestito(@RequestBody ContoPrestitoDto dto) {
