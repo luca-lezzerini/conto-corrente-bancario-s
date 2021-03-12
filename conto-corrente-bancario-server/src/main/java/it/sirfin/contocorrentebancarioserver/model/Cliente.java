@@ -157,4 +157,11 @@ public class Cliente implements Serializable {
         this.contiPrestito = contiPrestito;
     }
 
+    @Override
+    public String toString() {
+        return "Cliente{" + "id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", codiceFiscale=" + codiceFiscale + ", indirizzo=" + indirizzo + ", telefono=" + telefono + ", dataDiNascita=" + dataDiNascita + ", contiDeposito=" + contiDeposito + ", contiCorrente=" + contiCorrente + ", contiPrestito=" + contiPrestito + '}';
+    }
+    
+    
+
 }

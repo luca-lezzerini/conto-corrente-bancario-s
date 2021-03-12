@@ -20,7 +20,10 @@ public class ContoCorrenteBancarioController {
     @RequestMapping("/aggiungi")
     @ResponseBody
     public ListaClientiDto aggiungi(@RequestBody ClienteDto dto){
-        return contoCorrenteService.aggiungi(dto.getCliente());
+        System.out.println("siamo su aggiungi");
+        ListaClientiDto risp = contoCorrenteService.aggiungi(dto.getCliente());
+        System.out.println(risp);
+        return risp;
     }
     
     @RequestMapping("/aggiorna")

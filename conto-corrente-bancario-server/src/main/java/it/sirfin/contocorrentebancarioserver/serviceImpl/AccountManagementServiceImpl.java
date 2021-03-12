@@ -15,8 +15,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AccountManagementServiceImpl implements AccountManagementService {
-    
-    
 
     @Autowired
     ClienteRepository clienteRepository;
@@ -29,16 +27,15 @@ public class AccountManagementServiceImpl implements AccountManagementService {
 
     @Autowired
     ContoPrestitoRepository contoPrestitoRepsitory;
-    
-     public void demo() {
 
-        clienteRepository.deleteAllInBatch();
+    public void demo() {
+
         contoCorrenteRepository.deleteAllInBatch();
         contoDepositoRepository.deleteAllInBatch();
         contoPrestitoRepsitory.deleteAllInBatch();
+        clienteRepository.deleteAllInBatch();
 
-    
-     //creazione archivio clienti
+        //creazione archivio clienti
         Cliente c1 = new Cliente("Mario", "Verdi", "MroVrd00A12H501U", "Via le Mani dal Naso 10", "3518864367", LocalDate.of(2000, 1, 12));
         c1 = clienteRepository.save(c1);
         Cliente c2 = new Cliente("Torri", "Gemelle", "TORGML01I11H501T", "Terreno zero", "3288864377", LocalDate.of(2001, 9, 11)); //idea di Francesco Lillo

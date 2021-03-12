@@ -16,14 +16,15 @@ public class ListaClientiDto {
         this.listaClienti = clienti;
     }
 
-    public List<Cliente> getClienti() {
+    public List<Cliente> getListaClienti() {
         return listaClienti;
     }
 
-    public void setClienti(List<Cliente> clienti) {
-        this.listaClienti = clienti;
+    public void setListaClienti(List<Cliente> listaClienti) {
+        this.listaClienti = listaClienti;
     }
 
+    
     @Override
     public String toString() {
         return "ListaClientiDto{" + "clienti=" + listaClienti + '}';

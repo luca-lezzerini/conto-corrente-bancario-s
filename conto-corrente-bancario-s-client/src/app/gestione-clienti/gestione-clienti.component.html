@@ -22,6 +22,10 @@
         <td>{{c.dataDiNascita}}</td>
         <td>{{c.indirizzo}}</td>
         <td>{{c.telefono}}</td>
+        <td>
+            <button (click)="cancella(c)">X</button>
+            <button (click)="modifica()">Modifica</button>
+        </td>
     </tr>
 </table>
 
