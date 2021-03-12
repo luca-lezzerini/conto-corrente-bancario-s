@@ -3,6 +3,7 @@ package it.sirfin.contocorrentebancarioserver.serviceImpl;
 import it.sirfin.contocorrentebancarioserver.dto.ContoCorrenteDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaContiCorrenteDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaContiDepositoDto;
+import it.sirfin.contocorrentebancarioserver.dto.ListaContiPrestitoDto;
 import it.sirfin.contocorrentebancarioserver.model.Cliente;
 import it.sirfin.contocorrentebancarioserver.model.ContoCorrente;
 import it.sirfin.contocorrentebancarioserver.model.ContoDeposito;
@@ -19,6 +20,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AccountManagementServiceImpl implements AccountManagementService {
+
+    
 
     @Autowired
     ClienteRepository clienteRepository;
@@ -123,7 +126,15 @@ public class AccountManagementServiceImpl implements AccountManagementService {
         return new ListaContiDepositoDto(lista);
     }
     
+    @Override
+    public ListaContiPrestitoDto aggiungiContoPrestito(ContoPrestito cp) {
+        contoPrestitoRepsitory.save(cp);
+        return aggiornaContiPrestito();
+    }  
     
-    
-    
+    @Override
+    public ListaContiPrestitoDto aggiornaContiPrestito() {
+        List<ContoPrestito> lista = contoPrestitoRepsitory.findAll();
+        return new ListaContiPrestitoDto(lista);
+    }
 }

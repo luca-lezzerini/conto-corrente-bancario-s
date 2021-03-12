@@ -29,7 +29,7 @@ export class GestioneCpComponent implements OnInit {
   add() {
     let dto = new ContoPrestitoDto();
     dto.contoPrestito = this.contoPrestito;
-    this.http.post<ListaContiPrestitoDto>(this.url + "aggiungi", dto)
+    this.http.post<ListaContiPrestitoDto>(this.url + "aggiungi-cp", dto)
       .subscribe(r => this.codici = r.listaContiPrestito);
   }
   edit() {
