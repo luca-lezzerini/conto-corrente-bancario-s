@@ -12,7 +12,8 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  gestioneCliente() {
+  gestioneClienti() {
+    this.router.navigateByUrl('/app-gestione-clienti')
   }
   gestioneCC() {
     this.router.navigateByUrl('/app-gestione-cc')
