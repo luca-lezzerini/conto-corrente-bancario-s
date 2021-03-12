@@ -44,22 +44,28 @@ public class AccountManagementController {
     public ListaContiCorrenteDto confermaCc(@RequestBody ContoCorrenteDto dto) {
         return accountManagementService.confermaCc(dto.getContoCorrente());
     }
-    
-     @RequestMapping("/aggiungi-contodeposito")
+
+    @RequestMapping("/aggiungi-contodeposito")
     @ResponseBody
     public ListaContiDepositoDto aggiungiContodeposito(@RequestBody ContoDepositoDto dto) {
         return accountManagementService.aggiungicontodeposito(dto.getContoDeposito());
     }
-    
+
     @RequestMapping("/elimina-contodeposito")
     @ResponseBody
     public ListaContiDepositoDto eliminaContodeposito(@RequestBody ContoDepositoDto dto) {
         return accountManagementService.eliminaCd(dto.getContoDeposito());
     }
-    
+
     @RequestMapping("/aggiungi-cp")
     @ResponseBody
-    public ListaContiPrestitoDto aggiungiContoPrestito (@RequestBody ContoPrestitoDto dto) {
+    public ListaContiPrestitoDto aggiungiContoPrestito(@RequestBody ContoPrestitoDto dto) {
         return accountManagementService.aggiungiContoPrestito(dto.getContoPrestito());
+    }
+
+    @RequestMapping("/aggiorna-cp")
+    @ResponseBody
+    public ListaContiPrestitoDto aggiornaContiPrestito() {
+        return accountManagementService.aggiornaContiPrestito();
     }
 }
