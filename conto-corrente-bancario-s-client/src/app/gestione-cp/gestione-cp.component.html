@@ -7,7 +7,7 @@ Conto prestito <button (click)="new()">New</button>
 </div>
 <button *ngIf="showAdd" (click)="add()">Add</button>
 <br><br>
-<table>
+<table *ngIf="showFormTable">
     <tr>
         <th>Codice conto</th>
         <th>Gestisci</th>
