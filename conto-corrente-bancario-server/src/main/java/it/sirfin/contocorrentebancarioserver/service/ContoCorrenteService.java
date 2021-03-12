@@ -10,4 +10,6 @@ public interface ContoCorrenteService {
     ListaClientiDto aggiungi(Cliente c);
 
     ListaClientiDto aggiorna();
+
+    ListaClientiDto cancella(Cliente c);
 }

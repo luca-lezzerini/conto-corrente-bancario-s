@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 public class ListaClientiDto {
-    
+
     private List<Cliente> listaClienti;
 
     public ListaClientiDto() {
@@ -24,16 +24,9 @@ public class ListaClientiDto {
         this.listaClienti = listaClienti;
     }
 
-    
     @Override
     public String toString() {
         return "ListaClientiDto{" + "clienti=" + listaClienti + '}';
     }
- 
-    
-    
-    
-    
-    
-    
+
 }
