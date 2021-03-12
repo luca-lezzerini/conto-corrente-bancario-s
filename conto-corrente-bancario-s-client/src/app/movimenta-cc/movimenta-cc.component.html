@@ -1,1 +1,26 @@
-<p>movimenta-cc works!</p>
+<input type="text" placeholder="Codice conto" [(ngModel)]="CodiceConto">
+
+<button (click)="cerca()">Cerca</button>
+<br> <br>
+Conto selezionato:
+<br> <br>
+
+<form name="form1" id="form1" action="/action_page.php">
+  Azione: <select name="subject" id="subject">
+    <option value="" selected="selected">Versamento:</option>
+    <option value="" selected="selected">Prelievo:</option>
+    <option value="" selected="selected">Bonifico:</option>
+  </select>
+
+  <input type="text" placeholder=" Importo" [(ngModel)]=" Importo" >
+  <button (click)="esegui()">Esegui</button>
+  <br><br>
+  <table border=3px>
+    <tr>
+      <td>Colonna 1 </td>
+      <td>Colonna 2</td>
+      <td>Colonna 3</td>
+      <td>Gestisci </td>
+      <td><button (click)="seleziona()">Seleziona</button></td>
+    </tr>
+  </table>

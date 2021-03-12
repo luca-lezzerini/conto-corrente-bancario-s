@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MovimentaCcComponent implements OnInit {
 
-  constructor() { }
+  CodiceConto = "";
+  Importo = "";
+
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
   }
 
+  cerca() { }
+
+  esegui() { }
+
+  seleziona() { }
+
 }
+
+
+
