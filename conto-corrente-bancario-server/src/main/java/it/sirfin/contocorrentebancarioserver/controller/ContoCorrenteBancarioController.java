@@ -29,9 +29,6 @@ public class ContoCorrenteBancarioController {
         System.out.println("siamo in aggiorna");
         return contoCorrenteService.aggiorna();
     }
-    
-    
-     
 
     @RequestMapping("/cancella")
     @ResponseBody
@@ -40,5 +37,17 @@ public class ContoCorrenteBancarioController {
         ListaClientiDto risp = contoCorrenteService.cancella(dto.getCliente());
         System.out.println(risp);
         return risp;
+    }
+
+    @RequestMapping("/modifica-cliente")
+    @ResponseBody
+    public ClienteDto modificaCliente(@RequestBody ClienteDto dto) {
+        return contoCorrenteService.ModificaCliente(dto.getCliente());
+    }
+
+    @RequestMapping("/conferma-modifica-cliente")
+    @ResponseBody
+    public ListaClientiDto confermaModificaCliente(@RequestBody ClienteDto dto) {
+        return contoCorrenteService.confermaModificaCliente(dto.getCliente());
     }
 }

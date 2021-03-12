@@ -1,5 +1,6 @@
 package it.sirfin.contocorrentebancarioserver.service;
 
+import it.sirfin.contocorrentebancarioserver.dto.ClienteDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaClientiDto;
 import it.sirfin.contocorrentebancarioserver.model.Cliente;
 
@@ -12,4 +13,8 @@ public interface ContoCorrenteService {
     ListaClientiDto aggiorna();
 
     ListaClientiDto cancella(Cliente c);
+    
+    ClienteDto ModificaCliente(Cliente c);
+    
+    ListaClientiDto confermaModificaCliente(Cliente c);
 }

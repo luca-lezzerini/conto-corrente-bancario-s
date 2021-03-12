@@ -1,5 +1,6 @@
 package it.sirfin.contocorrentebancarioserver.serviceImpl;
 
+import it.sirfin.contocorrentebancarioserver.dto.ClienteDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaClientiDto;
 import it.sirfin.contocorrentebancarioserver.model.Cliente;
 import it.sirfin.contocorrentebancarioserver.repository.ClienteRepository;
@@ -51,6 +52,20 @@ public class ContoCorrenteServiceImpl implements ContoCorrenteService {
     public ListaClientiDto cancella(Cliente c) {
         clienteRepository.delete(c);
         return aggiorna();
+    }
+
+    @Override
+    public ClienteDto ModificaCliente(Cliente c) {
+        ClienteDto dtoRes = new ClienteDto(clienteRepository
+                .findById(c.getId()).get());
+        return dtoRes;
+    }
+
+    @Override
+    public ListaClientiDto confermaModificaCliente(Cliente c) {
+        clienteRepository.save(c);
+        return new ListaClientiDto(
+                clienteRepository.findAll());
     }
 
 }
