@@ -89,4 +89,16 @@ public class AccountManagementController {
     public ListaContiCorrenteDto ricercaContoCorrente(@RequestBody RicercaContoCorrenteDto dto) {
         return accountManagementService.ricercaCc(dto.getCodiceEsatto());
     }
+    
+     @RequestMapping("/elimina-cp")
+    @ResponseBody
+    public ListaContiPrestitoDto eliminaCp(@RequestBody ContoPrestitoDto dto) {
+        return accountManagementService.eliminaCp(dto.getContoPrestito());
+    }
+
+    @RequestMapping("modifica-cp")
+    @ResponseBody
+    public ContoPrestitoDto modificaCp(@RequestBody ContoPrestitoDto dto) {
+        return accountManagementService.modificaCp(dto.getContoPrestito());
+    }
 }

@@ -30,6 +30,10 @@ public interface AccountManagementService {
 
     ListaContiPrestitoDto aggiornaContiPrestito();
 
+    ListaContiPrestitoDto eliminaCp(ContoPrestito cp);
+
+    ContoPrestitoDto modificaCp(ContoPrestito cp);
+
     ListaClientiDto ricercaC(String c);
 
     ListaContiCorrenteDto ricercaCc(String n);

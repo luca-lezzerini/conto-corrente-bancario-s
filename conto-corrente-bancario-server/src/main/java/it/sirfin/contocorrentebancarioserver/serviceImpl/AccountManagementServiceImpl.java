@@ -1,6 +1,7 @@
 package it.sirfin.contocorrentebancarioserver.serviceImpl;
 
 import it.sirfin.contocorrentebancarioserver.dto.ContoCorrenteDto;
+import it.sirfin.contocorrentebancarioserver.dto.ContoPrestitoDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaClientiDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaContiCorrenteDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaContiDepositoDto;
@@ -32,14 +33,14 @@ public class AccountManagementServiceImpl implements AccountManagementService {
     ContoDepositoRepository contoDepositoRepository;
 
     @Autowired
-    ContoPrestitoRepository contoPrestitoRepsitory;
+    ContoPrestitoRepository contoPrestitoRepository;
 
     public void demo() {
 
         clienteRepository.deleteAllInBatch();
         contoCorrenteRepository.deleteAllInBatch();
         contoDepositoRepository.deleteAllInBatch();
-        contoPrestitoRepsitory.deleteAllInBatch();
+        contoPrestitoRepository.deleteAllInBatch();
 
         //creazione archivio clienti
         Cliente c1 = new Cliente("Mario", "Verdi", "MroVrd00A12H501U", "Via le Mani dal Naso 10", "3518864367", LocalDate.of(2000, 1, 12));
@@ -63,9 +64,9 @@ public class AccountManagementServiceImpl implements AccountManagementService {
         ContoPrestito cCP2 = new ContoPrestito("CodiceDue");
         ContoPrestito cCP3 = new ContoPrestito("CodiceTre");
         //salvo su db
-        cCP1 = contoPrestitoRepsitory.save(cCP1);
-        cCP2 = contoPrestitoRepsitory.save(cCP2);
-        cCP3 = contoPrestitoRepsitory.save(cCP3);
+        cCP1 = contoPrestitoRepository.save(cCP1);
+        cCP2 = contoPrestitoRepository.save(cCP2);
+        cCP3 = contoPrestitoRepository.save(cCP3);
 
         //creazione archivio Conto Deposito
         ContoDeposito cCD1 = new ContoDeposito("codice1");
@@ -127,13 +128,13 @@ public class AccountManagementServiceImpl implements AccountManagementService {
 
     @Override
     public ListaContiPrestitoDto aggiungiContoPrestito(ContoPrestito cp) {
-        contoPrestitoRepsitory.save(cp);
+        contoPrestitoRepository.save(cp);
         return aggiornaContiPrestito();
     }
 
     @Override
     public ListaContiPrestitoDto aggiornaContiPrestito() {
-        List<ContoPrestito> lista = contoPrestitoRepsitory.findAll();
+        List<ContoPrestito> lista = contoPrestitoRepository.findAll();
         return new ListaContiPrestitoDto(lista);
     }
 
@@ -147,5 +148,16 @@ public class AccountManagementServiceImpl implements AccountManagementService {
     public ListaContiCorrenteDto ricercaCc(String n) {
         List<ContoCorrente> lista = contoCorrenteRepository.findByNumeroConto(n);
         return new ListaContiCorrenteDto(lista);
+    }
+
+    @Override
+    public ListaContiPrestitoDto eliminaCp(ContoPrestito cp) {
+        contoPrestitoRepository.delete(cp);
+        return aggiornaContiPrestito();
+    }
+
+    @Override
+    public ContoPrestitoDto modificaCp(ContoPrestito cp) {
+        return new ContoPrestitoDto(cp);
     }
 }

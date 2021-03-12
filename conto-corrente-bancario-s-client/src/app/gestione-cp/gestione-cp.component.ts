@@ -14,10 +14,14 @@ import { ListaContiPrestitoDto } from '../lista-conti-prestito-dto';
 export class GestioneCpComponent implements OnInit {
   contoPrestito: ContoPrestito = new ContoPrestito();
   showFormChoice: boolean = false;
+  showAdd : boolean = true;
   codici: ContoPrestito[] = [];
+  rigaCorrente: number;
   url = "http://localhost:8080/";
 
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient) {
+    this.aggiorna();
+  }
 
   ngOnInit(): void {
   }
@@ -32,13 +36,29 @@ export class GestioneCpComponent implements OnInit {
     this.http.post<ListaContiPrestitoDto>(this.url + "aggiungi-cp", dto)
       .subscribe(r => this.codici = r.listaContiPrestito);
   }
-  edit() {
+
+  aggiorna() {
+    this.http.get<ListaContiPrestitoDto>(this.url + "aggiorna-cp")
+      .subscribe(r => this.codici = r.listaContiPrestito);
+  }
+
+  edit(c: ContoPrestito, i: number) {
+    let dto = new ContoPrestitoDto();
+    dto.contoPrestito = c;
+    this.http.post<ContoPrestitoDto>("http://localhost:8080/modifica-cp", dto)
+      .subscribe(r => this.contoPrestito = r.contoPrestito);
     this.showFormChoice = true;
-  }
-  delete() {
+    this.showAdd = false;
+    this.contoPrestito = Object.assign({}, this.codici[i]);
+    this.rigaCorrente = i;
+
 
   }
-
-
+  delete(c: ContoPrestito) {
+    let dto = new ContoPrestitoDto();
+    dto.contoPrestito = c;
+    this.http.post<ListaContiPrestitoDto>("http://localhost:8080/elimina-cp", dto)
+      .subscribe(r => this.codici = r.listaContiPrestito);
+  }
 
 }
