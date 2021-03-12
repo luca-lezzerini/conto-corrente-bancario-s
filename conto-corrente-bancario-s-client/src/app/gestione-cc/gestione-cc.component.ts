@@ -15,12 +15,16 @@ export class GestioneCcComponent implements OnInit {
   contiCorrente: ContoCorrente[] = [];
 
   constructor(private route: Router, private http: HttpClient) { }
-  // showForm = false;
+  showForm = false;
+  showNew = true;
+  showTable = false;
   ngOnInit(): void {
   }
 
   new() {
-    // this.showForm = true;
+    this.showForm = true;
+    this.showNew = false;
+    this.showTable = true;
   }
 
   aggiungi() {
@@ -29,5 +33,9 @@ export class GestioneCcComponent implements OnInit {
     this.http.post<ListaContiCorrenteDto>("http://localhost:8080/aggiungi-cc", dto)
       .subscribe(r => this.contiCorrente = r.listaContiCorrente);
     this.contoCorrente = new ContoCorrente();
+    this.showForm = false;
+    this.showNew = true;
+    this.showTable = false;
   }
+
 }

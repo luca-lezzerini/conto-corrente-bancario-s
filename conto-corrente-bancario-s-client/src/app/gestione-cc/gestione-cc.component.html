@@ -1,19 +1,23 @@
-<input type="text" placeholder="numConto" [(ngModel)]="contoCorrente.numeroConto">
-<!-- <div *ngIf="showForm"> -->
-<button (click)="new()">New</button>
-<!-- </div> -->
-<button (click)="aggiungi()">Aggiungi</button>
-<br>
-<br>
-<table>
-    <tr>
-        <th>numConto</th>
-        <th>Elimina</th>
-        <th>Modifica</th>
-    </tr>
-    <tr *ngFor="let n of contiCorrente">
-        <td>{{n.numeroConto}}</td>
-        <td><button (clik)="elimina(n)">X</button></td>
-        <td><button (clik)="modifica(n)">Edit</button></td>
-    </tr>
-</table>
+<div *ngIf="showForm">
+    <input type="text" placeholder="numConto" [(ngModel)]="contoCorrente.numeroConto">
+    <button (click)="aggiungi()">Aggiungi</button>
+    <br>
+    <br>
+</div>
+<div *ngIf="showTable">
+    <table *ngIf="contiCorrente.length>0">
+        <tr>
+            <th>numConto</th>
+            <th>Elimina</th>
+            <th>Modifica</th>
+        </tr>
+        <tr *ngFor="let n of contiCorrente">
+            <td>{{n.numeroConto}}</td>
+            <td><button (clik)="elimina(n)">X</button></td>
+            <td><button (clik)="modifica(n)">Edit</button></td>
+        </tr>
+    </table>
+</div>
+<div *ngIf="showNew">
+    <button (click)="new()">New</button>
+</div>
