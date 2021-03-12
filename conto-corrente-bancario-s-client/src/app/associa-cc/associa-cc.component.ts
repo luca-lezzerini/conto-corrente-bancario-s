@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Cliente } from '../cliente';
+import { ContoCorrente } from '../conto-corrente';
 
 @Component({
   selector: 'app-associa-cc',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AssociaCcComponent implements OnInit {
 
+  clienti: Cliente[] = [];
+  cliente = new Cliente();
+  contiCorrente: ContoCorrente[] = [];
+  numeroConto = "";
   constructor() { }
 
+  ricercaCliente = "";
   ngOnInit(): void {
   }
 
+  cercaCliente() {
+
+  }
+
+  cercaContoCorrente() {
+
+  }
 }
