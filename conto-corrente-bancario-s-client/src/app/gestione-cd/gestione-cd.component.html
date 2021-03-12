@@ -1,1 +1,14 @@
-<p>gestione-cd works!</p>
+<input type="text" [(ngModel)]="contoDeposito.codice">
+<button (click)="aggiungi()">Aggiungi</button>
+<button (click)="nuovo()">Nuovo</button>
+<table *ngIf="contiDepositi.length >0"> 
+    <tr>
+        <th>Nome</th>
+    </tr>
+    <tr *ngFor="let c of contiDepositi">
+       <td>{{c.codice}}</td> 
+       <td><button (click)="elimina(c)">X</button></td>
+       <td><button (click)="modifica()">Modifica</button></td>
+    </tr>
+</table>
+ 
