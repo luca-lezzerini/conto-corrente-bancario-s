@@ -1,6 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ContoPrestito } from '../conto-prestito';
+import { ContoPrestitoDto } from '../conto-prestito-dto';
+import { ListaClientiDto } from '../lista-clienti-dto';
+import { ListaContiPrestitoDto } from '../lista-conti-prestito-dto';
 
 @Component({
   selector: 'app-gestione-cp',
@@ -11,8 +15,9 @@ export class GestioneCpComponent implements OnInit {
   contoPrestito: ContoPrestito = new ContoPrestito();
   showFormChoice: boolean = false;
   codici: ContoPrestito[] = [];
+  url = "http://localhost:8080/";
 
-  constructor(private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient) { }
 
   ngOnInit(): void {
   }
@@ -22,7 +27,10 @@ export class GestioneCpComponent implements OnInit {
   }
 
   add() {
-
+    let dto = new ContoPrestitoDto();
+    dto.contoPrestito = this.contoPrestito;
+    this.http.post<ListaContiPrestitoDto>(this.url + "aggiungi", dto)
+      .subscribe(r => this.codici = r.listaContiPrestito);
   }
   edit() {
     this.showFormChoice = true;
