@@ -1,2 +1,4 @@
 
 *.log
+conto-corrente-bancario-server/gicalog.log
+*.log
