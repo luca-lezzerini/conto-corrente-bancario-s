@@ -1,4 +1,4 @@
-<input type="text" placeholder="cc.numConto">
+<input type="text" placeholder="numConto" [(ngModel)]="contoCorrente.numConto">
 <!-- <div *ngIf="showForm"> -->
 <button (click)="new()">New</button>
 <!-- </div> -->
@@ -11,8 +11,8 @@
         <th>Elimina</th>
         <th>Modifica</th>
     </tr>
-    <tr *ngFor="let n of cc">
-        <td>{{numConto}}</td>
+    <tr *ngFor="let n of contiCorrente">
+        <td>{{n.numConto}}</td>
         <td><button (clik)="elimina(n)">X</button></td>
         <td><button (clik)="modifica(n)">Edit</button></td>
     </tr>
