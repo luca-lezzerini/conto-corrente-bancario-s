@@ -43,4 +43,39 @@ export class HomePageComponent implements OnInit {
     this.router.navigateByUrl('/app-associa-cd')
   }
 
+  movimentaCC() {
+    this.router.navigateByUrl('/app-movimenta-cc')
+  }
+
+  movimentaCP(){
+    this.router.navigateByUrl('/app-movimenta-cp')
+  }
+
+  movimentaCD(){
+    this.router.navigateByUrl('/app-movimenta-cd')
+  }
+
+  saldoCC(){
+    this.router.navigateByUrl('/app-saldo-cc')
+  }
+
+  saldoCP(){
+    this.router.navigateByUrl('/app-saldo-cp')
+  }
+
+  saldoCD(){
+    this.router.navigateByUrl('/app-saldo-cd')
+  }
+
+  ecCC(){
+    this.router.navigateByUrl('/app-estratto-conto-cc')
+  }
+
+  ecCP(){
+    this.router.navigateByUrl('/app-estratto-conto-cp')
+  }
+
+  ecCD(){
+    this.router.navigateByUrl('/app-estratto-conto-cd')
+  }
 }
