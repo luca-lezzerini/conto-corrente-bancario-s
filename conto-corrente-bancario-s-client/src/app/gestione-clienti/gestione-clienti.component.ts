@@ -35,8 +35,17 @@ export class GestioneClientiComponent implements OnInit {
 
   nuovo() { }
 
-  modifica(){}
+  modifica() { }
 
-  cancella(){
+  cancella(c: Cliente) {
+    let dto = new ClienteDto();
+    dto.cliente = c;
+
+    let oss = this.http.post<ListaClientiDto>("http://localhost:8080/cancella", dto);
+    oss.subscribe(c => {
+      this.clienti = c.listaClienti
+      console.log(c);
+    });
+
   }
 }
