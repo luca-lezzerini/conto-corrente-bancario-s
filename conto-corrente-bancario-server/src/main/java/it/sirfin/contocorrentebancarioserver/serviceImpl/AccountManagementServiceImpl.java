@@ -108,7 +108,22 @@ public class AccountManagementServiceImpl implements AccountManagementService {
     public ListaContiDepositoDto aggiungicontodeposito(ContoDeposito cd) {
         contoDepositoRepository.save(cd);
         //implementare in seguito il metodo aggiorna
+        return aggiornaContiDeposito();
+    }
+
+    @Override
+    public ListaContiDepositoDto eliminaCd(ContoDeposito cd) {
+        contoDepositoRepository.delete(cd);
+        return aggiornaContiDeposito();
+    }
+
+    @Override
+    public ListaContiDepositoDto aggiornaContiDeposito() {
         List<ContoDeposito> lista = contoDepositoRepository.findAll();
         return new ListaContiDepositoDto(lista);
     }
+    
+    
+    
+    
 }

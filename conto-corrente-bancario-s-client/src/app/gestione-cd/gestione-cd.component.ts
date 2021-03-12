@@ -14,22 +14,31 @@ export class GestioneCdComponent implements OnInit {
   contoDeposito = new ContoDeposito();
   contiDepositi: ContoDeposito[] = [];
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
   }
 
-  aggiungi(){
+  aggiungi() {
 
     let dto = new ContoDepositoDto();
     dto.contoDeposito = this.contoDeposito;
-    
+
     let oss = this.http.post<ListaContiDepositoDto>("http://localhost:8080/aggiungi-contodeposito", dto)
-    oss.subscribe( r =>
+    oss.subscribe(r =>
       this.contiDepositi = r.listaConti);
-      this.contoDeposito = new ContoDeposito();       
+    this.contoDeposito = new ContoDeposito();
   }
 
-  nuovo(){}
-  
+  elimina(c:ContoDeposito) {
+    let dto = new ContoDepositoDto();
+    dto.contoDeposito = c;
+
+    let oss = this.http.post<ListaContiDepositoDto>("http://localhost:8080/elimina-contodeposito", dto)
+    oss.subscribe(r =>
+      this.contiDepositi = r.listaConti);
+  }
+
+  nuovo() { }
+
 }

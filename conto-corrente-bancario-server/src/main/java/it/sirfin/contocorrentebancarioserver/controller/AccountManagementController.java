@@ -45,8 +45,14 @@ public class AccountManagementController {
     
      @RequestMapping("/aggiungi-contodeposito")
     @ResponseBody
-    public ListaContiDepositoDto aggiungicontodeposito(@RequestBody ContoDepositoDto dto) {
+    public ListaContiDepositoDto aggiungiContodeposito(@RequestBody ContoDepositoDto dto) {
         return accountManagementService.aggiungicontodeposito(dto.getContoDeposito());
+    }
+    
+    @RequestMapping("/elimina-contodeposito")
+    @ResponseBody
+    public ListaContiDepositoDto eliminaContodeposito(@RequestBody ContoDepositoDto dto) {
+        return accountManagementService.eliminaCd(dto.getContoDeposito());
     }
 
 }

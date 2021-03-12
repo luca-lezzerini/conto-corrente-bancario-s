@@ -17,6 +17,10 @@ public interface AccountManagementService {
     ListaContiCorrenteDto confermaCc(ContoCorrente cc);
     
     ListaContiDepositoDto aggiungicontodeposito(ContoDeposito cd);
+    
+    ListaContiDepositoDto eliminaCd(ContoDeposito cd);
+    
+    ListaContiDepositoDto aggiornaContiDeposito();
 
     
 }
