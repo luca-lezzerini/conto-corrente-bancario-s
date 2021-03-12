@@ -11,4 +11,10 @@ public class AccountManagementController {
     
     @Autowired
     AccountManagementService accountManagementService;
+
+    @RequestMapping("/aggiungi-cc")
+    @ResponseBody
+    public ListaContiCorrenteDto aggiungiCc(@RequestBody ContoCorrenteDto dto) {
+        return accountManagementService.aggiungiCc(dto.getContoCorrente());
+    }
 }
