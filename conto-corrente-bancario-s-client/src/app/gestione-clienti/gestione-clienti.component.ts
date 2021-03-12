@@ -34,4 +34,9 @@ export class GestioneClientiComponent implements OnInit {
   }
 
   nuovo() { }
+
+  modifica(){}
+
+  cancella(){
+  }
 }
