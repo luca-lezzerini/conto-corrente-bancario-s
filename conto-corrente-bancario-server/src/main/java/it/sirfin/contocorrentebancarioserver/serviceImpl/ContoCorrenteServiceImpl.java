@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import it.sirfin.contocorrentebancarioserver.service.ContoCorrenteService;
 
 @Service
-public class ConteCorrenteServiceImpl implements ContoCorrenteService {
+public class ContoCorrenteServiceImpl implements ContoCorrenteService {
 
     @Autowired
     ClienteRepository clienteRepository;
