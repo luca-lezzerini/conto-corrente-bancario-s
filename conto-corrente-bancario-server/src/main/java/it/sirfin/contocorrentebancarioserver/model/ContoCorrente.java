@@ -5,6 +5,7 @@
  */
 package it.sirfin.contocorrentebancarioserver.model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -20,7 +21,7 @@ import javax.persistence.OneToMany;
  * @author marco
  */
 @Entity
-public class ContoCorrente {
+public class ContoCorrente implements Serializable {
 
     @Id
     @GeneratedValue
@@ -31,14 +32,14 @@ public class ContoCorrente {
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
     private Cliente cliente;
-    @OneToMany
-    @JoinColumn(referencedColumnName = "id")
+
+    @OneToMany(mappedBy = "contoCorrente")
     private Set<MovimentiContoCorrente> MovimentiContoCorrente;
-    @OneToMany
-    @JoinColumn(referencedColumnName = "id")
+
+    @OneToMany(mappedBy = "contoCorrente")
     private Set<MovimentiContoDeposito> MovimentiContoDeposito;
-    @OneToMany
-    @JoinColumn(referencedColumnName = "id")
+
+    @OneToMany(mappedBy = "contoCorrente")
     private Set<MovimentiContoPrestito> MovimentiContoPrestito;
 
     public ContoCorrente() {
@@ -114,6 +115,11 @@ public class ContoCorrente {
             MovimentiContoPrestito = new HashSet<>();
         }
         this.MovimentiContoPrestito = MovimentiContoPrestito;
+    }
+
+    @Override
+    public String toString() {
+        return "ContoCorrente{" + "id=" + id + ", numeroConto=" + numeroConto + ", cliente=" + cliente + ", MovimentiContoCorrente=" + MovimentiContoCorrente + ", MovimentiContoDeposito=" + MovimentiContoDeposito + ", MovimentiContoPrestito=" + MovimentiContoPrestito + '}';
     }
 
 }
