@@ -3,9 +3,12 @@ package it.sirfin.contocorrentebancarioserver.controller;
 import it.sirfin.contocorrentebancarioserver.dto.ContoCorrenteDto;
 import it.sirfin.contocorrentebancarioserver.dto.ContoDepositoDto;
 import it.sirfin.contocorrentebancarioserver.dto.ContoPrestitoDto;
+import it.sirfin.contocorrentebancarioserver.dto.ListaClientiDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaContiCorrenteDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaContiDepositoDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaContiPrestitoDto;
+import it.sirfin.contocorrentebancarioserver.dto.RicercaClienteDto;
+import it.sirfin.contocorrentebancarioserver.dto.RicercaContoCorrenteDto;
 import it.sirfin.contocorrentebancarioserver.service.AccountManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -67,5 +70,17 @@ public class AccountManagementController {
     @ResponseBody
     public ListaContiPrestitoDto aggiornaContiPrestito() {
         return accountManagementService.aggiornaContiPrestito();
+    }
+
+    @RequestMapping("ricerca-c")
+    @ResponseBody
+    public ListaClientiDto ricercaCliente(@RequestBody RicercaClienteDto dto) {
+        return accountManagementService.ricercaC(dto.getRicercaPerCognome());
+    }
+
+    @RequestMapping("ricerca-cc")
+    @ResponseBody
+    public ListaContiCorrenteDto ricercaContoCorrente(@RequestBody RicercaContoCorrenteDto dto) {
+        return accountManagementService.ricercaCc(dto.getCodiceEsatto());
     }
 }

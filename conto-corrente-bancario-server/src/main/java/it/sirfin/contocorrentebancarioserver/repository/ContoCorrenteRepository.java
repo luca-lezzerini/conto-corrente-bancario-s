@@ -6,6 +6,7 @@
 package it.sirfin.contocorrentebancarioserver.repository;
 
 import it.sirfin.contocorrentebancarioserver.model.ContoCorrente;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +15,8 @@ import org.springframework.stereotype.Repository;
  * @author marco
  */
 @Repository
-public interface ContoCorrenteRepository extends JpaRepository<ContoCorrente, Long>{
-    
+public interface ContoCorrenteRepository extends JpaRepository<ContoCorrente, Long> {
+
+    List<ContoCorrente> findByNumeroConto(String n);
+
 }
