@@ -7,7 +7,7 @@
 <button (click)="nuovo()">Nuovo</button>
 <button (click)="aggiungi()">Aggiungi</button>
 <table *ngIf="clienti.length >0">
-    <tr *ngFor="let c of clienti">
+    <tr>
         <th>Nome</th>
         <th>Cognome</th>
         <th>Codice Fiscale</th>
@@ -15,7 +15,7 @@
         <th>Indirizzo</th>
         <th>Telefono</th>
     </tr>
-    <tr>
+    <tr *ngFor="let c of clienti">
         <td>{{c.nome}}</td>
         <td>{{c.cognome}}</td>
         <td>{{c.codiceFiscale}}</td>
