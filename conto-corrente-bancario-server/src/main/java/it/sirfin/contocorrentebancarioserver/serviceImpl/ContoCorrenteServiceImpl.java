@@ -46,8 +46,11 @@ public class ContoCorrenteServiceImpl implements ContoCorrenteService {
         List<Cliente> clienti = clienteRepository.findAll();
         return new ListaClientiDto(clienti);
     }
-    
-    
-    
+
+    @Override
+    public ListaClientiDto cancella(Cliente c) {
+        clienteRepository.delete(c);
+        return aggiorna();
+    }
 
 }

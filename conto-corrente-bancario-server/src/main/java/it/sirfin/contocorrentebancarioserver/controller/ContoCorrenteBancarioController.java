@@ -13,19 +13,28 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin("*")
 @RestController
 public class ContoCorrenteBancarioController {
-    
+
     @Autowired
     ContoCorrenteService contoCorrenteService;
-    
+
     @RequestMapping("/aggiungi")
     @ResponseBody
-    public ListaClientiDto aggiungi(@RequestBody ClienteDto dto){
+    public ListaClientiDto aggiungi(@RequestBody ClienteDto dto) {
         return contoCorrenteService.aggiungi(dto.getCliente());
     }
-    
+
     @RequestMapping("/aggiorna")
     @ResponseBody
-    public ListaClientiDto aggiorna(@RequestBody ClienteDto dto){
+    public ListaClientiDto aggiorna(@RequestBody ClienteDto dto) {
         return contoCorrenteService.aggiorna();
+    }
+
+    @RequestMapping("/cancella")
+    @ResponseBody
+    public ListaClientiDto cancella(@RequestBody ClienteDto dto) {
+        System.out.println("siamo su cancella");
+        ListaClientiDto risp = contoCorrenteService.cancella(dto.getCliente());
+        System.out.println(risp);
+        return risp;
     }
 }
