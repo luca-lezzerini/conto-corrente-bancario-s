@@ -13,7 +13,6 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
   }
   gestioneCliente() {
-    this.router.navigateByUrl('/app-inserisci')
   }
   gestioneCC() {
     this.router.navigateByUrl('/app-gestione-cc')

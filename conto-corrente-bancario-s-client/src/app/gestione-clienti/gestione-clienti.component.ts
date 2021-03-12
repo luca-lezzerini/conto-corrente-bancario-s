@@ -5,11 +5,11 @@ import { ClienteDto } from '../cliente-dto';
 import { ListaClientiDto } from '../lista-clienti-dto';
 
 @Component({
-  selector: 'app-inserisci',
-  templateUrl: './inserisci.component.html',
-  styleUrls: ['./inserisci.component.css']
+  selector: 'app-gestione-clienti',
+  templateUrl: './gestione-clienti.component.html',
+  styleUrls: ['./gestione-clienti.component.css']
 })
-export class InserisciComponent implements OnInit {
+export class GestioneClientiComponent implements OnInit {
 
   cliente = new Cliente();
   clienti: Cliente[] = [];

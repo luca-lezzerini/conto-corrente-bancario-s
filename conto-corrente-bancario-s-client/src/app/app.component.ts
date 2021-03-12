@@ -8,23 +8,21 @@ import { Cliente } from './cliente';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  cliente: Cliente = new Cliente();
-  clienti: Cliente[] = [];
 
   constructor(private http: HttpClient) { }
 
-nuovo(){
+  nuovo() {
 
-}
-aggiungi(){
+  }
+  aggiungi() {
 
-}
-modifica(){
+  }
+  modifica() {
 
-}
-cancella(){
-  
-}
+  }
+  cancella() {
+
+  }
 
 
 }
