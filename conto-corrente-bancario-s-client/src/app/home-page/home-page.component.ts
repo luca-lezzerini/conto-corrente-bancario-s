@@ -17,4 +17,29 @@ export class HomePageComponent implements OnInit {
   gestioneCC() {
     this.router.navigateByUrl('/app-gestione-cc')
   }
+
+  gestioneCP() {
+    this.router.navigateByUrl('/app-gestione-cp')
+  }
+
+  gestioneCD() {
+    this.router.navigateByUrl('/app-gestione-cd')
+  }
+
+  mostraTuttiConti() {
+    this.router.navigateByUrl('/app-mostra-tutti-i-conti')
+  }
+
+  associaCC() {
+    this.router.navigateByUrl('/app-associa-cc')
+  }
+
+  associaCP() {
+    this.router.navigateByUrl('/app-associa-cp')
+  }
+
+  associaCD() {
+    this.router.navigateByUrl('/app-associa-cd')
+  }
+
 }
