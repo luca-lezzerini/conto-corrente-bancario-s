@@ -4,7 +4,7 @@
 
 #Ruoli di progetto
 
-Galli: Comitogianni (ValeriaCom) https://meet.google.com/ija-uzmn-tji
+Galli: Comitogianni (ValeriaCom) https://meet.google.com/dhf-cozx-yxf
 
 Macedoni: Bonaccorso (marcobonaccorso) https://meet.google.com/dhe-afaf-bni
 
