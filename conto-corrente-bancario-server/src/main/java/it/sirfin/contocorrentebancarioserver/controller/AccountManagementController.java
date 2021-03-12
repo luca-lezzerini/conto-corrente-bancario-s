@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin("*")
 @RestController
 public class AccountManagementController {
-    
+
     @Autowired
     AccountManagementService accountManagementService;
 
@@ -21,5 +21,23 @@ public class AccountManagementController {
     @ResponseBody
     public ListaContiCorrenteDto aggiungiCc(@RequestBody ContoCorrenteDto dto) {
         return accountManagementService.aggiungiCc(dto.getContoCorrente());
+    }
+
+    @RequestMapping("/elimina-cc")
+    @ResponseBody
+    public ListaContiCorrenteDto eliminaCc(@RequestBody ContoCorrenteDto dto) {
+        return accountManagementService.eliminaCc(dto.getContoCorrente());
+    }
+
+    @RequestMapping("modifica-cc")
+    @ResponseBody
+    public ContoCorrenteDto modificaCc(@RequestBody ContoCorrenteDto dto) {
+        return accountManagementService.modificaCc(dto.getContoCorrente());
+    }
+
+    @RequestMapping("conferma-cc")
+    @ResponseBody
+    public ListaContiCorrenteDto confermaCc(@RequestBody ContoCorrenteDto dto) {
+        return accountManagementService.confermaCc(dto.getContoCorrente());
     }
 }

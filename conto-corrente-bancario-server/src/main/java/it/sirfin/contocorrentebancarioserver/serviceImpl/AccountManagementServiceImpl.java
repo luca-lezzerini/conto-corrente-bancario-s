@@ -1,5 +1,6 @@
 package it.sirfin.contocorrentebancarioserver.serviceImpl;
 
+import it.sirfin.contocorrentebancarioserver.dto.ContoCorrenteDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaContiCorrenteDto;
 import it.sirfin.contocorrentebancarioserver.model.Cliente;
 import it.sirfin.contocorrentebancarioserver.model.ContoCorrente;
@@ -17,8 +18,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AccountManagementServiceImpl implements AccountManagementService {
-    
-    
 
     @Autowired
     ClienteRepository clienteRepository;
@@ -31,16 +30,15 @@ public class AccountManagementServiceImpl implements AccountManagementService {
 
     @Autowired
     ContoPrestitoRepository contoPrestitoRepsitory;
-    
-     public void demo() {
+
+    public void demo() {
 
         clienteRepository.deleteAllInBatch();
         contoCorrenteRepository.deleteAllInBatch();
         contoDepositoRepository.deleteAllInBatch();
         contoPrestitoRepsitory.deleteAllInBatch();
 
-    
-     //creazione archivio clienti
+        //creazione archivio clienti
         Cliente c1 = new Cliente("Mario", "Verdi", "MroVrd00A12H501U", "Via le Mani dal Naso 10", "3518864367", LocalDate.of(2000, 1, 12));
         c1 = clienteRepository.save(c1);
         Cliente c2 = new Cliente("Torri", "Gemelle", "TORGML01I11H501T", "Terreno zero", "3288864377", LocalDate.of(2001, 9, 11)); //idea di Francesco Lillo
@@ -86,4 +84,22 @@ public class AccountManagementServiceImpl implements AccountManagementService {
         return new ListaContiCorrenteDto(lista);
     }
 
+    @Override
+    public ListaContiCorrenteDto eliminaCc(ContoCorrente cc) {
+        contoCorrenteRepository.delete(cc);
+        List<ContoCorrente> lista = contoCorrenteRepository.findAll();
+        return new ListaContiCorrenteDto(lista);
+    }
+
+    @Override
+    public ContoCorrenteDto modificaCc(ContoCorrente cc) {
+        return new ContoCorrenteDto(cc);
+    }
+
+    @Override
+    public ListaContiCorrenteDto confermaCc(ContoCorrente cc) {
+        contoCorrenteRepository.save(cc);
+        List<ContoCorrente> lista = contoCorrenteRepository.findAll();
+        return new ListaContiCorrenteDto(lista);
+    }
 }
