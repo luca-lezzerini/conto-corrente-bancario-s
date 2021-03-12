@@ -18,6 +18,8 @@ export class GestioneCcComponent implements OnInit {
   showForm = false;
   showNew = true;
   showTable = false;
+  showEdit = false;
+  showAdd = false;
   ngOnInit(): void {
   }
 
@@ -25,6 +27,7 @@ export class GestioneCcComponent implements OnInit {
     this.showForm = true;
     this.showNew = false;
     this.showTable = true;
+    this.showAdd = true;
   }
 
   aggiungi() {
@@ -37,5 +40,39 @@ export class GestioneCcComponent implements OnInit {
     this.showNew = true;
     this.showTable = false;
   }
+
+  elimina(n: ContoCorrente) {
+    let dto = new ContoCorrenteDto();
+    dto.contoCorrente = n;
+    this.http.post<ListaContiCorrenteDto>("http://localhost:8080/elimina-cc", dto)
+      .subscribe(r => this.contiCorrente = r.listaContiCorrente);
+  }
+
+  modifica(n: ContoCorrente) {
+    let dto = new ContoCorrenteDto();
+    dto.contoCorrente = n;
+    this.http.post<ContoCorrenteDto>("http://localhost:8080/modifica-cc", dto)
+      .subscribe(r => this.contoCorrente = r.contoCorrente);
+      this.showEdit = true;
+      this.showAdd = false;
+  }
+
+  conferma() {
+    let dto = new ContoCorrenteDto();
+    dto.contoCorrente = this.contoCorrente;
+    this.http.post<ListaContiCorrenteDto>("http://localhost:8080/conferma-cc", dto)
+    .subscribe(r => this.contiCorrente = r.listaContiCorrente);
+    this.showAdd = true;
+    this.showTable = true;
+    this.showEdit = false;
+    this.contoCorrente = new ContoCorrente();
+  }
+
+  annulla() {
+    this.contoCorrente = new ContoCorrente();
+    this.showEdit = false;
+    this.showAdd = true;
+  }
+
 
 }

@@ -1,6 +1,8 @@
 <div *ngIf="showForm">
     <input type="text" placeholder="numConto" [(ngModel)]="contoCorrente.numeroConto">
-    <button (click)="aggiungi()">Aggiungi</button>
+    <div *ngIf="showAdd">
+        <button (click)="aggiungi()">Aggiungi</button>
+    </div>
     <br>
     <br>
 </div>
@@ -13,10 +15,14 @@
         </tr>
         <tr *ngFor="let n of contiCorrente">
             <td>{{n.numeroConto}}</td>
-            <td><button (clik)="elimina(n)">X</button></td>
-            <td><button (clik)="modifica(n)">Edit</button></td>
+            <td><button (click)="elimina(n)">X</button></td>
+            <td><button (click)="modifica(n)">Edit</button></td>
         </tr>
     </table>
+    <div *ngIf="showEdit">
+        <button (click)="conferma()">Conferma</button>
+        <button (click)="annulla()">Annulla</button>
+    </div>
 </div>
 <div *ngIf="showNew">
     <button (click)="new()">New</button>
