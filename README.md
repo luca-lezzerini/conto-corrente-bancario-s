@@ -1,5 +1,7 @@
 # conto-corrente-bancario-s
 
+#Novità: aggiornati coding standards!
+
 #Ruoli di progetto
 
 Galli: Comitogianni (ValeriaCom) https://meet.google.com/ija-uzmn-tji
