@@ -26,11 +26,12 @@ export class GestioneClientiComponent implements OnInit {
     dto.cliente = this.cliente;
     //invio i dati al server
     let oss = this.http.post<ListaClientiDto>("http://localhost:8080/aggiungi", dto);
-    oss.subscribe(c =>
+    oss.subscribe(c => {
       this.clienti = c.listaClienti
-    );
+      console.log(c);
+    });
     this.cliente = new Cliente();
   }
 
-  nuovo(){}
+  nuovo() { }
 }
