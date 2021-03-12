@@ -22,6 +22,6 @@ export class GestioneCcComponent implements OnInit {
   }
 
   aggiungi() {
-
+    
   }
 }
