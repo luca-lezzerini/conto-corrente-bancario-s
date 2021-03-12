@@ -2,6 +2,7 @@ package it.sirfin.contocorrentebancarioserver.serviceImpl;
 
 import it.sirfin.contocorrentebancarioserver.dto.ContoCorrenteDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaContiCorrenteDto;
+import it.sirfin.contocorrentebancarioserver.dto.ListaContiDepositoDto;
 import it.sirfin.contocorrentebancarioserver.model.Cliente;
 import it.sirfin.contocorrentebancarioserver.model.ContoCorrente;
 import it.sirfin.contocorrentebancarioserver.model.ContoDeposito;
@@ -101,5 +102,13 @@ public class AccountManagementServiceImpl implements AccountManagementService {
         contoCorrenteRepository.save(cc);
         List<ContoCorrente> lista = contoCorrenteRepository.findAll();
         return new ListaContiCorrenteDto(lista);
+    }
+
+    @Override
+    public ListaContiDepositoDto aggiungicontodeposito(ContoDeposito cd) {
+        contoDepositoRepository.save(cd);
+        //implementare in seguito il metodo aggiorna
+        List<ContoDeposito> lista = contoDepositoRepository.findAll();
+        return new ListaContiDepositoDto(lista);
     }
 }

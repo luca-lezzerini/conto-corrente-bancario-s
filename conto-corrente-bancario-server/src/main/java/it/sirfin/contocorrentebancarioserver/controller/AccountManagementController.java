@@ -1,7 +1,9 @@
 package it.sirfin.contocorrentebancarioserver.controller;
 
 import it.sirfin.contocorrentebancarioserver.dto.ContoCorrenteDto;
+import it.sirfin.contocorrentebancarioserver.dto.ContoDepositoDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaContiCorrenteDto;
+import it.sirfin.contocorrentebancarioserver.dto.ListaContiDepositoDto;
 import it.sirfin.contocorrentebancarioserver.service.AccountManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -40,4 +42,11 @@ public class AccountManagementController {
     public ListaContiCorrenteDto confermaCc(@RequestBody ContoCorrenteDto dto) {
         return accountManagementService.confermaCc(dto.getContoCorrente());
     }
+    
+     @RequestMapping("/aggiungi-contodeposito")
+    @ResponseBody
+    public ListaContiDepositoDto aggiungicontodeposito(@RequestBody ContoDepositoDto dto) {
+        return accountManagementService.aggiungicontodeposito(dto.getContoDeposito());
+    }
+
 }

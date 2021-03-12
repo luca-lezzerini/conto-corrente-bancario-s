@@ -2,7 +2,9 @@ package it.sirfin.contocorrentebancarioserver.service;
 
 import it.sirfin.contocorrentebancarioserver.dto.ContoCorrenteDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaContiCorrenteDto;
+import it.sirfin.contocorrentebancarioserver.dto.ListaContiDepositoDto;
 import it.sirfin.contocorrentebancarioserver.model.ContoCorrente;
+import it.sirfin.contocorrentebancarioserver.model.ContoDeposito;
 
 public interface AccountManagementService {
 
@@ -13,5 +15,8 @@ public interface AccountManagementService {
     ContoCorrenteDto modificaCc(ContoCorrente cc);
     
     ListaContiCorrenteDto confermaCc(ContoCorrente cc);
+    
+    ListaContiDepositoDto aggiungicontodeposito(ContoDeposito cd);
+
     
 }
