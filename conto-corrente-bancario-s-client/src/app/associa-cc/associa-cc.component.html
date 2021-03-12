@@ -5,20 +5,21 @@
         <th>Nome</th>
         <th>Cognome</th>
         <th>Codice Fiscale</th>
-        <th>Data di nascita</th>
-        <th>Indirizzo</th>
-        <th>Telefono</th>
+        <th>Associa</th>
     </tr>
     <tr *ngFor="let c of clienti">
         <td>{{c.nome}}</td>
         <td>{{c.cognome}}</td>
         <td>{{c.codiceFiscale}}</td>
-        <td>{{c.dataDiNascita}}</td>
-        <td>{{c.indirizzo}}</td>
-        <td>{{c.telefono}}</td>
+        <td><button (click)="associa()">Associa</button></td>
     </tr>
 </table>
-<input type="text" placeholder="ricercaCliente" [(ngModel)]="ricercaCliente">
+<input type="text" placeholder="ricercaConto" [(ngModel)]="ricercaConto">
 <button (click)="cercaContoCorrente()">Cerca</button>
 <br>
-C/C trovato: {{numeroConto}}
+<table>
+    <tr *ngFor="let c of contiCorrente">
+        <td>C/C trovato: {{c.numeroConto}}</td>
+        <td><button (click)="seleziona()">Seleziona</button></td>
+    </tr>
+</table>
