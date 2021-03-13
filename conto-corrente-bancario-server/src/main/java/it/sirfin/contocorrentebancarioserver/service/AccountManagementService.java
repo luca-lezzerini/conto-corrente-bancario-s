@@ -1,5 +1,6 @@
 package it.sirfin.contocorrentebancarioserver.service;
 
+import it.sirfin.contocorrentebancarioserver.dto.AssociaCcDto;
 import it.sirfin.contocorrentebancarioserver.dto.ContoCorrenteDto;
 import it.sirfin.contocorrentebancarioserver.dto.ContoDepositoDto;
 import it.sirfin.contocorrentebancarioserver.dto.ContoPrestitoDto;
@@ -12,6 +13,7 @@ import it.sirfin.contocorrentebancarioserver.model.Cliente;
 import it.sirfin.contocorrentebancarioserver.model.ContoCorrente;
 import it.sirfin.contocorrentebancarioserver.model.ContoDeposito;
 import it.sirfin.contocorrentebancarioserver.model.ContoPrestito;
+import org.springframework.web.bind.annotation.RequestBody;
 
 public interface AccountManagementService {
 
@@ -24,6 +26,8 @@ public interface AccountManagementService {
     ListaContiCorrenteDto confermaCc(ContoCorrente cc);
 
     ListaContiCorrenteDto aggiornaContiCorrente();
+
+    MessaggioPerUtenteDto associaCcaC(Cliente c, ContoCorrente cc);
 
     ListaContiDepositoDto aggiungicontodeposito(ContoDeposito cd);
 

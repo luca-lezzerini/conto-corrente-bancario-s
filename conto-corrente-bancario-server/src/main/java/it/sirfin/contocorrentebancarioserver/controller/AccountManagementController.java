@@ -1,5 +1,6 @@
 package it.sirfin.contocorrentebancarioserver.controller;
 
+import it.sirfin.contocorrentebancarioserver.dto.AssociaCcDto;
 import it.sirfin.contocorrentebancarioserver.dto.AssociaCdDto;
 import it.sirfin.contocorrentebancarioserver.dto.ContoCorrenteDto;
 import it.sirfin.contocorrentebancarioserver.dto.ContoDepositoDto;
@@ -54,6 +55,13 @@ public class AccountManagementController {
     @ResponseBody
     public ListaContiCorrenteDto aggiornaContiCorrenteDto() {
         return accountManagementService.aggiornaContiCorrente();
+    }
+
+    @RequestMapping("/associa-cc")
+    @ResponseBody
+    public MessaggioPerUtenteDto associaCcaC(@RequestBody AssociaCcDto dto) {
+        return accountManagementService.associaCcaC(dto.getCliente(),
+                dto.getContoCorrente());
     }
 
     @RequestMapping("/aggiungi-contodeposito")

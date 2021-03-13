@@ -39,7 +39,7 @@ export class AssociaCcComponent implements OnInit {
     dto.codiceEsatto = this.ricercaConto;
     this.http.post<ContoCorrenteDto>("http://localhost:8080/ricerca-cc", dto)
       .subscribe(r => {
-        if (r.contoCorrente == null) {
+        if (r.contoCorrente != null) {
           this.contoTrovato = r.contoCorrente.numeroConto;
           this.contoCorrente = r.contoCorrente;
         }
@@ -52,6 +52,6 @@ export class AssociaCcComponent implements OnInit {
     dto.contoCorrente = this.contoCorrente;
     dto.cliente = c;
     this.http.post<ContoCorrenteDto>("http://localhost:8080/associa-cc", dto)
-      .subscribe(r => console.log("Subscirbe associazione"));
+      .subscribe(r => console.log(r));
   }
 }

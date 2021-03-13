@@ -114,6 +114,18 @@ public class AccountManagementServiceImpl implements AccountManagementService {
     }
 
     @Override
+    public MessaggioPerUtenteDto associaCcaC(Cliente c, ContoCorrente cc) {
+        cc.setCliente(c);
+        contoCorrenteRepository.save(cc);
+
+        Set<ContoCorrente> ccs = c.getContiCorrente();
+        ccs.add(cc);
+        clienteRepository.save(c);
+
+        return new MessaggioPerUtenteDto("Associazione eseguita");
+    }
+
+    @Override
     public ListaContiDepositoDto aggiungicontodeposito(ContoDeposito cd) {
         contoDepositoRepository.save(cd);
         //implementare in seguito il metodo aggiorna
