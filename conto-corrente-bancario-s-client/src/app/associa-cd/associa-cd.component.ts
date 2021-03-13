@@ -42,8 +42,10 @@ export class AssociaCdComponent implements OnInit {
     dto.codiceEsatto = this.ricercaConto;
     this.http.post<ContoDepositoDto>("http://localhost:8080/ricerca-cd", dto)
       .subscribe(r => {
-        this.cdTrovato = r.contoDeposito.codice;
-        this.contoDeposito = r.contoDeposito;
+        if (r.contoDeposito != null) {
+          this.cdTrovato = r.contoDeposito.codice;
+          this.contoDeposito = r.contoDeposito;
+        }else console.log("nessun Conto deposito corrispondente al criterio di ricerca")
       });
   }
 
