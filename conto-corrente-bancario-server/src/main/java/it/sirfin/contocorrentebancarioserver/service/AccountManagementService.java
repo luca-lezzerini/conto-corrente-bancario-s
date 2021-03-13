@@ -52,4 +52,8 @@ public interface AccountManagementService {
     MessaggioPerUtenteDto associaCd(Cliente c, ContoDeposito cd);
 
     ListaContiPrestitoDto confermaCp(ContoPrestito c);
+    
+    ContoDepositoDto selezionaCd(ContoDeposito cd);
+    
+    ListaContiDepositoDto ModificaCd(ContoDeposito cd);
 }

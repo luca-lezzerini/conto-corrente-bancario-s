@@ -79,6 +79,7 @@ public class AccountManagementController {
     @RequestMapping("/aggiorna-cd")
     @ResponseBody
     public ListaContiDepositoDto aggiornaContiDeposito() {
+        System.out.println(accountManagementService.aggiornaContiDeposito());
         return accountManagementService.aggiornaContiDeposito();
     }
 
@@ -136,5 +137,19 @@ public class AccountManagementController {
     public ListaContiPrestitoDto confermaCp(@RequestBody ContoPrestitoDto dto) {
         return accountManagementService.confermaCp(dto.getContoPrestito());
     }
+    
+    @RequestMapping("seleziona-cd")
+    @ResponseBody
+    public ContoDepositoDto selezionaCd(@RequestBody ContoDepositoDto dto){
+        return accountManagementService.selezionaCd(dto.getContoDeposito());
+    }
+    
+    @RequestMapping("conferma-modifica-cd")
+    @ResponseBody
+    public ListaContiDepositoDto confermaModificaCd(@RequestBody ContoDepositoDto dto){
+        return accountManagementService.ModificaCd(dto.getContoDeposito());
+    }
+    
+  
     
 }
