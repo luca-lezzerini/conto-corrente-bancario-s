@@ -15,5 +15,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface ContoPrestitoRepository extends JpaRepository<ContoPrestito, Long>{
-    
+    ContoPrestito findByCodice(String n);
 }

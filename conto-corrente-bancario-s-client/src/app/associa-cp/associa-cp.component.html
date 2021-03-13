@@ -1,1 +1,20 @@
-<p>associa-cp works!</p>
+<input type="text" placeholder="ricercaCliente" [(ngModel)]="ricercaCliente">
+<button (click)="cercaCliente()">Cerca</button>
+<table>
+    <tr>
+        <th>Nome</th>
+        <th>Cognome</th>
+        <th>Codice Fiscale</th>
+        <th>Associa</th>
+    </tr>
+    <tr *ngFor="let c of clienti">
+        <td>{{c.nome}}</td>
+        <td>{{c.cognome}}</td>
+        <td>{{c.codiceFiscale}}</td>
+        <td><button (click)="associa(c)">Associa</button></td>
+    </tr>
+</table>
+<input type="text" placeholder="ricercaConto" [(ngModel)]="ricercaConto">
+<button (click)="cercaContoPrestito()">Cerca</button>
+<br>
+<div *ngIf="contoPrestito.id">C/P trovato: {{cpTrovato}}</div>

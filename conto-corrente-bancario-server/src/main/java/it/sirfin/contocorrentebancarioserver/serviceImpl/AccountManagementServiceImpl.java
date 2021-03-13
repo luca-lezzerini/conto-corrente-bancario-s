@@ -203,6 +203,22 @@ public class AccountManagementServiceImpl implements AccountManagementService {
     }
 
     @Override
+    public ContoPrestitoDto ricercaCp(String n) {
+        ContoPrestito cp = contoPrestitoRepository.findByCodice(n);
+        return new ContoPrestitoDto(cp);
+    }
+
+    @Override
+    public MessaggioPerUtenteDto associaCp(Cliente c, ContoPrestito cp) {
+        cp.setCliente(c);
+        contoPrestitoRepository.save(cp);
+        Set<ContoPrestito> conti = c.getContiPrestito();
+        conti.add(cp);
+        clienteRepository.save(c);
+        return new MessaggioPerUtenteDto("conto associato con successo");
+    }
+
+    @Override
     public ContoDepositoDto selezionaCd(ContoDeposito cd) {
         ContoDepositoDto dto = new ContoDepositoDto(contoDepositoRepository.findById(cd.getId()).get());
         return dto;
@@ -210,7 +226,7 @@ public class AccountManagementServiceImpl implements AccountManagementService {
 
     @Override
     public ListaContiDepositoDto ModificaCd(ContoDeposito cd) {
-       contoDepositoRepository.save(cd);
+        contoDepositoRepository.save(cd);
         return new ListaContiDepositoDto(contoDepositoRepository.findAll());
     }
 

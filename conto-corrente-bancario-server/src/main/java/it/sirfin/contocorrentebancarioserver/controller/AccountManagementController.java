@@ -2,6 +2,7 @@ package it.sirfin.contocorrentebancarioserver.controller;
 
 import it.sirfin.contocorrentebancarioserver.dto.AssociaCcDto;
 import it.sirfin.contocorrentebancarioserver.dto.AssociaCdDto;
+import it.sirfin.contocorrentebancarioserver.dto.AssociaCpDto;
 import it.sirfin.contocorrentebancarioserver.dto.ContoCorrenteDto;
 import it.sirfin.contocorrentebancarioserver.dto.ContoDepositoDto;
 import it.sirfin.contocorrentebancarioserver.dto.ContoPrestitoDto;
@@ -131,25 +132,36 @@ public class AccountManagementController {
         return accountManagementService.associaCd(
                 assDto.getCliente(), assDto.getContoDeposito());
     }
-    
+
     @RequestMapping("conferma-cp")
     @ResponseBody
     public ListaContiPrestitoDto confermaCp(@RequestBody ContoPrestitoDto dto) {
         return accountManagementService.confermaCp(dto.getContoPrestito());
     }
-    
+
+    @RequestMapping("ricerca-cp")
+    @ResponseBody
+    public ContoPrestitoDto ricercaContoPrestito(@RequestBody RicercaContoCorrenteDto dto) {
+        return accountManagementService.ricercaCp(dto.getCodiceEsatto());
+    }
+
+    @RequestMapping("associa-cp")
+    @ResponseBody
+    public MessaggioPerUtenteDto associa(@RequestBody AssociaCpDto assDto) {
+        return accountManagementService.associaCp(
+                assDto.getCliente(), assDto.getContoPrestito());
+    }
+
     @RequestMapping("seleziona-cd")
     @ResponseBody
-    public ContoDepositoDto selezionaCd(@RequestBody ContoDepositoDto dto){
+    public ContoDepositoDto selezionaCd(@RequestBody ContoDepositoDto dto) {
         return accountManagementService.selezionaCd(dto.getContoDeposito());
     }
-    
+
     @RequestMapping("conferma-modifica-cd")
     @ResponseBody
-    public ListaContiDepositoDto confermaModificaCd(@RequestBody ContoDepositoDto dto){
+    public ListaContiDepositoDto confermaModificaCd(@RequestBody ContoDepositoDto dto) {
         return accountManagementService.ModificaCd(dto.getContoDeposito());
     }
-    
-  
-    
+
 }
