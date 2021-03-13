@@ -35,7 +35,6 @@ public class ContoCorrenteBancarioController {
     public ListaClientiDto cancella(@RequestBody ClienteDto dto) {
         System.out.println("siamo su cancella");
         ListaClientiDto risp = contoCorrenteService.cancella(dto.getCliente());
-        System.out.println(risp);
         return risp;
     }
 
