@@ -51,8 +51,12 @@ export class AssociaCdComponent implements OnInit {
     let assDto = new AssociaCdDto();
     assDto.cliente = c;
     assDto.contoDeposito = this.contoDeposito;
-    this.http.post<String>("http://localhost:8080/associa-cd", assDto)
-      .subscribe(m => console.log(m));
+    if (this.contoDeposito.id == null) {
+      console.log("nessun conto selezionato")
+    } else {
+      this.http.post<String>("http://localhost:8080/associa-cd", assDto)
+        .subscribe(m => console.log(m));
+    }
   }
 
 }
