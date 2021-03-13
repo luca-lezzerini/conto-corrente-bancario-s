@@ -87,15 +87,13 @@ public class AccountManagementServiceImpl implements AccountManagementService {
         //salvo su db
         contoCorrenteRepository.save(cc);
         //implementare in seguito il metodo aggiorna
-        List<ContoCorrente> lista = contoCorrenteRepository.findAll();
-        return new ListaContiCorrenteDto(lista);
+        return aggiornaContiCorrente();
     }
 
     @Override
     public ListaContiCorrenteDto eliminaCc(ContoCorrente cc) {
         contoCorrenteRepository.delete(cc);
-        List<ContoCorrente> lista = contoCorrenteRepository.findAll();
-        return new ListaContiCorrenteDto(lista);
+        return aggiornaContiCorrente();
     }
 
     @Override
@@ -106,6 +104,11 @@ public class AccountManagementServiceImpl implements AccountManagementService {
     @Override
     public ListaContiCorrenteDto confermaCc(ContoCorrente cc) {
         contoCorrenteRepository.save(cc);
+        return aggiornaContiCorrente();
+    }
+
+    @Override
+    public ListaContiCorrenteDto aggiornaContiCorrente() {
         List<ContoCorrente> lista = contoCorrenteRepository.findAll();
         return new ListaContiCorrenteDto(lista);
     }
@@ -148,16 +151,16 @@ public class AccountManagementServiceImpl implements AccountManagementService {
     }
 
     @Override
-    public ListaContiCorrenteDto ricercaCc(String n) {
-        List<ContoCorrente> lista = contoCorrenteRepository.findByNumeroConto(n);
-        return new ListaContiCorrenteDto(lista);
+    public ContoCorrenteDto ricercaCc(String n) {
+        ContoCorrente conto = contoCorrenteRepository.findByNumeroConto(n);
+        return new ContoCorrenteDto(conto);
     }
 
     @Override
     public ContoDepositoDto ricercaCd(String n) {
         ContoDeposito cd = contoDepositoRepository.findByCodice(n);
         return new ContoDepositoDto(cd);
-    }    
+    }
 
     @Override
     public MessaggioPerUtenteDto associaCd(Cliente c, ContoDeposito cd) {

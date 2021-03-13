@@ -14,7 +14,10 @@ export class GestioneCcComponent implements OnInit {
   contoCorrente = new ContoCorrente();
   contiCorrente: ContoCorrente[] = [];
 
-  constructor(private route: Router, private http: HttpClient) { }
+  constructor(private route: Router, private http: HttpClient) {
+    this.aggiorna();
+
+  }
   showForm = false;
   showNew = true;
   showTable = false;
@@ -53,15 +56,15 @@ export class GestioneCcComponent implements OnInit {
     dto.contoCorrente = n;
     this.http.post<ContoCorrenteDto>("http://localhost:8080/modifica-cc", dto)
       .subscribe(r => this.contoCorrente = r.contoCorrente);
-      this.showEdit = true;
-      this.showAdd = false;
+    this.showEdit = true;
+    this.showAdd = false;
   }
 
   conferma() {
     let dto = new ContoCorrenteDto();
     dto.contoCorrente = this.contoCorrente;
     this.http.post<ListaContiCorrenteDto>("http://localhost:8080/conferma-cc", dto)
-    .subscribe(r => this.contiCorrente = r.listaContiCorrente);
+      .subscribe(r => this.contiCorrente = r.listaContiCorrente);
     this.showAdd = true;
     this.showTable = true;
     this.showEdit = false;
@@ -72,6 +75,11 @@ export class GestioneCcComponent implements OnInit {
     this.contoCorrente = new ContoCorrente();
     this.showEdit = false;
     this.showAdd = true;
+  }
+
+  aggiorna() {
+    this.http.get<ListaContiCorrenteDto>("http://localhost:8080/aggiorna-cc")
+      .subscribe(r => this.contiCorrente = r.listaContiCorrente);
   }
 
 

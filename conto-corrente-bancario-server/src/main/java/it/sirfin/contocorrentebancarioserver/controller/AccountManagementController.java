@@ -50,6 +50,12 @@ public class AccountManagementController {
         return accountManagementService.confermaCc(dto.getContoCorrente());
     }
 
+    @RequestMapping("/aggiorna-cc")
+    @ResponseBody
+    public ListaContiCorrenteDto aggiornaContiCorrenteDto() {
+        return accountManagementService.aggiornaContiCorrente();
+    }
+
     @RequestMapping("/aggiungi-contodeposito")
     @ResponseBody
     public ListaContiDepositoDto aggiungiContodeposito(@RequestBody ContoDepositoDto dto) {
@@ -88,7 +94,7 @@ public class AccountManagementController {
 
     @RequestMapping("ricerca-cc")
     @ResponseBody
-    public ListaContiCorrenteDto ricercaContoCorrente(@RequestBody RicercaContoCorrenteDto dto) {
+    public ContoCorrenteDto ricercaContoCorrente(@RequestBody RicercaContoCorrenteDto dto) {
         return accountManagementService.ricercaCc(dto.getCodiceEsatto());
     }
 

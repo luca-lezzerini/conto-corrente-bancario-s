@@ -17,6 +17,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ContoCorrenteRepository extends JpaRepository<ContoCorrente, Long> {
 
-    List<ContoCorrente> findByNumeroConto(String n);
+    ContoCorrente findByNumeroConto(String n);
 
 }

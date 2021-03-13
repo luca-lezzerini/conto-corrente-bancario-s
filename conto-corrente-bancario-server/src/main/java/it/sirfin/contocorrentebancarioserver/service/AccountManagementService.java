@@ -23,6 +23,8 @@ public interface AccountManagementService {
 
     ListaContiCorrenteDto confermaCc(ContoCorrente cc);
 
+    ListaContiCorrenteDto aggiornaContiCorrente();
+
     ListaContiDepositoDto aggiungicontodeposito(ContoDeposito cd);
 
     ListaContiDepositoDto eliminaCd(ContoDeposito cd);
@@ -39,9 +41,9 @@ public interface AccountManagementService {
 
     ListaClientiDto ricercaC(String c);
 
-    ListaContiCorrenteDto ricercaCc(String n);
-    
+    ContoCorrenteDto ricercaCc(String n);
+
     ContoDepositoDto ricercaCd(String n);
-    
+
     MessaggioPerUtenteDto associaCd(Cliente c, ContoDeposito cd);
 }

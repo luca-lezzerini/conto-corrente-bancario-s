@@ -11,15 +11,10 @@
         <td>{{c.nome}}</td>
         <td>{{c.cognome}}</td>
         <td>{{c.codiceFiscale}}</td>
-        <td><button (click)="associa()">Associa</button></td>
+        <td><button (click)="associa(c)">Associa</button></td>
     </tr>
 </table>
 <input type="text" placeholder="ricercaConto" [(ngModel)]="ricercaConto">
 <button (click)="cercaContoCorrente()">Cerca</button>
 <br>
-<table>
-    <tr *ngFor="let c of contiCorrente">
-        <td>C/C trovato: {{c.numeroConto}}</td>
-        <td><button (click)="seleziona()">Seleziona</button></td>
-    </tr>
-</table>
+<div>C/C trovato: {{contoTrovato}}</div>

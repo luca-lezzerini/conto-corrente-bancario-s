@@ -2,8 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from '../cliente';
 import { ContoCorrente } from '../conto-corrente';
+import { AssociaCcDto } from '../dto/associa-cc-dto';
+import { ContoCorrenteDto } from '../dto/conto-corrente-dto';
 import { ListaClientiDto } from '../dto/lista-clienti-dto';
-import { ListaContiCorrenteDto } from '../dto/lista-conti-corrente-dto';
 import { RicercaClienteDto } from '../dto/ricerca-cliente-dto';
 import { RicercaContoCorrenteDto } from '../dto/ricerca-conto-corrente-dto';
 
@@ -17,9 +18,9 @@ export class AssociaCcComponent implements OnInit {
   clienti: Cliente[] = [];
   cliente = new Cliente();
   contoCorrente = new ContoCorrente();
-  contiCorrente: ContoCorrente[] = [];
   ricercaConto = "";
   ricercaCliente = "";
+  contoTrovato = "";
   constructor(private http: HttpClient) { }
 
 
@@ -36,7 +37,21 @@ export class AssociaCcComponent implements OnInit {
   cercaContoCorrente() {
     let dto = new RicercaContoCorrenteDto();
     dto.codiceEsatto = this.ricercaConto;
-    this.http.post<ListaContiCorrenteDto>("http://localhost:8080/ricerca-cc", dto)
-      .subscribe(r => this.contiCorrente = r.listaContiCorrente);
+    this.http.post<ContoCorrenteDto>("http://localhost:8080/ricerca-cc", dto)
+      .subscribe(r => {
+        if (r.contoCorrente == null) {
+          this.contoTrovato = r.contoCorrente.numeroConto;
+          this.contoCorrente = r.contoCorrente;
+        }
+        else console.log("Nessun conto");
+      });
+  }
+
+  associa(c: Cliente) {
+    let dto = new AssociaCcDto();
+    dto.contoCorrente = this.contoCorrente;
+    dto.cliente = c;
+    this.http.post<ContoCorrenteDto>("http://localhost:8080/associa-cc", dto)
+      .subscribe(r => console.log("Subscirbe associazione"));
   }
 }
