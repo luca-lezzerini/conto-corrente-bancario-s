@@ -32,7 +32,9 @@ export class MovimentaCcComponent implements OnInit {
     ox.subscribe(u => this.contiCorrente = u.listaContiCorrente);
   }
 
-  esegui() { }
+  esegui() { 
+    
+  }
 
   seleziona() { }
 
