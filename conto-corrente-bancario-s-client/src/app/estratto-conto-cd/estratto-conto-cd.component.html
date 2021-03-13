@@ -1,1 +1,44 @@
-<p>estratto-conto-cd works!</p>
+<h2>E/C conto deposito</h2>
+<input type="text" [(ngModel)]="ricercaCliente">
+<button (click)="cercaCliente()">Cerca Cliente</button>
+<br>
+<table *ngIf="clienti.length > 0 ">
+    <tr>
+        <th>Nome</th>
+        <th>Cognome</th>
+        <th>Codice Fiscale</th>
+        <th>Data di nascita</th>
+        <th>Indirizzo</th>
+        <th>Telefono</th>
+    </tr>
+    <tr *ngFor="let c of clienti">
+        <td>{{c.nome}}</td>
+        <td>{{c.cognome}}</td>
+        <td>{{c.codiceFiscale}}</td>
+        <td>{{c.dataDiNascita}}</td>
+        <td>{{c.indirizzo}}</td>
+        <td>{{c.telefono}}</td>
+        <td>
+            <button (click)="seleziona(c)">Seleziona</button>
+        </td>
+    </tr>
+</table>
+<h3>Conti Associati</h3>
+<table>
+    <tr>
+        <th>Codice conto</th>
+        <th>Tipo conto</th>
+    </tr>
+    <tr *ngFor="let cd of contiDeposito">
+        <td>{{cd.codice}}</td>
+        <td>tipo conto</td>
+    </tr>
+    <tr *ngFor="let cc of contiCorrenti">
+        <td>{{cc.codice}}</td>
+        <td>tipo conto</td>
+    </tr>
+    <tr *ngFor="let cp of contiPrestito">
+        <td>{{cp.codice}}</td>
+        <td>tipo conto</td>
+    </tr>
+</table>
