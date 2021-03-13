@@ -38,6 +38,8 @@ export class EstrattoContoCdComponent implements OnInit {
     let dto = new ClienteDto();
     dto.cliente = c;
     this.http.post<TuttiContiDto>("http://localhost:8080/ricerca-conti-associati-cliente", dto)
-      .subscribe();
+      .subscribe(tt => {
+        this.contiDeposito = tt.contiDeposito;
+      });
   }
 }
