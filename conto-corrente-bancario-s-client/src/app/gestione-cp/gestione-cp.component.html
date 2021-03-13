@@ -1,13 +1,16 @@
-Conto prestito <button (click)="new()">New</button>
+Conto prestito <button *ngIf="stato=='new' || stato=='edit'" (click)="new()">New</button>
 <br><br>
-<input type="text" [(ngModel)]="contoPrestito.codice " placeholder="codice conto prestito">
-<div *ngIf=" showFormChoice ">
+<div *ngIf="stato=='add'|| stato=='edit'">
+    <input type="text" [(ngModel)]="contoPrestito.codice " placeholder="codice conto prestito">
+    <button  *ngIf="stato=='add'" (click)="add()">Add</button>
+</div>
+<div *ngIf="stato=='edit'">
     <button (click)="conferma()">conferma</button>
     <button (click)="annulla()">annulla</button>
 </div>
-<button *ngIf="showAdd" (click)="add()">Add</button>
+
 <br><br>
-<table *ngIf="showFormTable">
+<table *ngIf="stato=='add'">
     <tr>
         <th>Codice conto</th>
         <th>Gestisci</th>

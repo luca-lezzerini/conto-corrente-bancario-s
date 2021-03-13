@@ -12,22 +12,22 @@ import { ListaContiPrestitoDto } from '../dto/lista-conti-prestito-dto';
 })
 export class GestioneCpComponent implements OnInit {
   contoPrestito: ContoPrestito = new ContoPrestito();
-  showFormChoice: boolean = false;
-  showFormTable: boolean = false;
-  showAdd: boolean = true;
+
   codici: ContoPrestito[] = [];
-  rigaCorrente: number;
   url = "http://localhost:8080/";
+
+  stato ="new";
 
   constructor(private router: Router, private http: HttpClient) {
     this.aggiorna();
-    this.showFormTable = true;
   }
 
   ngOnInit(): void {
   }
 
   new() {
+    this.stato="add";
+    this.contoPrestito = new ContoPrestito();
 
   }
 
@@ -36,13 +36,11 @@ export class GestioneCpComponent implements OnInit {
     dto.contoPrestito = this.contoPrestito;
     this.http.post<ListaContiPrestitoDto>(this.url + "aggiungi-cp", dto)
       .subscribe(r => this.codici = r.listaContiPrestito);
-    this.showFormTable = true;
   }
 
   aggiorna() {
     this.http.get<ListaContiPrestitoDto>(this.url + "aggiorna-cp")
       .subscribe(r => this.codici = r.listaContiPrestito);
-    this.showFormTable = true;
   }
 
   edit(c: ContoPrestito, i: number) {
@@ -50,20 +48,15 @@ export class GestioneCpComponent implements OnInit {
     dto.contoPrestito = c;
     this.http.post<ContoPrestitoDto>("http://localhost:8080/modifica-cp", dto)
       .subscribe(r => this.contoPrestito = r.contoPrestito);
-    this.showFormChoice = true;
-    this.showAdd = false;
-    this.showFormTable = false;
     this.contoPrestito = Object.assign({}, this.codici[i]);
-    this.rigaCorrente = i;
-
-
+    this.stato="edit";
   }
   delete(c: ContoPrestito) {
     let dto = new ContoPrestitoDto();
     dto.contoPrestito = c;
     this.http.post<ListaContiPrestitoDto>("http://localhost:8080/elimina-cp", dto)
       .subscribe(r => this.codici = r.listaContiPrestito);
-    this.showFormTable = true;
+  
   }
 
   conferma() {
@@ -71,6 +64,7 @@ export class GestioneCpComponent implements OnInit {
   }
 
   annulla() {
+    this.stato="add";
 
   }
 
