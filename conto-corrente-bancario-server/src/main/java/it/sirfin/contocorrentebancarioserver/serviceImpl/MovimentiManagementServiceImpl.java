@@ -34,6 +34,14 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
     }
 
     @Override
+    public ListaClientiDto cercaClienteSaldo(String c) {
+        ListaClientiDto lista2 = new ListaClientiDto(
+                clienteRepository.findByCognomeContaining(c));
+        return lista2;
+    }
+
+    
+    @Override
     public TuttiContiDto ricercaContiAssociatiCliente(Cliente c) {
         TuttiContiDto conti = new TuttiContiDto();
         //Il Cliente spedito da client non contiene i set di associazione ai conti.

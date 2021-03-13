@@ -30,4 +30,11 @@ public class MovimentiManagementController {
     public TuttiContiDto ricercaContiAssociatiCliente(@RequestBody ClienteDto dto) {
         return movimentiManagementService.ricercaContiAssociatiCliente(dto.getCliente());
     }
+    
+    @RequestMapping("ricerca-cliente-saldo-cc")
+    @ResponseBody
+    public ListaClientiDto cercaClienteSaldo(@RequestBody RicercaClienteDto dto) {
+        return movimentiManagementService.cercaClienteSaldo(dto.getRicercaPerCognome());
+    }
+    
 }

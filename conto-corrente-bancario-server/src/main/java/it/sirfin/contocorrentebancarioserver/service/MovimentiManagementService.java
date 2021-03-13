@@ -7,6 +7,8 @@ import it.sirfin.contocorrentebancarioserver.model.Cliente;
 public interface MovimentiManagementService {
 
     ListaClientiDto cercaClienteLike(String c);
+    
+    ListaClientiDto cercaClienteSaldo(String c);
 
     TuttiContiDto ricercaContiAssociatiCliente(Cliente c);
 }

@@ -24,7 +24,7 @@ export class SaldoCcComponent implements OnInit {
   cerca() {
     let dto = new RicercaClienteDto();
     dto.ricercaPerCognome = this.ricercaCliente;
-    this.http.post<ListaClientiDto>("http://localhost:8080/ricerca-c", dto)
+    this.http.post<ListaClientiDto>("http://localhost:8080/ricerca-cliente-saldo-cc", dto)
       .subscribe(r => this.clienti = r.listaClienti);
   }
 
