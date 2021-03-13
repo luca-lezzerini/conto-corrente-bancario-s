@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { AssociaCdDto } from '../associa-cd-dto';
 import { Cliente } from '../cliente';
 import { ContoCorrente } from '../conto-corrente';
 import { ContoDeposito } from '../conto-deposito';
@@ -40,11 +41,18 @@ export class AssociaCdComponent implements OnInit {
     let dto = new RicercaContoCorrenteDto();
     dto.codiceEsatto = this.ricercaConto;
     this.http.post<ContoDepositoDto>("http://localhost:8080/ricerca-cd", dto)
-      .subscribe(r => this.cdTrovato = r.contoDeposito.codice);
+      .subscribe(r => {
+        this.cdTrovato = r.contoDeposito.codice;
+        this.contoDeposito = r.contoDeposito;
+      });
   }
 
-  associa(){
-    
+  associa(c: Cliente) {
+    let assDto = new AssociaCdDto();
+    assDto.cliente = c;
+    assDto.contoDeposito = this.contoDeposito;
+    this.http.post<String>("http://localhost:8080/associa-cd", assDto)
+      .subscribe(m => console.log(m));
   }
 
 }

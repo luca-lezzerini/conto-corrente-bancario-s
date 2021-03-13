@@ -1,5 +1,6 @@
 package it.sirfin.contocorrentebancarioserver.controller;
 
+import it.sirfin.contocorrentebancarioserver.dto.AssociaCdDto;
 import it.sirfin.contocorrentebancarioserver.dto.ContoCorrenteDto;
 import it.sirfin.contocorrentebancarioserver.dto.ContoDepositoDto;
 import it.sirfin.contocorrentebancarioserver.dto.ContoPrestitoDto;
@@ -7,6 +8,7 @@ import it.sirfin.contocorrentebancarioserver.dto.ListaClientiDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaContiCorrenteDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaContiDepositoDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaContiPrestitoDto;
+import it.sirfin.contocorrentebancarioserver.dto.MessaggioPerUtenteDto;
 import it.sirfin.contocorrentebancarioserver.dto.RicercaClienteDto;
 import it.sirfin.contocorrentebancarioserver.dto.RicercaContoCorrenteDto;
 import it.sirfin.contocorrentebancarioserver.service.AccountManagementService;
@@ -59,13 +61,13 @@ public class AccountManagementController {
     public ListaContiDepositoDto eliminaContodeposito(@RequestBody ContoDepositoDto dto) {
         return accountManagementService.eliminaCd(dto.getContoDeposito());
     }
-    
+
     @RequestMapping("/aggiorna-cd")
     @ResponseBody
     public ListaContiDepositoDto aggiornaContiDeposito() {
         return accountManagementService.aggiornaContiDeposito();
     }
-    
+
     @RequestMapping("/aggiungi-cp")
     @ResponseBody
     public ListaContiPrestitoDto aggiungiContoPrestito(@RequestBody ContoPrestitoDto dto) {
@@ -89,14 +91,14 @@ public class AccountManagementController {
     public ListaContiCorrenteDto ricercaContoCorrente(@RequestBody RicercaContoCorrenteDto dto) {
         return accountManagementService.ricercaCc(dto.getCodiceEsatto());
     }
-    
+
     @RequestMapping("ricerca-cd")
     @ResponseBody
-    public ContoDepositoDto ricercaContoDepositoDto(@RequestBody RicercaContoCorrenteDto dto){
+    public ContoDepositoDto ricercaContoDepositoDto(@RequestBody RicercaContoCorrenteDto dto) {
         return accountManagementService.ricercaCd(dto.getCodiceEsatto());
     }
-    
-     @RequestMapping("/elimina-cp")
+
+    @RequestMapping("/elimina-cp")
     @ResponseBody
     public ListaContiPrestitoDto eliminaCp(@RequestBody ContoPrestitoDto dto) {
         return accountManagementService.eliminaCp(dto.getContoPrestito());
@@ -106,5 +108,12 @@ public class AccountManagementController {
     @ResponseBody
     public ContoPrestitoDto modificaCp(@RequestBody ContoPrestitoDto dto) {
         return accountManagementService.modificaCp(dto.getContoPrestito());
+    }
+
+    @RequestMapping("associa-cd")
+    @ResponseBody
+    public MessaggioPerUtenteDto associa(@RequestBody AssociaCdDto assDto) {
+        return accountManagementService.associaCd(
+                assDto.getCliente(), assDto.getContoDeposito());
     }
 }

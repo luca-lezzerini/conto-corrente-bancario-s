@@ -7,6 +7,8 @@ import it.sirfin.contocorrentebancarioserver.dto.ListaClientiDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaContiCorrenteDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaContiDepositoDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaContiPrestitoDto;
+import it.sirfin.contocorrentebancarioserver.dto.MessaggioPerUtenteDto;
+import it.sirfin.contocorrentebancarioserver.model.Cliente;
 import it.sirfin.contocorrentebancarioserver.model.ContoCorrente;
 import it.sirfin.contocorrentebancarioserver.model.ContoDeposito;
 import it.sirfin.contocorrentebancarioserver.model.ContoPrestito;
@@ -40,4 +42,6 @@ public interface AccountManagementService {
     ListaContiCorrenteDto ricercaCc(String n);
     
     ContoDepositoDto ricercaCd(String n);
+    
+    MessaggioPerUtenteDto associaCd(Cliente c, ContoDeposito cd);
 }

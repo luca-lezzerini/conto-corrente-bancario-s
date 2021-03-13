@@ -7,6 +7,7 @@ import it.sirfin.contocorrentebancarioserver.dto.ListaClientiDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaContiCorrenteDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaContiDepositoDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaContiPrestitoDto;
+import it.sirfin.contocorrentebancarioserver.dto.MessaggioPerUtenteDto;
 import it.sirfin.contocorrentebancarioserver.model.Cliente;
 import it.sirfin.contocorrentebancarioserver.model.ContoCorrente;
 import it.sirfin.contocorrentebancarioserver.model.ContoDeposito;
@@ -18,6 +19,7 @@ import it.sirfin.contocorrentebancarioserver.repository.ContoPrestitoRepository;
 import it.sirfin.contocorrentebancarioserver.service.AccountManagementService;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -156,6 +158,16 @@ public class AccountManagementServiceImpl implements AccountManagementService {
         ContoDeposito cd = contoDepositoRepository.findByCodice(n);
         return new ContoDepositoDto(cd);
     }    
+
+    @Override
+    public MessaggioPerUtenteDto associaCd(Cliente c, ContoDeposito cd) {
+        cd.setCliente(c);
+        contoDepositoRepository.save(cd);
+        Set<ContoDeposito> conti = c.getContiDeposito();
+        conti.add(cd);
+        clienteRepository.save(c);
+        return new MessaggioPerUtenteDto("conto associato con successo");
+    }
 
     @Override
     public ListaContiPrestitoDto eliminaCp(ContoPrestito cp) {
