@@ -1,14 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { AssociaCdDto } from '../associa-cd-dto';
 import { Cliente } from '../cliente';
-import { ContoCorrente } from '../conto-corrente';
 import { ContoDeposito } from '../conto-deposito';
-import { ContoDepositoDto } from '../conto-deposito-dto';
-import { ListaClientiDto } from '../lista-clienti-dto';
-import { ListaContiCorrenteDto } from '../lista-conti-corrente-dto';
-import { RicercaClienteDto } from '../ricerca-cliente-dto';
-import { RicercaContoCorrenteDto } from '../ricerca-conto-corrente-dto';
+import { AssociaCdDto } from '../dto/associa-cd-dto';
+import { ContoDepositoDto } from '../dto/conto-deposito-dto';
+import { ListaClientiDto } from '../dto/lista-clienti-dto';
+import { RicercaClienteDto } from '../dto/ricerca-cliente-dto';
+import { RicercaContoCorrenteDto } from '../dto/ricerca-conto-corrente-dto';
 
 @Component({
   selector: 'app-associa-cd',

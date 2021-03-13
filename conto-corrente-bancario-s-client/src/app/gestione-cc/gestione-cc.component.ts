@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ContoCorrente } from '../conto-corrente';
-import { ContoCorrenteDto } from '../conto-corrente-dto';
-import { ListaContiCorrenteDto } from '../lista-conti-corrente-dto';
+import { ContoCorrenteDto } from '../dto/conto-corrente-dto';
+import { ListaContiCorrenteDto } from '../dto/lista-conti-corrente-dto';
 
 @Component({
   selector: 'app-gestione-cc',

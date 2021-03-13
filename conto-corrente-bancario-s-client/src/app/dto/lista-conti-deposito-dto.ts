@@ -1,4 +1,4 @@
-import { ContoDeposito } from "./conto-deposito";
+import { ContoDeposito } from "../conto-deposito";
 
 export class ListaContiDepositoDto{
 

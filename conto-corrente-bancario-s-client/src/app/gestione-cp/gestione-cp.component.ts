@@ -2,9 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ContoPrestito } from '../conto-prestito';
-import { ContoPrestitoDto } from '../conto-prestito-dto';
-import { ListaClientiDto } from '../lista-clienti-dto';
-import { ListaContiPrestitoDto } from '../lista-conti-prestito-dto';
+import { ContoPrestitoDto } from '../dto/conto-prestito-dto';
+import { ListaContiPrestitoDto } from '../dto/lista-conti-prestito-dto';
 
 @Component({
   selector: 'app-gestione-cp',

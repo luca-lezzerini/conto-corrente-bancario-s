@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from '../cliente';
-import { ClienteDto } from '../cliente-dto';
-import { ListaClientiDto } from '../lista-clienti-dto';
+import { ClienteDto } from '../dto/cliente-dto';
+import { ListaClientiDto } from '../dto/lista-clienti-dto';
 
 @Component({
   selector: 'app-gestione-clienti',

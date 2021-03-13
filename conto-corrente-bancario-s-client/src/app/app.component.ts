@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Cliente } from './cliente';
 
 @Component({
   selector: 'app-root',

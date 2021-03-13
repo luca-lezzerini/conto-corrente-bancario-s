@@ -1,8 +1,8 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ContoDeposito } from '../conto-deposito';
-import { ContoDepositoDto } from '../conto-deposito-dto';
-import { ListaContiDepositoDto } from '../lista-conti-deposito-dto';
+import { ContoDepositoDto } from '../dto/conto-deposito-dto';
+import { ListaContiDepositoDto } from '../dto/lista-conti-deposito-dto';
 
 @Component({
   selector: 'app-gestione-cd',

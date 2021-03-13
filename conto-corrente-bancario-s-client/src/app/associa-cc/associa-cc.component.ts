@@ -2,11 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from '../cliente';
 import { ContoCorrente } from '../conto-corrente';
-import { ContoCorrenteDto } from '../conto-corrente-dto';
-import { ListaClientiDto } from '../lista-clienti-dto';
-import { ListaContiCorrenteDto } from '../lista-conti-corrente-dto';
-import { RicercaClienteDto } from '../ricerca-cliente-dto';
-import { RicercaContoCorrenteDto } from '../ricerca-conto-corrente-dto';
+import { ListaClientiDto } from '../dto/lista-clienti-dto';
+import { ListaContiCorrenteDto } from '../dto/lista-conti-corrente-dto';
+import { RicercaClienteDto } from '../dto/ricerca-cliente-dto';
+import { RicercaContoCorrenteDto } from '../dto/ricerca-conto-corrente-dto';
 
 @Component({
   selector: 'app-associa-cc',
