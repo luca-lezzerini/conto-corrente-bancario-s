@@ -10,7 +10,7 @@ export class MovimentaCcComponent implements OnInit {
 
   CodiceConto = "";
   Importo = "";
-
+  contiCorrente: [] = [];
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {

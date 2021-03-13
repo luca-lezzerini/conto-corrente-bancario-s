@@ -12,11 +12,11 @@ Conto selezionato:
     <option value="" selected="selected">Bonifico:</option>
   </select>
 
-  <input type="text" placeholder=" Importo" [(ngModel)]=" Importo" >
+  <input type="text" placeholder=" Importo" [(ngModel)]=" Importo">
   <button (click)="esegui()">Esegui</button>
   <br><br>
   <table border=3px>
-    <tr>
+    <tr *ngFor="let a of contiCorrente">
       <td>Colonna 1 </td>
       <td>Colonna 2</td>
       <td>Colonna 3</td>
