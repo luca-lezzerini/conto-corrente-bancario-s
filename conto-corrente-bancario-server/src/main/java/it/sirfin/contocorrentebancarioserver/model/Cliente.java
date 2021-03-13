@@ -5,6 +5,7 @@
  */
 package it.sirfin.contocorrentebancarioserver.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -38,11 +39,15 @@ public class Cliente implements Serializable {
     @Column
     private LocalDate dataDiNascita;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "cliente")
     private Set<ContoDeposito> contiDeposito;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "cliente")
     private Set<ContoCorrente> contiCorrente;
+    
+    @JsonIgnore
     @OneToMany(mappedBy = "cliente")
     private Set<ContoPrestito> contiPrestito;
 

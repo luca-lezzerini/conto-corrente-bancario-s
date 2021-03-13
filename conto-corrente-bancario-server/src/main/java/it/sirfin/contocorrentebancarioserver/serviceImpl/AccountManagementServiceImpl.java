@@ -144,6 +144,7 @@ public class AccountManagementServiceImpl implements AccountManagementService {
     @Override
     public ListaClientiDto ricercaC(String c) {
         List<Cliente> lista = clienteRepository.findByCognome(c);
+        lista.forEach(l-> System.out.println(l));
         return new ListaClientiDto(lista);
     }
 
