@@ -1,1 +1,12 @@
-<p>mostra-tutti-i-conti works!</p>
+<input type="text" placeholder="Cognome cliente">
+<button (click)="cerca()">Cerca</button>
+<table border=3px>
+    <td>Cognome cliente </td>
+    <td>Conto</td>
+    <td>Gestisci </td>
+
+    <tr *ngFor="let a of clienti"></tr>
+    <td>{{a.Cognome}}</td>
+    <td>{{a.Conto}}</td>
+    <td><button (click)="mostraConti()">Mostra conti</button></td>
+</table>
