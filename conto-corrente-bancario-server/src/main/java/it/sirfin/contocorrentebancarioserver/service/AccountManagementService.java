@@ -1,6 +1,7 @@
 package it.sirfin.contocorrentebancarioserver.service;
 
 import it.sirfin.contocorrentebancarioserver.dto.ContoCorrenteDto;
+import it.sirfin.contocorrentebancarioserver.dto.ContoDepositoDto;
 import it.sirfin.contocorrentebancarioserver.dto.ContoPrestitoDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaClientiDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaContiCorrenteDto;
@@ -37,4 +38,6 @@ public interface AccountManagementService {
     ListaClientiDto ricercaC(String c);
 
     ListaContiCorrenteDto ricercaCc(String n);
+    
+    ContoDepositoDto ricercaCd(String n);
 }

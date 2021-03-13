@@ -8,8 +8,8 @@
 <button (click)="nuovo()">Nuovo</button>
 <button (click)="aggiungi()" *ngIf="stato == 'Gestione-Cliente'">Aggiungi</button>
 <div *ngIf="stato != 'Gestione-Cliente'">
-<button (click)="conferma()">Conferma</button>
-<button (click)="annulla()">Annulla</button>
+    <button (click)="conferma()">Conferma</button>
+    <button (click)="annulla()">Annulla</button>
 </div>
 
 <table *ngIf="clienti.length >0 && stato == 'Gestione-Cliente'">

@@ -90,6 +90,12 @@ public class AccountManagementController {
         return accountManagementService.ricercaCc(dto.getCodiceEsatto());
     }
     
+    @RequestMapping("ricerca-cd")
+    @ResponseBody
+    public ContoDepositoDto ricercaContoDepositoDto(@RequestBody RicercaContoCorrenteDto dto){
+        return accountManagementService.ricercaCd(dto.getCodiceEsatto());
+    }
+    
      @RequestMapping("/elimina-cp")
     @ResponseBody
     public ListaContiPrestitoDto eliminaCp(@RequestBody ContoPrestitoDto dto) {
