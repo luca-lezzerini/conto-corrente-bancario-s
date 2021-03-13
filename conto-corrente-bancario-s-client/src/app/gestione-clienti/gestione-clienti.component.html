@@ -5,7 +5,6 @@
 <input type="date" [(ngModel)]="cliente.dataDiNascita" placeholder="Data di nascita" [disabled]="stato == 'cancella'">
 <input type="text" [(ngModel)]="cliente.indirizzo" placeholder="Indirizzo" [disabled]="stato == 'cancella'">
 <input type="text" [(ngModel)]="cliente.telefono" placeholder="Telefono" [disabled]="stato == 'cancella'">
-<button (click)="nuovo()">Nuovo</button>
 <button (click)="aggiungi()" *ngIf="stato == 'Gestione-Cliente'">Aggiungi</button>
 <div *ngIf="stato != 'Gestione-Cliente'">
     <button (click)="conferma()">Conferma</button>
