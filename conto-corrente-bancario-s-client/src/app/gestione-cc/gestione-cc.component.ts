@@ -13,16 +13,18 @@ import { ListaContiCorrenteDto } from '../dto/lista-conti-corrente-dto';
 export class GestioneCcComponent implements OnInit {
   contoCorrente = new ContoCorrente();
   contiCorrente: ContoCorrente[] = [];
-
-  constructor(private route: Router, private http: HttpClient) {
-    this.aggiorna();
-
-  }
   showForm = false;
   showNew = true;
   showTable = false;
   showEdit = false;
   showAdd = false;
+  errore = "";
+  statoErrore = "";
+  constructor(private route: Router, private http: HttpClient) {
+    this.aggiorna();
+
+  }
+
   ngOnInit(): void {
   }
 
@@ -31,17 +33,28 @@ export class GestioneCcComponent implements OnInit {
     this.showNew = false;
     this.showTable = true;
     this.showAdd = true;
+    this.statoErrore = "";
   }
 
   aggiungi() {
+    if (this.contoCorrente.numeroConto == "") {
+      this.statoErrore = "e";
+    }
     let dto = new ContoCorrenteDto();
     dto.contoCorrente = this.contoCorrente;
-    this.http.post<ListaContiCorrenteDto>("http://localhost:8080/aggiungi-cc", dto)
-      .subscribe(r => this.contiCorrente = r.listaContiCorrente);
-    this.contoCorrente = new ContoCorrente();
-    this.showForm = false;
-    this.showNew = true;
-    this.showTable = false;
+    if (this.contoCorrente.numeroConto == "") {
+      this.errore = "Non hai aggiunto"
+    } else {
+      this.http.post<ListaContiCorrenteDto>("http://localhost:8080/aggiungi-cc", dto)
+        .subscribe(r => {
+          this.contiCorrente = r.listaContiCorrente
+        });
+      this.contoCorrente = new ContoCorrente();
+      this.showForm = false;
+      this.showNew = true;
+      this.showTable = false;
+      this.statoErrore = "";
+    }
   }
 
   elimina(n: ContoCorrente) {

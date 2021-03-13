@@ -1,5 +1,6 @@
 <input type="text" placeholder="ricercaCliente" [(ngModel)]="ricercaCliente">
 <button (click)="cercaCliente()">Cerca</button>
+<div *ngIf="statoErroreCliente=='e'">{{erroreCliente}}</div>
 <table>
     <tr>
         <th>Nome</th>
@@ -16,5 +17,6 @@
 </table>
 <input type="text" placeholder="ricercaConto" [(ngModel)]="ricercaConto">
 <button (click)="cercaContoCorrente()">Cerca</button>
+<div *ngIf="statoErroreConto=='e'">{{erroreConto}}</div>
 <br>
 <div>C/C trovato: {{contoTrovato}}</div>
