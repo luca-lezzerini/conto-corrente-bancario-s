@@ -4,43 +4,44 @@ import it.sirfin.contocorrentebancarioserver.model.ContoCorrente;
 import it.sirfin.contocorrentebancarioserver.model.ContoDeposito;
 import it.sirfin.contocorrentebancarioserver.model.ContoPrestito;
 import java.util.List;
+import java.util.Set;
 
 public class TuttiContiDto {
 
-    private List<ContoDeposito> contiDeposito;
-    private List<ContoCorrente> contiCorrenti;
-    private List<ContoPrestito> contiPrestito;
+    private Set<ContoDeposito> contiDeposito;
+    private Set<ContoCorrente> contiCorrenti;
+    private Set<ContoPrestito> contiPrestito;
 
-    public TuttiContiDto() {
-    }
-
-    public TuttiContiDto(List<ContoDeposito> contiDeposito, List<ContoCorrente> contiCorrenti, List<ContoPrestito> contiPrestito) {
+    public TuttiContiDto(Set<ContoDeposito> contiDeposito, Set<ContoCorrente> contiCorrenti, Set<ContoPrestito> contiPrestito) {
         this.contiDeposito = contiDeposito;
         this.contiCorrenti = contiCorrenti;
         this.contiPrestito = contiPrestito;
     }
 
-    public List<ContoDeposito> getContiDeposito() {
+    public TuttiContiDto() {
+    }
+
+    public Set<ContoDeposito> getContiDeposito() {
         return contiDeposito;
     }
 
-    public void setContiDeposito(List<ContoDeposito> contiDeposito) {
+    public void setContiDeposito(Set<ContoDeposito> contiDeposito) {
         this.contiDeposito = contiDeposito;
     }
 
-    public List<ContoCorrente> getContiCorrenti() {
+    public Set<ContoCorrente> getContiCorrenti() {
         return contiCorrenti;
     }
 
-    public void setContiCorrenti(List<ContoCorrente> contiCorrenti) {
+    public void setContiCorrenti(Set<ContoCorrente> contiCorrenti) {
         this.contiCorrenti = contiCorrenti;
     }
 
-    public List<ContoPrestito> getContiPrestito() {
+    public Set<ContoPrestito> getContiPrestito() {
         return contiPrestito;
     }
 
-    public void setContiPrestito(List<ContoPrestito> contiPrestito) {
+    public void setContiPrestito(Set<ContoPrestito> contiPrestito) {
         this.contiPrestito = contiPrestito;
     }
 
