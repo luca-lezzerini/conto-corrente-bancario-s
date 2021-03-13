@@ -1,1 +1,28 @@
-<p>movimenta-cd works!</p>
+<input type="text" placeholder="codiceConto" [(ngModel)]="codiceConto">
+<button (click)="cerca()">Cerca</button>
+<br>
+Conto selezionato:{{ContoSelezionato}}
+<br>
+<form name="form1" id="form1" action="/action_page.php">
+    Azione: <select name="subject" id="subject">
+        <option value="">Versamento:</option>
+        <option value="">Prelievo:</option>
+        <option value="">Bonifico:</option>
+    </select>
+    <input type="text" placeholder="importo" [(ngModel)]="importo">
+    <button (click)="esegui()">Esegui</button>
+    <br>
+    <br>
+    <table>
+        <tr>
+            <th>Data</th>
+            <th>Tipo movimento</th>
+            <th>Importo</th>
+        </tr>
+        <tr>
+            <td>{{}}</td>
+            <td>{{}}</td>
+            <td>{{}}</td>
+        </tr>
+    </table>
+</form>
