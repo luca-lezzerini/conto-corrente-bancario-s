@@ -29,7 +29,6 @@ export class GestioneClientiComponent implements OnInit {
     let oss = this.http.get<ListaClientiDto>("http://localhost:8080/aggiorna-cliente");
     oss.subscribe(c => {
       this.clienti = c.listaClienti
-      this.inizializzaGestoreBottoniTabella(c.listaClienti);
     });
   }
 
@@ -42,7 +41,6 @@ export class GestioneClientiComponent implements OnInit {
     let oss = this.http.post<ListaClientiDto>("http://localhost:8080/aggiungi", dto);
     oss.subscribe(c => {
       this.clienti = c.listaClienti
-      this.inizializzaGestoreBottoniTabella(c.listaClienti);
     });
     this.cliente = new Cliente();
   }
@@ -85,8 +83,8 @@ export class GestioneClientiComponent implements OnInit {
         this.http.post<ListaClientiDto>("http://localhost:8080/cancella", dtoCanc)
           .subscribe(c => {
             this.clienti = c.listaClienti;
-            this.inizializzaGestoreBottoniTabella(c.listaClienti);
             this.stato = "Gestione-Cliente";
+            this.cliente = new Cliente();
           });
         break;
       default:
@@ -100,9 +98,4 @@ export class GestioneClientiComponent implements OnInit {
     this.stato = "Gestione-Cliente";
   }
 
-  inizializzaGestoreBottoniTabella(listaClienti: Cliente[]) {
-    for (let l of listaClienti) {
-      this.gestoreBottoniTabella.push(false);
-    }
-  }
 }
