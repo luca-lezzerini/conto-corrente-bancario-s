@@ -1,10 +1,10 @@
 <h1>{{stato}}</h1>
-<input type="text" [(ngModel)]="cliente.nome" placeholder="nome">
-<input type="text" [(ngModel)]="cliente.cognome" placeholder="cognome">
-<input type="text" [(ngModel)]="cliente.codiceFiscale" placeholder="Codice Fiscale">
-<input type="date" [(ngModel)]="cliente.dataDiNascita" placeholder="Data di nascita">
-<input type="text" [(ngModel)]="cliente.indirizzo" placeholder="Indirizzo">
-<input type="text" [(ngModel)]="cliente.telefono" placeholder="Telefono">
+<input type="text" [(ngModel)]="cliente.nome" placeholder="nome" [disabled]="stato == 'cancella'">
+<input type="text" [(ngModel)]="cliente.cognome" placeholder="cognome" [disabled]="stato == 'cancella'">
+<input type="text" [(ngModel)]="cliente.codiceFiscale" placeholder="Codice Fiscale" [disabled]="stato == 'cancella'">
+<input type="date" [(ngModel)]="cliente.dataDiNascita" placeholder="Data di nascita" [disabled]="stato == 'cancella'">
+<input type="text" [(ngModel)]="cliente.indirizzo" placeholder="Indirizzo" [disabled]="stato == 'cancella'">
+<input type="text" [(ngModel)]="cliente.telefono" placeholder="Telefono" [disabled]="stato == 'cancella'">
 <button (click)="nuovo()">Nuovo</button>
 <button (click)="aggiungi()" *ngIf="stato == 'Gestione-Cliente'">Aggiungi</button>
 <div *ngIf="stato != 'Gestione-Cliente'">
