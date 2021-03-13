@@ -2,7 +2,7 @@
 
 <button (click)="cerca()">Cerca</button>
 <br> <br>
-<input type="text" placeholder="Conto selezionato" readonly>
+<input type="text" placeholder="Conto selezionato" readonly [(ngModel)]="ContoSelezionato">
 <br> <br>
 
 <form name="form1" id="form1" action="/action_page.php">
@@ -16,11 +16,12 @@
   <button (click)="esegui()">Esegui</button>
   <br><br>
   <table border=3px>
+    <td>Data </td>
+    <td>Tipo movimento</td>
+    <td>Importo</td>
+    <td>Gestisci </td>
     <tr *ngFor="let a of contiCorrente">
-      <td>Colonna 1 </td>
-      <td>Colonna 2</td>
-      <td>Colonna 3</td>
-      <td>Gestisci </td>
+      <td>{{a.Importo}}</td>
       <td><button (click)="seleziona()">Seleziona</button></td>
     </tr>
   </table>
