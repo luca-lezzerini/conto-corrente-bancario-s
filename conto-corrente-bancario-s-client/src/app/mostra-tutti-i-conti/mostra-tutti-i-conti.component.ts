@@ -14,6 +14,9 @@ export class MostraTuttiIContiComponent implements OnInit {
   clienti: Cliente[] = [];
   cliente = new Cliente();
   contoCorrente = new ContoCorrente();
+  ricercaCliente: string;
+  statoErroreCliente: string;
+  erroreCliente: string;
 
 
   constructor(private http: HttpClient) { }
@@ -24,9 +27,16 @@ export class MostraTuttiIContiComponent implements OnInit {
   cerca() {
     let dto = new RicercaClienteDto();
     dto.ricercaPerCognome = this.ricercaCliente;
-    this.http.post<ListaClientiDto>("http://localhost:8080/mostra-tutti-i-conti", dto)
-      .subscribe(r => this.clienti = r.listaClienti);
-  }
+    if (this.ricercaCliente == "") {
+      this.statoErroreCliente = "e";
+      console.log("Nessun criterio ricerca cliente inserito");
+      this.erroreCliente = "Nessun criterio ricerca cliente inserito";
+    } else {
+      this.http.post<ListaClientiDto>("http://localhost:8080/ricerca-c", dto)
+        .subscribe(r => this.clienti = r.listaClienti);
+      this.statoErroreCliente = "";
+      this.ricercaCliente = "";
+    }}
 
 
   mostraConti() {
