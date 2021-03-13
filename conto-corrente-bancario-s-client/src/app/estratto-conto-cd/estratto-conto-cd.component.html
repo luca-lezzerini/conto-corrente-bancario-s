@@ -27,18 +27,10 @@
 <table>
     <tr>
         <th>Codice conto</th>
-        <th>Tipo conto</th>
     </tr>
     <tr *ngFor="let cd of contiDeposito">
         <td>{{cd.codice}}</td>
-        <td>C/D</td>
-    </tr>
-    <tr *ngFor="let cc of contiCorrenti">
-        <td>{{cc.codice}}</td>
-        <td>C/C</td>
-    </tr>
-    <tr *ngFor="let cp of contiPrestito">
-        <td>{{cp.codice}}</td>
-        <td>C/P</td>
+        <td><button (click)="estrattoConto()">Estratto Conto</button>
+        </td>
     </tr>
 </table>
