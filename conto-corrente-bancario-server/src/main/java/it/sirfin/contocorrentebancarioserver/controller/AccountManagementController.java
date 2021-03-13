@@ -130,4 +130,11 @@ public class AccountManagementController {
         return accountManagementService.associaCd(
                 assDto.getCliente(), assDto.getContoDeposito());
     }
+    
+    @RequestMapping("conferma-cp")
+    @ResponseBody
+    public ListaContiPrestitoDto confermaCp(@RequestBody ContoPrestitoDto dto) {
+        return accountManagementService.confermaCp(dto.getContoPrestito());
+    }
+    
 }

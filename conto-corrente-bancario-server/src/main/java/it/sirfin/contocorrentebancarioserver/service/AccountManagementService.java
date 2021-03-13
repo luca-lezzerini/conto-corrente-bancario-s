@@ -50,4 +50,6 @@ public interface AccountManagementService {
     ContoDepositoDto ricercaCd(String n);
 
     MessaggioPerUtenteDto associaCd(Cliente c, ContoDeposito cd);
+
+    ListaContiPrestitoDto confermaCp(ContoPrestito c);
 }

@@ -194,4 +194,12 @@ public class AccountManagementServiceImpl implements AccountManagementService {
     public ContoPrestitoDto modificaCp(ContoPrestito cp) {
         return new ContoPrestitoDto(cp);
     }
+
+    @Override
+    public ListaContiPrestitoDto confermaCp(ContoPrestito c) {
+        contoPrestitoRepository.save(c);
+        return aggiornaContiPrestito();
+    }
+    
+    
 }

@@ -12,11 +12,11 @@ import { ListaContiPrestitoDto } from '../dto/lista-conti-prestito-dto';
 })
 export class GestioneCpComponent implements OnInit {
   contoPrestito: ContoPrestito = new ContoPrestito();
-
+  errore = "";
   codici: ContoPrestito[] = [];
   url = "http://localhost:8080/";
 
-  stato ="new";
+  stato = "new";
 
   constructor(private router: Router, private http: HttpClient) {
     this.aggiorna();
@@ -26,16 +26,21 @@ export class GestioneCpComponent implements OnInit {
   }
 
   new() {
-    this.stato="add";
+    this.stato = "add";
     this.contoPrestito = new ContoPrestito();
 
   }
 
   add() {
-    let dto = new ContoPrestitoDto();
-    dto.contoPrestito = this.contoPrestito;
-    this.http.post<ListaContiPrestitoDto>(this.url + "aggiungi-cp", dto)
-      .subscribe(r => this.codici = r.listaContiPrestito);
+    if (this.contoPrestito.codice == "") {
+      this.errore = "Errore! devi inserire un codice."
+    } else {
+      let dto = new ContoPrestitoDto();
+      dto.contoPrestito = this.contoPrestito;
+      this.http.post<ListaContiPrestitoDto>(this.url + "aggiungi-cp", dto)
+        .subscribe(r => this.codici = r.listaContiPrestito);
+      this.contoPrestito = new ContoPrestito();
+    }
   }
 
   aggiorna() {
@@ -49,22 +54,29 @@ export class GestioneCpComponent implements OnInit {
     this.http.post<ContoPrestitoDto>("http://localhost:8080/modifica-cp", dto)
       .subscribe(r => this.contoPrestito = r.contoPrestito);
     this.contoPrestito = Object.assign({}, this.codici[i]);
-    this.stato="edit";
+    this.stato = "edit";
   }
   delete(c: ContoPrestito) {
     let dto = new ContoPrestitoDto();
     dto.contoPrestito = c;
     this.http.post<ListaContiPrestitoDto>("http://localhost:8080/elimina-cp", dto)
       .subscribe(r => this.codici = r.listaContiPrestito);
-  
+
   }
 
   conferma() {
-
+    let dto = new ContoPrestitoDto();
+    dto.contoPrestito = this.contoPrestito;
+    this.http.post<ListaContiPrestitoDto>(this.url + "conferma-cp", dto)
+      .subscribe(r => {
+        this.codici = r.listaContiPrestito;
+        this.contoPrestito = new ContoPrestito;
+        this.stato = "add";
+      });
   }
 
   annulla() {
-    this.stato="add";
+    this.stato = "add";
 
   }
 
