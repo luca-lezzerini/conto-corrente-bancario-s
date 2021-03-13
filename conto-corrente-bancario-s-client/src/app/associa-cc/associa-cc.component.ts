@@ -25,6 +25,7 @@ export class AssociaCcComponent implements OnInit {
   erroreConto = "";
   statoErroreCliente = "";
   statoErroreConto = "";
+  
   constructor(private http: HttpClient) { }
 
 
@@ -42,6 +43,7 @@ export class AssociaCcComponent implements OnInit {
       this.http.post<ListaClientiDto>("http://localhost:8080/ricerca-c", dto)
         .subscribe(r => this.clienti = r.listaClienti);
       this.statoErroreCliente = "";
+      this.ricercaCliente = "";
     }
   }
 

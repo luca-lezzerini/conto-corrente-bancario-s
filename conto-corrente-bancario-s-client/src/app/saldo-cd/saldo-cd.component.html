@@ -1,1 +1,31 @@
-<p>saldo-cd works!</p>
+<input type="text" [(ngModel)]="ricercaCliente" placeholder="ricercaCliente">
+<button (click)="cerca()">Cerca</button>
+<table>
+    <tr>
+        <th>Nome</th>
+        <th>Cognome</th>
+        <th>Codice Fiscale</th>
+        <th>Indirizzo</th>
+        <th>Telefono</th>
+        <th>Data di Nascita</th>
+    </tr>
+    <tr *ngFor="let c of clienti">
+        <td>{{c.nome}}</td>
+        <td>{{c.cognome}}</td>
+        <td>{{c.codiceFiscale}}</td>
+        <td>{{c.indirizzo}}</td>
+        <td>{{c.telefono}}</td>
+        <td>{{c.dataDiNascita}}</td>
+        <button (click)="seleziona(c)">Seleziona</button>
+    </tr>
+</table>
+<div *ngIf="showTab2">
+    <table>
+        <tr>
+            <th>Conto</th>
+        </tr>
+        <tr *ngFor="let cc of contiDeposito">
+            <td>{{cc.codice}}</td>
+        </tr>
+    </table>
+</div>
