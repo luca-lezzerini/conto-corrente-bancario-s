@@ -57,25 +57,41 @@ export class GestioneCpComponent implements OnInit {
     this.stato = "edit";
   }
   delete(c: ContoPrestito) {
-    let dto = new ContoPrestitoDto();
-    dto.contoPrestito = c;
-    this.http.post<ListaContiPrestitoDto>("http://localhost:8080/elimina-cp", dto)
-      .subscribe(r => this.codici = r.listaContiPrestito);
+    this.stato = "delete";
+    this.contoPrestito = c;
 
   }
 
   conferma() {
-    let dto = new ContoPrestitoDto();
-    dto.contoPrestito = this.contoPrestito;
-    this.http.post<ListaContiPrestitoDto>(this.url + "conferma-cp", dto)
-      .subscribe(r => {
-        this.codici = r.listaContiPrestito;
-        this.contoPrestito = new ContoPrestito;
-        this.stato = "add";
-      });
+    switch (this.stato) {
+      case "edit":
+        let dto = new ContoPrestitoDto();
+        dto.contoPrestito = this.contoPrestito;
+        this.http.post<ListaContiPrestitoDto>(this.url + "conferma-cp", dto)
+          .subscribe(r => {
+            this.codici = r.listaContiPrestito;
+            this.contoPrestito = new ContoPrestito;
+            this.stato = "add";
+          });
+        break;
+      case "delete":
+        let dtoCanc = new ContoPrestitoDto();
+        dtoCanc.contoPrestito = this.contoPrestito;
+        this.http.post<ListaContiPrestitoDto>("http://localhost:8080/elimina-cp", dtoCanc)
+          .subscribe(r => {
+            this.codici = r.listaContiPrestito
+            this.contoPrestito = new ContoPrestito();
+            this.stato = "add";
+          });
+        break;
+      default:
+        console.log("evento conferma inatteso")
+        break;
+    }
   }
 
   annulla() {
+    this.contoPrestito = new ContoPrestito();
     this.stato = "add";
 
   }
