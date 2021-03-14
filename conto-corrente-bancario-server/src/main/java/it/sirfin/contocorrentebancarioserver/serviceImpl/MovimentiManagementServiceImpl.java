@@ -1,6 +1,7 @@
 package it.sirfin.contocorrentebancarioserver.serviceImpl;
 
 import it.sirfin.contocorrentebancarioserver.dto.ListaClientiDto;
+import it.sirfin.contocorrentebancarioserver.dto.MovimentaContoCorrenteDto;
 import it.sirfin.contocorrentebancarioserver.dto.TuttiContiDto;
 import it.sirfin.contocorrentebancarioserver.model.Cliente;
 import it.sirfin.contocorrentebancarioserver.repository.ClienteRepository;
@@ -12,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MovimentiManagementServiceImpl implements MovimentiManagementService{
+public class MovimentiManagementServiceImpl implements MovimentiManagementService {
 
     @Autowired
     ClienteRepository clienteRepository;
@@ -40,7 +41,6 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
         return lista2;
     }
 
-    
     @Override
     public TuttiContiDto ricercaContiAssociatiCliente(Cliente c) {
         TuttiContiDto conti = new TuttiContiDto();
@@ -54,9 +54,12 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
         System.out.println("");
         return conti;
     }
-    
-    
-
-
-    
+/*
+    @Override
+    public MovimentaContoCorrenteDto movimentacC(MovimentaContoCorrenteDto i) {
+        MovimentaContoCorrenteDto listacCMov = new MovimentaContoCorrenteDto();
+        contoCorrenteRepository.findByCodiceContoContains(i);
+        return listacCMov;
+    }
+*/
 }

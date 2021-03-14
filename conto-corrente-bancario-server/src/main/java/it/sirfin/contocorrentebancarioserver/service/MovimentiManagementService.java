@@ -1,6 +1,7 @@
 package it.sirfin.contocorrentebancarioserver.service;
 
 import it.sirfin.contocorrentebancarioserver.dto.ListaClientiDto;
+import it.sirfin.contocorrentebancarioserver.dto.MovimentaContoCorrenteDto;
 import it.sirfin.contocorrentebancarioserver.dto.TuttiContiDto;
 import it.sirfin.contocorrentebancarioserver.model.Cliente;
 
@@ -11,4 +12,6 @@ public interface MovimentiManagementService {
     ListaClientiDto cercaClienteSaldo(String c);
 
     TuttiContiDto ricercaContiAssociatiCliente(Cliente c);
+    
+    //MovimentaContoCorrenteDto movimentacC(MovimentaContoCorrenteDto i);
 }
