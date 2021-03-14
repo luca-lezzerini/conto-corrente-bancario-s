@@ -4,7 +4,6 @@ import { Cliente } from '../cliente';
 import { ContoCorrente } from '../conto-corrente';
 import { ClienteDto } from '../dto/cliente-dto';
 import { ContoCorrenteDto } from '../dto/conto-corrente-dto';
-import { ContoDepositoDto } from '../dto/conto-deposito-dto';
 import { ListaClientiDto } from '../dto/lista-clienti-dto';
 import { RicercaClienteDto } from '../dto/ricerca-cliente-dto';
 import { TuttiContiDto } from '../dto/tutti-conti-dto';
