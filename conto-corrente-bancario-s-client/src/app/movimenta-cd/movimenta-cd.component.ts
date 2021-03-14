@@ -12,8 +12,8 @@ import { TuttiContiDto } from '../dto/tutti-conti-dto';
 export class MovimentaCdComponent implements OnInit {
   codiceConto = "";
   contiCorrente: ContoCorrente[] = [];
-
-
+  ContoSelezionato="";
+  importo:number;
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -26,4 +26,6 @@ export class MovimentaCdComponent implements OnInit {
         this.contiCorrente = r.contiCorrenti;
       });
   }
+
+  esegui() { }
 }
