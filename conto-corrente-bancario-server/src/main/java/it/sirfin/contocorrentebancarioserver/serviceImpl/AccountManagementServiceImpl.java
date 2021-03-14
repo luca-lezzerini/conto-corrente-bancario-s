@@ -85,6 +85,10 @@ public class AccountManagementServiceImpl implements AccountManagementService {
 
     @Override
     public ListaContiCorrenteDto aggiungiCc(ContoCorrente cc) {
+        ContoCorrente conto = contoCorrenteRepository.findByNumeroConto(cc.getNumeroConto());
+        if (conto != null) {
+            return new ListaContiCorrenteDto();
+        }
         //salvo su db
         contoCorrenteRepository.save(cc);
         //implementare in seguito il metodo aggiorna
