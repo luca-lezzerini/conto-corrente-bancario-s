@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Data } from '@angular/router';
 import { ContoCorrente } from '../conto-corrente';
+import { ContoCorrenteDto } from '../dto/conto-corrente-dto';
 import { ListaContiCorrenteDto } from '../dto/lista-conti-corrente-dto';
 import { RicercaContoCorrenteDto } from '../dto/ricerca-conto-corrente-dto';
 
@@ -18,8 +19,19 @@ export class MovimentaCcComponent implements OnInit {
   contiCorrente: ContoCorrente[] = [];
   search = "";
   url = "http://localhost:8080/";
-  ContoCorrente: ContoCorrente = new ContoCorrente();
   data: Data;
+  contoCorrente = new ContoCorrente();
+  ricercaConto = "";
+  ricercaCliente = "";
+  contoTrovato = "";
+  erroreCliente = "";
+  erroreConto = "";
+  statoErroreCliente = "";
+  statoErroreConto = "";
+
+
+
+
 
   constructor(private http: HttpClient) { }
 
@@ -27,27 +39,19 @@ export class MovimentaCcComponent implements OnInit {
   }
 
   cerca() {
-
-    /*let cercaConto = new RicercaContoCorrenteDto();
-    cercaConto.codiceEsatto = this.search;
-
-    let ox = this.http.post<ListaContiCorrenteDto>(this.url + "cerca-movimenta-cc",
-      cercaConto
-    );
-
-    ox.subscribe(u => this.contiCorrente = u.listaContiCorrente);
-    */
-
-    let dto = new ContoCorrente();
-    dto.numeroConto = this.CodiceConto;
-    if (this.CodiceConto == "") {
-      console.log("nessun conto selezionato");
+    let dto = new RicercaContoCorrenteDto();
+    dto.codiceEsatto = this.ricercaConto;
+    if (this.ricercaConto == "") { //controllo che il campo di ricerca è vuoto
+      this.statoErroreConto = "e"; //passo nello stato di errore
+      console.log("Nessun conto selezionato");  //scrivo il messaggio che deve apparire
+      this.erroreConto = "Nessun conto selezionato";
     } else {
-      if (this.CodiceConto == dto.numeroConto) {
-        console.log("C'è l'elemento!");
-      }
-    }
+      this.http.post<ContoCorrenteDto>(this.url + "ricerca-cc", dto)
+        .subscribe(r => this.ContoSelezionato = r.CodiceConto
+        ); //in caso non sia vuoto,assegno il risultato della ricerca alla label dove compare 
+      //il codice del conto selezionato che ho cercato
 
+    }
   }
 
   esegui() {
