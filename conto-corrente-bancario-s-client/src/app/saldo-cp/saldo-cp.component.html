@@ -1,1 +1,36 @@
-<p>saldo-cp works!</p>
+<p>Saldo Conto Prestito </p>
+
+<input type="text" [(ngModel)]="ricercaCliente" placeholder="Ricerca Cliente">
+<button (click)="cerca()">Cerca</button>
+<table>
+    <tr>
+        <th>Nome</th>
+        <th>Cognome</th>
+        <th>Codice Fiscale</th>
+        <th>Indirizzo</th>
+        <th>Telefono</th>
+        <th>Data di Nascita</th>
+    </tr>
+    <tr *ngFor="let c of clienti">
+        <td>{{c.nome}}</td>
+        <td>{{c.cognome}}</td>
+        <td>{{c.codiceFiscale}}</td>
+        <td>{{c.indirizzo}}</td>
+        <td>{{c.telefono}}</td>
+        <td>{{c.dataDiNascita}}</td>
+        <button (click)="seleziona(c)">Seleziona</button>
+    </tr>
+</table>
+<div *ngIf="showTableSaldo">
+    <table>
+        <tr>
+            <th>Saldo Conto Corrente</th>
+        </tr>
+        <tr *ngFor="let cp of contiPrestito">
+            <td>{{cc.numeroConto}}</td>
+            <td>
+                <button (click)="saldoCP()">Saldo</button>
+            </td>
+        </tr>
+    </table>
+</div>
