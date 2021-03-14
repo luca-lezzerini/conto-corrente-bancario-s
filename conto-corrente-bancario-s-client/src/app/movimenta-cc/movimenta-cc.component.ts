@@ -34,6 +34,7 @@ export class MovimentaCcComponent implements OnInit {
   cerca() {
     let dto = new RicercaContoCorrenteDto();
     dto.codiceEsatto = this.codiceConto;
+
     if (this.codiceConto == "") { //controllo che il campo di ricerca è vuoto
       this.statoErroreConto = "e"; //passo nello stato di errore
       console.log("Nessun conto selezionato");  //scrivo il messaggio che deve apparire
@@ -46,6 +47,7 @@ export class MovimentaCcComponent implements OnInit {
       //il codice del conto selezionato che ho cercato
 
     }
+
   }
 
   esegui() {
