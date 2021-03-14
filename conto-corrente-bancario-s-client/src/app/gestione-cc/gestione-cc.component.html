@@ -1,30 +1,25 @@
-<div *ngIf="showForm">
-    <input type="text" placeholder="numConto" [(ngModel)]="contoCorrente.numeroConto">
-    <div *ngIf="showAdd">
-        <button (click)="aggiungi()">Aggiungi</button>
-    </div>
-    <div *ngIf="statoErrore=='e'">{{errore}}</div>
-    <br>
-    <br>
+<h2>Conto Corrente</h2>
+<button *ngIf="stato=='new' || stato=='edit'" (click)="new()">New</button>
+<br><br>
+<div *ngIf="stato=='add'|| stato=='edit' || stato=='delete'">
+    <input type="text" [(ngModel)]="contoCorrente.numeroConto" placeholder="numConto" [disabled]="stato=='delete'">
+    <button *ngIf="stato=='add' || stato != 'delete'" (click)="aggiungi()">Add</button>
+    <div>{{errore}}</div>
 </div>
-<div *ngIf="showTable">
-    <table *ngIf="contiCorrente.length>0">
-        <tr>
-            <th>numConto</th>
-            <th>Elimina</th>
-            <th>Modifica</th>
-        </tr>
-        <tr *ngFor="let n of contiCorrente">
-            <td>{{n.numeroConto}}</td>
-            <td><button (click)="elimina(n)">X</button></td>
-            <td><button (click)="modifica(n)">Edit</button></td>
-        </tr>
-    </table>
-    <div *ngIf="showEdit">
-        <button (click)="conferma()">Conferma</button>
-        <button (click)="annulla()">Annulla</button>
-    </div>
+<div *ngIf="stato=='edit' || stato=='delete'">
+    <button (click)="conferma()">conferma</button>
+    <button (click)="annulla()">annulla</button>
 </div>
-<div *ngIf="showNew">
-    <button (click)="new()">New</button>
-</div>
+<br>
+<br>
+<table *ngIf="stato=='add'">
+    <tr>
+        <th>Codice conto</th>
+        <th>Gestisci</th>
+    </tr>
+    <tr *ngFor="let c of contiCorrente">
+        <td> {{c.numeroConto}} </td>
+        <td> <button (click)="modifica(c)">edit</button> </td>
+        <td> <button (click)="elimina(c)">delete</button> </td>
+    </tr>
+</table>

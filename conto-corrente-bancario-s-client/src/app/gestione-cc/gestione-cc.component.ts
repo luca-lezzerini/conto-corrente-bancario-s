@@ -13,13 +13,8 @@ import { ListaContiCorrenteDto } from '../dto/lista-conti-corrente-dto';
 export class GestioneCcComponent implements OnInit {
   contoCorrente = new ContoCorrente();
   contiCorrente: ContoCorrente[] = [];
-  showForm = false;
-  showNew = true;
-  showTable = false;
-  showEdit = false;
-  showAdd = false;
+  stato = "new";
   errore = "";
-  statoErrore = "";
   constructor(private route: Router, private http: HttpClient) {
     this.aggiorna();
 
@@ -29,39 +24,30 @@ export class GestioneCcComponent implements OnInit {
   }
 
   new() {
-    this.showForm = true;
-    this.showNew = false;
-    this.showTable = true;
-    this.showAdd = true;
-    this.statoErrore = "";
+    this.stato = "add";
   }
 
   aggiungi() {
-    if (this.contoCorrente.numeroConto == "") {
-      this.statoErrore = "e";
-    }
     let dto = new ContoCorrenteDto();
     dto.contoCorrente = this.contoCorrente;
     if (this.contoCorrente.numeroConto == "") {
-      this.errore = "Non hai aggiunto"
+      this.errore = "E' necessario inserire un codice valido prima di cliccare add"
+    } else if (this.contoCorrente.numeroConto == " ") {
+      this.errore = "Iniziare con uno spazio non è consentito"
     } else {
+      this.errore = "";
       this.http.post<ListaContiCorrenteDto>("http://localhost:8080/aggiungi-cc", dto)
         .subscribe(r => {
           this.contiCorrente = r.listaContiCorrente
         });
       this.contoCorrente = new ContoCorrente();
-      this.showForm = false;
-      this.showNew = true;
-      this.showTable = false;
-      this.statoErrore = "";
+      this.stato = "new";
     }
   }
 
   elimina(n: ContoCorrente) {
-    let dto = new ContoCorrenteDto();
-    dto.contoCorrente = n;
-    this.http.post<ListaContiCorrenteDto>("http://localhost:8080/elimina-cc", dto)
-      .subscribe(r => this.contiCorrente = r.listaContiCorrente);
+    this.contoCorrente = n;
+    this.stato = "delete";
   }
 
   modifica(n: ContoCorrente) {
@@ -69,25 +55,33 @@ export class GestioneCcComponent implements OnInit {
     dto.contoCorrente = n;
     this.http.post<ContoCorrenteDto>("http://localhost:8080/modifica-cc", dto)
       .subscribe(r => this.contoCorrente = r.contoCorrente);
-    this.showEdit = true;
-    this.showAdd = false;
+    this.stato = "edit";
   }
 
   conferma() {
-    let dto = new ContoCorrenteDto();
-    dto.contoCorrente = this.contoCorrente;
-    this.http.post<ListaContiCorrenteDto>("http://localhost:8080/conferma-cc", dto)
-      .subscribe(r => this.contiCorrente = r.listaContiCorrente);
-    this.showAdd = true;
-    this.showTable = true;
-    this.showEdit = false;
-    this.contoCorrente = new ContoCorrente();
+    switch (this.stato) {
+      case "edit":
+        let dto = new ContoCorrenteDto();
+        dto.contoCorrente = this.contoCorrente;
+        this.http.post<ListaContiCorrenteDto>("http://localhost:8080/conferma-cc", dto)
+          .subscribe(r => this.contiCorrente = r.listaContiCorrente);
+        this.contoCorrente = new ContoCorrente();
+        this.stato = "add";
+        break;
+      case "delete":
+        let dtoC = new ContoCorrenteDto();
+        dtoC.contoCorrente = this.contoCorrente;
+        this.http.post<ListaContiCorrenteDto>("http://localhost:8080/elimina-cc", dtoC)
+          .subscribe(r => this.contiCorrente = r.listaContiCorrente);
+        this.contoCorrente = new ContoCorrente();
+        this.stato = "add";
+        break;
+    }
   }
 
   annulla() {
     this.contoCorrente = new ContoCorrente();
-    this.showEdit = false;
-    this.showAdd = true;
+    this.stato = "add";
   }
 
   aggiorna() {
