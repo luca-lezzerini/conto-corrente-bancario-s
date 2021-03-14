@@ -1,9 +1,10 @@
-<input type="text" placeholder="Codice conto" [(ngModel)]="CodiceConto">
+<input type="text" placeholder="Codice conto" [(ngModel)]="codiceConto">
 
 <button (click)="cerca()">Cerca</button>
-{{ContoSelezionato}}
+{{contoSelezionato}}
+{{erroreConto}}
 <br> <br>
-<input type="text" placeholder="Conto selezionato" readonly [(ngModel)]="ContoSelezionato">
+<input type="text" placeholder="Conto selezionato" readonly [(ngModel)]="contoSelezionato">
 <br> <br>
 
 <form name="form1" id="form1" action="/action_page.php">
@@ -12,17 +13,17 @@
     <option value="">Prelievo:</option>
     <option value="">Bonifico:</option>
   </select>
-
-  <input type="text" placeholder=" Importo" [(ngModel)]=" Importo">
-  <button (click)="esegui()">Esegui</button>
-  <br><br>
-  <table border=3px>
-    <td>Data </td>
-    <td>Tipo movimento</td>
-    <td>Importo</td>
-    <td>Gestisci </td>
-    <tr *ngFor="let a of contiCorrente">
-      <td>{{a.Importo}}</td>
-      <td><button (click)="seleziona()">Seleziona</button></td>
-    </tr>
-  </table>
+</form>
+<input type="text" placeholder=" Importo" [(ngModel)]=" importo">
+<button (click)="esegui()">Esegui</button>
+<br><br>
+<table border=3px>
+  <td>Data </td>
+  <td>Tipo movimento</td>
+  <td>Importo</td>
+  <td>Gestisci </td>
+  <tr *ngFor="let a of contiCorrente">
+    <td>{{a.importo}}</td>
+    <td><button (click)="seleziona()">Seleziona</button></td>
+  </tr>
+</table>
