@@ -2,10 +2,10 @@ Conto prestito <button *ngIf="stato=='new' || stato=='edit'" (click)="new()">New
 <br><br>
 <div *ngIf="stato=='add'|| stato=='edit'">
     <input type="text" [(ngModel)]="contoPrestito.codice " placeholder="codice conto prestito">
-    <button  *ngIf="stato=='add'" (click)="add()">Add</button>
+    <button *ngIf="stato=='add'" (click)="add()">Add</button>
     {{errore}}
 </div>
-<div *ngIf="stato=='edit'">
+<div *ngIf="stato=='edit' || stato=='delete'">
     <button (click)="conferma()">conferma</button>
     <button (click)="annulla()">annulla</button>
 </div>
