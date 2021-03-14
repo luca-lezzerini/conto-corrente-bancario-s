@@ -2,8 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from '../cliente';
 import { ContoDeposito } from '../conto-deposito';
+import { ClienteDto } from '../dto/cliente-dto';
+import { ContoDepositoDto } from '../dto/conto-deposito-dto';
 import { ListaClientiDto } from '../dto/lista-clienti-dto';
 import { RicercaClienteDto } from '../dto/ricerca-cliente-dto';
+import { TuttiContiDto } from '../dto/tutti-conti-dto';
 
 @Component({
   selector: 'app-saldo-cd',
@@ -24,14 +27,22 @@ export class SaldoCdComponent implements OnInit {
   cerca() {
     let dto = new RicercaClienteDto();
     dto.ricercaPerCognome = this.ricercaCliente;
-    this.http.post<ListaClientiDto>("http://localhost:8080/ricerca-c", dto)
+    this.http.post<ListaClientiDto>("http://localhost:8080/ricerca-cliente-saldo-cc", dto)
       .subscribe(r => this.clienti = r.listaClienti);
   }
 
   seleziona(c: Cliente) {
     this.showTab2 = true;
+    let dto = new ClienteDto();
+    dto.cliente = c;
+    this.http.post<TuttiContiDto>("http://localhost:8080/ricerca-conti-associati-cliente", dto)
+      .subscribe(r => this.contiDeposito = r.contiDeposito);
   }
 
   saldo(cc: ContoDeposito) {
+    let dto = new ContoDepositoDto();
+    dto.contoDeposito = cc;
+    this.http.post<TuttiContiDto>("http://localhost:8080/", dto)
+      .subscribe(r => this.contiDeposito = r.contiDeposito);
   }
 }

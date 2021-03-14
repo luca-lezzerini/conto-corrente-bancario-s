@@ -26,6 +26,7 @@
         </tr>
         <tr *ngFor="let cc of contiDeposito">
             <td>{{cc.codice}}</td>
+            <td><button (click)="saldo(cc)">Saldo</button></td>
         </tr>
     </table>
 </div>
