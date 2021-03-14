@@ -38,7 +38,13 @@ export class GestioneCcComponent implements OnInit {
       this.errore = "";
       this.http.post<ListaContiCorrenteDto>("http://localhost:8080/aggiungi-cc", dto)
         .subscribe(r => {
-          this.contiCorrente = r.listaContiCorrente
+          if (r.listaContiCorrente != null) {
+            this.contiCorrente = r.listaContiCorrente
+          }
+          else {
+            this.errore = "Errore, il numero del conto esiste già";
+            this.stato = "add";
+          }
         });
       this.contoCorrente = new ContoCorrente();
       this.stato = "new";
