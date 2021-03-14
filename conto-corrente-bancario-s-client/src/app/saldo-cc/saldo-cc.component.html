@@ -1,4 +1,3 @@
-
 <input type="text" [(ngModel)]="ricercaCliente" placeholder="Ricerca Cliente">
 <button (click)="cerca()">Cerca</button>
 <table>
@@ -26,7 +25,10 @@
             <th>Saldo Conto Corrente</th>
         </tr>
         <tr *ngFor="let cc of contiCorrente">
-            <td>{{cc.contiCorrente}}</td>
+            <td>{{cc.numeroConto}}</td>
+            <td>
+                <button (click)="saldoCC()">Saldo</button>
+            </td>
         </tr>
     </table>
 </div>
