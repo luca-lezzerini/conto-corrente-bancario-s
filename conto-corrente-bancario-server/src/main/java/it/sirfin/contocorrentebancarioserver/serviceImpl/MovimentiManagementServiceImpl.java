@@ -31,6 +31,7 @@ import it.sirfin.contocorrentebancarioserver.repository.MovimentiContoPrestitoRe
 import it.sirfin.contocorrentebancarioserver.service.MovimentiManagementService;
 import java.time.LocalDate;
 import java.util.List;
+import javax.naming.OperationNotSupportedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -151,4 +152,14 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
         return new ListaMovimentiCdDto(lista);
     }
 
+    @Override
+    public ListaClientiDto cercaClienteECCC(String c) {
+        throw new UnsupportedOperationException("Not supported yet.");
+        //ListaClientiDto lista = new ListaClientiDto(
+        //movimentiContoCorrenteRepository.findByCognomeContaining(c));
+        //return lista;
+    }
+    
 }
+
+    

@@ -68,5 +68,12 @@ public class MovimentiManagementController {
         MovimentiContoDeposito mc=dto.getMovimentoCd();
         return movimentiManagementService.salvaMovimentoCd(cd, mc);
     }
+    
+    @RequestMapping("ricerca-cliente-e-c-cc")
+    @ResponseBody
+    public ListaClientiDto ricercaClienteECCC(@RequestBody RicercaClienteDto dto) {
+        return movimentiManagementService.cercaClienteECCC(dto.getRicercaPerCognome());
+    }
+    
 }
 

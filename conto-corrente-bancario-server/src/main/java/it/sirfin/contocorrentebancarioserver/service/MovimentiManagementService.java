@@ -30,4 +30,6 @@ public interface MovimentiManagementService {
     ListaMovimentiCpDto salvaMovimento(MovimentoCpDto dto);
 
     ListaMovimentiCdDto salvaMovimentoCd(ContoDeposito cd, MovimentiContoDeposito mcd);
+    
+    ListaClientiDto cercaClienteECCC(String c);
 }

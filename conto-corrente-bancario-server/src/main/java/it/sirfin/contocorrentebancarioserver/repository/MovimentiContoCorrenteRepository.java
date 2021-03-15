@@ -5,7 +5,9 @@
  */
 package it.sirfin.contocorrentebancarioserver.repository;
 
+import it.sirfin.contocorrentebancarioserver.model.Cliente;
 import it.sirfin.contocorrentebancarioserver.model.MovimentiContoCorrente;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,5 +17,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface MovimentiContoCorrenteRepository extends JpaRepository<MovimentiContoCorrente, Long>{
-    
+   // List<Cliente> findByCognomeContaining(String c);
 }

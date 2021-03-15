@@ -14,7 +14,7 @@ import { MovimentiContoCorrente } from '../movimenti-conto-corrente';
   styleUrls: ['./movimenta-cc.component.css']
 })
 export class MovimentaCcComponent implements OnInit {
-  tipoMovimento = "V";
+  tipoMovimento = "";
   codiceConto = "";
   importo = "";
   contoSelezionato = "";
