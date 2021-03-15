@@ -15,7 +15,7 @@ import { MovimentiContoDeposito } from '../movimenti-cd';
 @Component({
   selector: 'app-estratto-conto-cd',
   templateUrl: './estratto-conto-cd.component.html',
-  styleUrls: ['./estratto-conto-cd.component.css']
+  styleUrls: ['./estratto-conto-cd.component.css','../app.component.css']
 })
 export class EstrattoContoCdComponent implements OnInit {
 
