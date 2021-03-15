@@ -53,7 +53,9 @@ export class MovimentaCcComponent implements OnInit {
 
   }
 
-  esegui() {/*
+  esegui() {
+    
+    /*
     let dto = new MovimentaCcDto();
     dto.MovimentaCc = this.movimento;
 
