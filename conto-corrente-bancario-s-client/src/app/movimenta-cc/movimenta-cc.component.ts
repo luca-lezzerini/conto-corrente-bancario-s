@@ -6,8 +6,7 @@ import { ContoCorrenteDto } from '../dto/conto-corrente-dto';
 import { ListaContiCorrenteDto } from '../dto/lista-conti-corrente-dto';
 import { ListaMovimentiCcDto } from '../dto/lista-movimenti-cc-dto';
 import { RicercaContoCorrenteDto } from '../dto/ricerca-conto-corrente-dto';
-import { MovimentaCcDto } from './movimenta-cc-dto';
-import { Mov } from './mov';
+import { MovimentiContoCorrente } from '../movimenti-conto-corrente';
 
 @Component({
   selector: 'app-movimenta-cc',
@@ -28,9 +27,8 @@ export class MovimentaCcComponent implements OnInit {
   erroreConto = "";
   statoErroreCliente = "";
   statoErroreConto = "";
+  movimento = new MovimentiContoCorrente();
   //CodiceConto = new ContoCorrente();
-  movimento = new MovimentaCcDto();
-  mov:MovimentaCcDto[] = [];
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -47,7 +45,7 @@ export class MovimentaCcComponent implements OnInit {
     } else {
       this.erroreConto = "";
       this.http.post<ContoCorrenteDto>(this.url + "ricerca-cc", dto)
-        .subscribe(r => this.contoSelezionato = r.contoCorrente.numeroConto
+        .subscribe(r => this.contoCorrente = r.contoCorrente
         ); //in caso non sia vuoto,assegno il risultato della ricerca alla label dove compare 
       //il codice del conto selezionato che ho cercato
 
@@ -55,7 +53,7 @@ export class MovimentaCcComponent implements OnInit {
 
   }
 
-  esegui() {
+  esegui() {/*
     let dto = new MovimentaCcDto();
     dto.MovimentaCc = this.movimento;
 
@@ -64,7 +62,7 @@ export class MovimentaCcComponent implements OnInit {
     );
     ox.subscribe(s => this.mov = s.listaMovimentiCc );
 
-    this.movimento = new MovimentaCcDto();
+    this.movimento = new MovimentaCcDto();*/
     /*
     let dto = new MovimentoCpDto();
     dto.movimentoCp = this.movimentoCp;

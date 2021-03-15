@@ -27,7 +27,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AccountManagementServiceImpl implements AccountManagementService {
-    
+
     @Autowired
     ClienteRepository clienteRepository;
     @Autowired
@@ -267,9 +267,9 @@ public class AccountManagementServiceImpl implements AccountManagementService {
     }
 
     @Override
-    public ListaContiCorrenteDto inserisciMovimento(ContoCorrente contoCorrente) {
-        //movimentiContoCorrenteRepository.save(contoCorrente);
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ListaContiCorrenteDto inserisciMovimento(MovimentiContoCorrente movimentiContoCorrente) {
+        movimentiContoCorrenteRepository.save(movimentiContoCorrente);
+        return new ListaContiCorrenteDto();
     }
 
 }

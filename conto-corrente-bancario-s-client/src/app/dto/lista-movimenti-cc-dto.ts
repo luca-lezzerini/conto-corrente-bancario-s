@@ -1,5 +1,5 @@
-import { MovimentaCcDto } from "../movimenta-cc/movimenta-cc-dto";
+import { MovimentiContoCorrente } from "../movimenti-conto-corrente";
 
 export class ListaMovimentiCcDto {
-    listaMovimentiCc: MovimentaCcDto[] = [];
+    listaMovimentiCc: MovimentiContoCorrente[] = [];
 }
