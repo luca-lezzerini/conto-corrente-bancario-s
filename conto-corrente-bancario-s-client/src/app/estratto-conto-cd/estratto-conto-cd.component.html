@@ -30,7 +30,14 @@
     </tr>
     <tr *ngFor="let cd of contiDeposito">
         <td>{{cd.codice}}</td>
-        <td><button (click)="estrattoConto()">Estratto Conto</button>
+        <td><button (click)="estrattoConto(cd)">Estratto Conto</button>
         </td>
+    </tr>
+</table>
+<table>
+    <tr *ngFor="let m of movimentiCd">
+        <td>{{m.dataMov}}</td>
+        <td>{{m.tipoMovimento}}</td>
+        <td>{{m.importoMov}}</td>
     </tr>
 </table>

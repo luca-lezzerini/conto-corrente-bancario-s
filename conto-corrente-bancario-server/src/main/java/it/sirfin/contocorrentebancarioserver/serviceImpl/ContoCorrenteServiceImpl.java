@@ -2,7 +2,9 @@ package it.sirfin.contocorrentebancarioserver.serviceImpl;
 
 import it.sirfin.contocorrentebancarioserver.dto.ClienteDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaClientiDto;
+import it.sirfin.contocorrentebancarioserver.dto.MessaggioPerUtenteDto;
 import it.sirfin.contocorrentebancarioserver.model.Cliente;
+import it.sirfin.contocorrentebancarioserver.model.ContoCorrente;
 import it.sirfin.contocorrentebancarioserver.repository.ClienteRepository;
 import it.sirfin.contocorrentebancarioserver.repository.ContoCorrenteRepository;
 import it.sirfin.contocorrentebancarioserver.repository.ContoDepositoRepository;
@@ -11,6 +13,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import it.sirfin.contocorrentebancarioserver.service.ContoCorrenteService;
+import java.util.Set;
 
 @Service
 public class ContoCorrenteServiceImpl implements ContoCorrenteService {
@@ -34,6 +37,8 @@ public class ContoCorrenteServiceImpl implements ContoCorrenteService {
         contoDepositoRepository.deleteAllInBatch();
         contoPrestitoRepsitory.deleteAllInBatch();
         clienteRepository.deleteAllInBatch();
+        
+        
     }
 
     @Override
@@ -68,4 +73,13 @@ public class ContoCorrenteServiceImpl implements ContoCorrenteService {
                 clienteRepository.findAll());
     }
 
+    private void associaClienteCC (Cliente c, ContoCorrente cc){
+        cc.setCliente(c);
+        contoCorrenteRepository.save(cc);
+        Set<ContoCorrente> conti = c.getContiCorrente();
+        conti.add(cc);
+        clienteRepository.save(c);
+    }
+    
 }
+

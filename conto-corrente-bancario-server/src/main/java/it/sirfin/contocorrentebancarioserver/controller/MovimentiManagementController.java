@@ -1,7 +1,9 @@
 package it.sirfin.contocorrentebancarioserver.controller;
 
 import it.sirfin.contocorrentebancarioserver.dto.ClienteDto;
+import it.sirfin.contocorrentebancarioserver.dto.ContoDepositoDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaClientiDto;
+import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCdDto;
 import it.sirfin.contocorrentebancarioserver.dto.RicercaClienteDto;
 import it.sirfin.contocorrentebancarioserver.dto.TuttiContiDto;
 import it.sirfin.contocorrentebancarioserver.service.MovimentiManagementService;
@@ -16,6 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MovimentiManagementController {
 
+    @RequestMapping("/demo3")
+    public void demo3() {
+        movimentiManagementService.demo3();
+    }
     @Autowired
     MovimentiManagementService movimentiManagementService;
 
@@ -30,11 +36,20 @@ public class MovimentiManagementController {
     public TuttiContiDto ricercaContiAssociatiCliente(@RequestBody ClienteDto dto) {
         return movimentiManagementService.ricercaContiAssociatiCliente(dto.getCliente());
     }
-    
+
     @RequestMapping("ricerca-cliente-saldo-cc")
     @ResponseBody
     public ListaClientiDto cercaClienteSaldo(@RequestBody RicercaClienteDto dto) {
         return movimentiManagementService.cercaClienteSaldo(dto.getRicercaPerCognome());
     }
+
+
     
+    
+    @RequestMapping("ricerca-movimenti-cd")
+    @ResponseBody
+    public ListaMovimentiCdDto ricercaMovimentiCd(@RequestBody ContoDepositoDto dto) {
+        throw new UnsupportedOperationException();
+    }
+
 }

@@ -1,14 +1,21 @@
 package it.sirfin.contocorrentebancarioserver.serviceImpl;
 
 import it.sirfin.contocorrentebancarioserver.dto.ListaClientiDto;
-import it.sirfin.contocorrentebancarioserver.dto.MovimentaContoCorrenteDto;
+import it.sirfin.contocorrentebancarioserver.dto.MessaggioPerUtenteDto;
 import it.sirfin.contocorrentebancarioserver.dto.TuttiContiDto;
 import it.sirfin.contocorrentebancarioserver.model.Cliente;
+import it.sirfin.contocorrentebancarioserver.model.ContoCorrente;
+import it.sirfin.contocorrentebancarioserver.model.ContoDeposito;
+import it.sirfin.contocorrentebancarioserver.model.ContoPrestito;
+import it.sirfin.contocorrentebancarioserver.model.MovimentiContoCorrente;
 import it.sirfin.contocorrentebancarioserver.repository.ClienteRepository;
 import it.sirfin.contocorrentebancarioserver.repository.ContoCorrenteRepository;
 import it.sirfin.contocorrentebancarioserver.repository.ContoDepositoRepository;
 import it.sirfin.contocorrentebancarioserver.repository.ContoPrestitoRepository;
+import it.sirfin.contocorrentebancarioserver.repository.MovimentiContoCorrenteRepository;
 import it.sirfin.contocorrentebancarioserver.service.MovimentiManagementService;
+import java.time.LocalDate;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +33,38 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
 
     @Autowired
     ContoPrestitoRepository contoPrestitoRepsitory;
+    
+    @Autowired
+    MovimentiContoCorrenteRepository movimentiContoCorrenteRepository;
 
+    @Override
+    public void demo3() {
+        //Creazione dati di test
+        movimentiContoCorrenteRepository.deleteAllInBatch();
+       
+        //Comment metodi inserimento
+        //creazione archivio clienti
+        MovimentiContoCorrente c1 = new MovimentiContoCorrente(LocalDate.of(2001, 9,11),"Versamento", 1500.50);
+        c1 = movimentiContoCorrenteRepository.save(c1);
+        //creazione archivio clienti
+        MovimentiContoCorrente c2 = new MovimentiContoCorrente(LocalDate.of(2006, 7, 26),"Prelievo", 500);
+        c2 = movimentiContoCorrenteRepository.save(c2);
+        //creazione archivio clienti
+        MovimentiContoCorrente c3 = new MovimentiContoCorrente(LocalDate.of(2000, 1, 12),"Bonifico", 47.45);
+        c3 = movimentiContoCorrenteRepository.save(c3);
+                //creazione archivio conti corrente
+        ContoCorrente cC1 = new ContoCorrente("Conto4");
+        ContoCorrente cC2 = new ContoCorrente("Conto5");
+        ContoCorrente cC3 = new ContoCorrente("Conto6");
+        //salvo su db
+        cC1 = contoCorrenteRepository.save(cC1);
+        cC2 = contoCorrenteRepository.save(cC2);
+        cC3 = contoCorrenteRepository.save(cC3);
+        
+ 
+    }
+    
+ 
     @Override
     public ListaClientiDto cercaClienteLike(String c) {
         ListaClientiDto lista = new ListaClientiDto(
@@ -54,12 +92,12 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
         System.out.println("");
         return conti;
     }
-/*
+    /*
     @Override
     public MovimentaContoCorrenteDto movimentacC(MovimentaContoCorrenteDto i) {
         MovimentaContoCorrenteDto listacCMov = new MovimentaContoCorrenteDto();
         contoCorrenteRepository.findByCodiceContoContains(i);
         return listacCMov;
     }
-*/
+     */
 }

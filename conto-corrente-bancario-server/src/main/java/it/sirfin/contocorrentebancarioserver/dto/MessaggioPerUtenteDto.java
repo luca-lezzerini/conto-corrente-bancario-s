@@ -1,7 +1,7 @@
 package it.sirfin.contocorrentebancarioserver.dto;
 
 
-public class MessaggioPerUtenteDto {
+    public class MessaggioPerUtenteDto {
     private String messaggio;
 
     public MessaggioPerUtenteDto() {

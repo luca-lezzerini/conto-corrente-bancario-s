@@ -45,7 +45,14 @@ export class GestioneCpComponent implements OnInit {
 
   aggiorna() {
     this.http.get<ListaContiPrestitoDto>(this.url + "aggiorna-cp")
-      .subscribe(r => this.codici = r.listaContiPrestito);
+      .subscribe(r => {
+        this.codici = r.listaContiPrestito;
+        if (this.codici.length == 0) {
+          this.stato = "new";
+        } else {
+          this.stato = "add";
+        }
+      });
   }
 
   edit(c: ContoPrestito, i: number) {
@@ -81,7 +88,11 @@ export class GestioneCpComponent implements OnInit {
           .subscribe(r => {
             this.codici = r.listaContiPrestito
             this.contoPrestito = new ContoPrestito();
-            this.stato = "add";
+            if (this.codici.length == 0) {
+              this.stato = "new";
+            } else {
+              this.stato = "add";
+            }
           });
         break;
       default:

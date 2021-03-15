@@ -24,21 +24,18 @@ export class GestioneCdComponent implements OnInit {
   }
 
   controllaRecord() {
-    this.aggiorna();
     if (this.contiDepositi.length > 0) {
       this.stato = "Gestione-Cd";
       console.log(this.stato);
-    }
+    } else this.stato = "nuovo";
+    console.log(this.contiDepositi.length);
   }
 
   aggiorna() {
     let oss = this.http.get<ListaContiDepositoDto>("http://localhost:8080/aggiorna-cd");
     oss.subscribe(c => {
-      this.contiDepositi = c.listaConti
-      if (this.contiDepositi.length > 0) {
-        this.stato = "Gestione-Cd";
-        console.log(this.stato);
-      }
+      this.contiDepositi = c.listaConti;
+      this.controllaRecord();
     });
   }
 
@@ -92,10 +89,11 @@ export class GestioneCdComponent implements OnInit {
         dtoCanc.contoDeposito = this.contoDeposito;
 
         let oss = this.http.post<ListaContiDepositoDto>("http://localhost:8080/elimina-contodeposito", dtoCanc)
-        oss.subscribe(r =>
-          this.contiDepositi = r.listaConti);
-
-        this.stato = "Gestione-Cd";
+        oss.subscribe(r => {
+          this.contiDepositi = r.listaConti
+          this.stato = "Gestione-Cd";
+          this.controllaRecord();
+        });
         this.editableInput = false;
         this.contoDeposito = new ContoDeposito();
         break;

@@ -14,7 +14,7 @@
         <td><button (click)="associa(c)">Associa</button></td>
     </tr>
 </table>
-<input type="text" placeholder="ricercaConto" [(ngModel)]="ricercaConto">
+<input type="text" placeholder="Ricerca Conto" [(ngModel)]="ricercaConto">
 <button (click)="cercaContoPrestito()">Cerca</button>
 <br>
 <div *ngIf="contoPrestito.id">C/P trovato: {{cpTrovato}}</div>
