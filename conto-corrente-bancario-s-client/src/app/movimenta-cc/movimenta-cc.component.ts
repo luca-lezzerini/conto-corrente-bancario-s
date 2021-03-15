@@ -4,6 +4,7 @@ import { Data } from '@angular/router';
 import { ContoCorrente } from '../conto-corrente';
 import { ContoCorrenteDto } from '../dto/conto-corrente-dto';
 import { ListaContiCorrenteDto } from '../dto/lista-conti-corrente-dto';
+import { MovimentaCc } from './movimenta-cc';
 import { RicercaContoCorrenteDto } from '../dto/ricerca-conto-corrente-dto';
 
 @Component({
@@ -25,7 +26,8 @@ export class MovimentaCcComponent implements OnInit {
   erroreConto = "";
   statoErroreCliente = "";
   statoErroreConto = "";
-
+  //CodiceConto = new ContoCorrente();
+  b = new MovimentaCc();
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -51,7 +53,7 @@ export class MovimentaCcComponent implements OnInit {
   }
 
   esegui() {
-
+    
   }
 
   seleziona() { }

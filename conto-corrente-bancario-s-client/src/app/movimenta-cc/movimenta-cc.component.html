@@ -13,16 +13,14 @@
   <option ngValue="P">Prelievo</option>
 </select>
 {{ tipoMovimento }}
-<input type="text" placeholder="Importo" [(ngModel)]="importo">
+<input type="text" placeholder="Importo" [(ngModel)]="b.importo">
 <button (click)="esegui()">Esegui</button>
 <br><br>
 <table border=3px>
   <td>Data </td>
   <td>Tipo movimento</td>
   <td>Importo</td>
-  <td>Gestisci </td>
   <tr *ngFor="let a of contiCorrente">
     <td>{{a.importo}}</td>
-    <td><button (click)="seleziona()">Seleziona</button></td>
   </tr>
 </table>
