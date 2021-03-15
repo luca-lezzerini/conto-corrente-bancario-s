@@ -1,6 +1,5 @@
 package it.sirfin.contocorrentebancarioserver.serviceImpl;
 
-import it.sirfin.contocorrentebancarioserver.dto.ClienteDto;
 import it.sirfin.contocorrentebancarioserver.dto.ContoCorrenteDto;
 import it.sirfin.contocorrentebancarioserver.dto.ContoDepositoDto;
 import it.sirfin.contocorrentebancarioserver.dto.ContoPrestitoDto;
@@ -13,10 +12,12 @@ import it.sirfin.contocorrentebancarioserver.model.Cliente;
 import it.sirfin.contocorrentebancarioserver.model.ContoCorrente;
 import it.sirfin.contocorrentebancarioserver.model.ContoDeposito;
 import it.sirfin.contocorrentebancarioserver.model.ContoPrestito;
+import it.sirfin.contocorrentebancarioserver.model.MovimentiContoCorrente;
 import it.sirfin.contocorrentebancarioserver.repository.ClienteRepository;
 import it.sirfin.contocorrentebancarioserver.repository.ContoCorrenteRepository;
 import it.sirfin.contocorrentebancarioserver.repository.ContoDepositoRepository;
 import it.sirfin.contocorrentebancarioserver.repository.ContoPrestitoRepository;
+import it.sirfin.contocorrentebancarioserver.repository.MovimentiContoCorrenteRepository;
 import it.sirfin.contocorrentebancarioserver.service.AccountManagementService;
 import java.time.LocalDate;
 import java.util.List;
@@ -29,7 +30,8 @@ public class AccountManagementServiceImpl implements AccountManagementService {
 
     @Autowired
     ClienteRepository clienteRepository;
-
+    @Autowired
+    MovimentiContoCorrenteRepository movimentiContoCorrenteRepository;
     @Autowired
     ContoCorrenteRepository contoCorrenteRepository;
 
@@ -41,8 +43,9 @@ public class AccountManagementServiceImpl implements AccountManagementService {
 
     public void demo() {
 
-        clienteRepository.deleteAllInBatch();
+        movimentiContoCorrenteRepository.deleteAllInBatch();
         contoCorrenteRepository.deleteAllInBatch();
+        clienteRepository.deleteAllInBatch();
         contoDepositoRepository.deleteAllInBatch();
         contoPrestitoRepository.deleteAllInBatch();
         //Comment metodi inserimento
@@ -81,6 +84,35 @@ public class AccountManagementServiceImpl implements AccountManagementService {
         cCD1 = contoDepositoRepository.save(cCD1);
         cCD2 = contoDepositoRepository.save(cCD2);
         cCD3 = contoDepositoRepository.save(cCD3);
+
+        MovimentiContoCorrente mcc1 = new MovimentiContoCorrente(LocalDate.of(2001, 9, 11), "Versamento", 1500.50);
+        mcc1 = movimentiContoCorrenteRepository.save(mcc1);
+        //creazione archivio clienti
+        MovimentiContoCorrente mcc2 = new MovimentiContoCorrente(LocalDate.of(2006, 7, 26), "Prelievo", 500);
+        mcc2 = movimentiContoCorrenteRepository.save(mcc2);
+        //creazione archivio clienti
+        MovimentiContoCorrente mcc3 = new MovimentiContoCorrente(LocalDate.of(2000, 1, 12), "Bonifico", 47.45);
+        mcc3 = movimentiContoCorrenteRepository.save(mcc3);
+        //creazione archivio conti corrente
+
+        associaCcaC(c3, cC3);
+        associaCcaC(c2, cC2);
+        associaCcaC(c1, cC1);
+        //Associamo il movimento con il conto corrente 
+        associaMCcC(mcc3, cC3);
+        associaMCcC(mcc2, cC2);
+        associaMCcC(mcc1, cC1);
+    }
+
+    @Override
+    public void associaMCcC(MovimentiContoCorrente mcc, ContoCorrente cc) {
+
+        mcc.setContoCorrente(cc);
+        movimentiContoCorrenteRepository.save(mcc);
+        Set<MovimentiContoCorrente> conti = cc.getMovimentiContoCorrente();
+        conti.add(mcc);
+        contoCorrenteRepository.save(cc);
+
     }
 
     @Override

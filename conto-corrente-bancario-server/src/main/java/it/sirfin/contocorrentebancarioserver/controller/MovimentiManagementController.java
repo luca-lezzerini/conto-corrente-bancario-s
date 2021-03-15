@@ -16,6 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MovimentiManagementController {
 
+    @RequestMapping("/demo3")
+    public void demo3() {
+        movimentiManagementService.demo3();
+    }
     @Autowired
     MovimentiManagementService movimentiManagementService;
 
@@ -36,5 +40,7 @@ public class MovimentiManagementController {
     public ListaClientiDto cercaClienteSaldo(@RequestBody RicercaClienteDto dto) {
         return movimentiManagementService.cercaClienteSaldo(dto.getRicercaPerCognome());
     }
+
+    
     
 }

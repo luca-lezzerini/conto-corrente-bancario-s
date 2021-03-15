@@ -13,6 +13,8 @@ import it.sirfin.contocorrentebancarioserver.model.Cliente;
 import it.sirfin.contocorrentebancarioserver.model.ContoCorrente;
 import it.sirfin.contocorrentebancarioserver.model.ContoDeposito;
 import it.sirfin.contocorrentebancarioserver.model.ContoPrestito;
+import it.sirfin.contocorrentebancarioserver.model.MovimentiContoCorrente;
+import java.util.Set;
 import org.springframework.web.bind.annotation.RequestBody;
 
 public interface AccountManagementService {
@@ -20,6 +22,8 @@ public interface AccountManagementService {
     ListaContiCorrenteDto aggiungiCc(ContoCorrente cc);
 
     ListaContiCorrenteDto eliminaCc(ContoCorrente cc);
+
+    public void associaMCcC(MovimentiContoCorrente mcc, ContoCorrente cc);
 
     ContoCorrenteDto modificaCc(ContoCorrente cc);
 
