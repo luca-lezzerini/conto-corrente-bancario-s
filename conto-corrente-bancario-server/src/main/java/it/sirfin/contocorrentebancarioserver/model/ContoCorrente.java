@@ -5,6 +5,7 @@
  */
 package it.sirfin.contocorrentebancarioserver.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -33,12 +34,15 @@ public class ContoCorrente implements Serializable {
     @JoinColumn(referencedColumnName = "id")
     private Cliente cliente;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "contoCorrente")
     private Set<MovimentiContoCorrente> MovimentiContoCorrente;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "contoCorrente")
     private Set<MovimentiContoDeposito> MovimentiContoDeposito;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "contoCorrente")
     private Set<MovimentiContoPrestito> MovimentiContoPrestito;
 
