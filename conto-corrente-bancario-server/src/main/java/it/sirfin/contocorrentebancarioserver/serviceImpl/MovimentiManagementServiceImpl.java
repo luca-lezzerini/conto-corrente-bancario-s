@@ -2,6 +2,7 @@ package it.sirfin.contocorrentebancarioserver.serviceImpl;
 
 import it.sirfin.contocorrentebancarioserver.dto.ContoPrestitoDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaClientiDto;
+import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCdDto;
 import it.sirfin.contocorrentebancarioserver.dto.MessaggioPerUtenteDto;
 import it.sirfin.contocorrentebancarioserver.dto.TuttiContiDto;
 import it.sirfin.contocorrentebancarioserver.model.Cliente;
@@ -15,12 +16,14 @@ import it.sirfin.contocorrentebancarioserver.dto.MovimentoCpDto;
 import it.sirfin.contocorrentebancarioserver.dto.TuttiContiDto;
 import it.sirfin.contocorrentebancarioserver.model.Cliente;
 import it.sirfin.contocorrentebancarioserver.model.ContoPrestito;
+import it.sirfin.contocorrentebancarioserver.model.MovimentiContoDeposito;
 import it.sirfin.contocorrentebancarioserver.model.MovimentiContoPrestito;
 import it.sirfin.contocorrentebancarioserver.repository.ClienteRepository;
 import it.sirfin.contocorrentebancarioserver.repository.ContoCorrenteRepository;
 import it.sirfin.contocorrentebancarioserver.repository.ContoDepositoRepository;
 import it.sirfin.contocorrentebancarioserver.repository.ContoPrestitoRepository;
 import it.sirfin.contocorrentebancarioserver.repository.MovimentiContoCorrenteRepository;
+import it.sirfin.contocorrentebancarioserver.repository.MovimentiContoDepositoRepository;
 import it.sirfin.contocorrentebancarioserver.service.MovimentiManagementService;
 import java.time.LocalDate;
 import java.util.Set;
@@ -51,6 +54,9 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
 
     @Autowired
     MovimentiContoPrestitoRepository movimentiContoPrestitoRepository;
+
+    @Autowired
+    MovimentiContoDepositoRepository movimentiContoDepositoRepository;
 
     @Override
     public void demo3() {
@@ -136,4 +142,13 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
         movimentiContoPrestitoRepository.save(mcp);
 
     }
+
+    @Override
+    public ListaMovimentiCdDto salvaMovimentoCd(ContoDeposito cd, MovimentiContoDeposito mcd) {
+        MovimentiContoDeposito mc = new MovimentiContoDeposito(LocalDate.now(), mcd.getTipoMovimento(), mcd.getImportoMov());
+        movimentiContoDepositoRepository.save(mc);
+        List<MovimentiContoDeposito> lista = movimentiContoDepositoRepository.findAll();
+        return new ListaMovimentiCdDto(lista);
+    }
+
 }

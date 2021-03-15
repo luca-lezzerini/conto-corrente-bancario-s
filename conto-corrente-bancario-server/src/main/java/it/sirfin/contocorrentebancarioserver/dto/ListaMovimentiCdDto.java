@@ -1,25 +1,31 @@
 package it.sirfin.contocorrentebancarioserver.dto;
 
 import it.sirfin.contocorrentebancarioserver.model.ContoDeposito;
+import it.sirfin.contocorrentebancarioserver.model.MovimentiContoDeposito;
 import java.util.List;
 
 public class ListaMovimentiCdDto {
 
-    private List<ContoDeposito> listaConti;
+    private List<MovimentiContoDeposito> listaMovimentiCd;
 
     public ListaMovimentiCdDto() {
     }
 
-    public ListaMovimentiCdDto(List<ContoDeposito> listaConti) {
-        this.listaConti = listaConti;
+    public ListaMovimentiCdDto(List<MovimentiContoDeposito> listaMovimentiCd) {
+        this.listaMovimentiCd = listaMovimentiCd;
     }
 
-    public List<ContoDeposito> getListaConti() {
-        return listaConti;
+    public List<MovimentiContoDeposito> getListaMovimentiCd() {
+        return listaMovimentiCd;
     }
 
-    public void setListaConti(List<ContoDeposito> listaConti) {
-        this.listaConti = listaConti;
+    public void setListaMovimentiCd(List<MovimentiContoDeposito> listaMovimentiCd) {
+        this.listaMovimentiCd = listaMovimentiCd;
+    }
+
+    @Override
+    public String toString() {
+        return "ListaMovimentiCdDto{" + "listaMovimentiCd=" + listaMovimentiCd + '}';
     }
 
 }

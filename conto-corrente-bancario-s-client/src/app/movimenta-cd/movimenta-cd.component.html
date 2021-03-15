@@ -18,7 +18,9 @@ Conto selezionato:{{contoSelezionato}}
         <th>Tipo movimento |</th>
         <th>Importo |</th>
     </tr>
-    <tr>
-
+    <tr *ngFor="let c of movimentiCd">
+        <td>{{c.dataMov}}</td>
+        <td>{{c.tipoMovimento}}</td>
+        <td>{{c.importoMov}}</td>
     </tr>
 </table>
