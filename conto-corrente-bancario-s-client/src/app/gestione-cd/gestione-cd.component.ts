@@ -7,7 +7,8 @@ import { ListaContiDepositoDto } from '../dto/lista-conti-deposito-dto';
 @Component({
   selector: 'app-gestione-cd',
   templateUrl: './gestione-cd.component.html',
-  styleUrls: ['./gestione-cd.component.css']
+  styleUrls: ['./gestione-cd.component.css',
+    '../app.component.css']
 })
 export class GestioneCdComponent implements OnInit {
 
