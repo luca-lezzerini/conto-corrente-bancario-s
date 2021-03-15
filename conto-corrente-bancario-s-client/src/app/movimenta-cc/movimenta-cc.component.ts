@@ -7,6 +7,7 @@ import { ListaContiCorrenteDto } from '../dto/lista-conti-corrente-dto';
 import { ListaMovimentiCcDto } from '../dto/lista-movimenti-cc-dto';
 import { RicercaContoCorrenteDto } from '../dto/ricerca-conto-corrente-dto';
 import { MovimentaCc } from './movimenta-cc';
+import { Prova } from './prova';
 
 @Component({
   selector: 'app-movimenta-cc',
@@ -55,13 +56,15 @@ export class MovimentaCcComponent implements OnInit {
   }
 
   esegui() {
-    /*let dto = new MovimentaCc();
-    dto.prova = this.b;
+    let dto = new MovimentaCc();
+    dto.Mov = this.b;
 
     let ox = this.http.post<ListaMovimentiCcDto>(
       this.url + "inserisci-movimento", dto
     );
     ox.subscribe(s => this.mov = s.listaMovimentiCc );
+
+    this.b = new MovimentaCc();
     /*
     // prepariamo i dati da inviare al server
     let dto = new AutoDto();
