@@ -21,6 +21,8 @@
   <td>Tipo movimento</td>
   <td>Importo</td>
   <tr *ngFor="let a of contiCorrente">
+    <td>{{a.date}}</td>
+    <td>{{a.tipoMovimento}}</td>
     <td>{{a.importo}}</td>
   </tr>
 </table>
