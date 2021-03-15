@@ -31,7 +31,7 @@ public class MovimentiManagementController {
     @Autowired
     MovimentiManagementService movimentiManagementService;
 
-    @RequestMapping("/ricerca-cliente-like")
+    @RequestMapping("ricerca-cliente-like")
     @ResponseBody
     public ListaClientiDto cercaClienteLike(@RequestBody RicercaClienteDto dto) {
         return movimentiManagementService.cercaClienteLike(dto.getRicercaPerCognome());

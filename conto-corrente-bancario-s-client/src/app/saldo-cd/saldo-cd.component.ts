@@ -5,7 +5,6 @@ import { ContoDeposito } from '../conto-deposito';
 import { ClienteDto } from '../dto/cliente-dto';
 import { ContoDepositoDto } from '../dto/conto-deposito-dto';
 import { ListaClientiDto } from '../dto/lista-clienti-dto';
-import { MovimentoCdDto } from '../dto/movimento-cd-dto';
 import { RicercaClienteDto } from '../dto/ricerca-cliente-dto';
 import { TuttiContiDto } from '../dto/tutti-conti-dto';
 
@@ -19,7 +18,7 @@ export class SaldoCdComponent implements OnInit {
   contiDeposito: ContoDeposito[] = [];
   ricercaCliente = "";
   showTab2 = false;
-  saldoTot = 0;
+
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -28,7 +27,7 @@ export class SaldoCdComponent implements OnInit {
   cerca() {
     let dto = new RicercaClienteDto();
     dto.ricercaPerCognome = this.ricercaCliente;
-    this.http.post<ListaClientiDto>("http://localhost:8080/ricerca-cliente-like", dto)
+    this.http.post<ListaClientiDto>("http://localhost:8080/ricerca-cliente-saldo-cd", dto)
       .subscribe(r => this.clienti = r.listaClienti);
   }
 
@@ -41,9 +40,9 @@ export class SaldoCdComponent implements OnInit {
   }
 
   saldo(cc: ContoDeposito) {
-    let dto = new MovimentoCdDto();
+    let dto = new ContoDepositoDto();
     dto.contoDeposito = cc;
-    this.http.post<MovimentoCdDto>("http://localhost:8080/", dto)
-      .subscribe(r => this.saldoTot = r.movimentoCd.importoMov);
+    this.http.post<TuttiContiDto>("http://localhost:8080/", dto)
+      .subscribe(r => this.contiDeposito = r.contiDeposito);
   }
 }
