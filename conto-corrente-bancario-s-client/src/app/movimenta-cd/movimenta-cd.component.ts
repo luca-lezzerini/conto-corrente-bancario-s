@@ -41,6 +41,8 @@ export class MovimentaCdComponent implements OnInit {
           } else {
             this.erroreConto = "";
             this.contoSelezionato = r.contoDeposito.codice;
+            console.log(r.contoDeposito);
+            this.contoDeposito = r.contoDeposito;
           }
         });
     }

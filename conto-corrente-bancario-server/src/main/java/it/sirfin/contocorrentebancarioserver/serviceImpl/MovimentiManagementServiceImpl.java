@@ -15,6 +15,7 @@ import it.sirfin.contocorrentebancarioserver.dto.MovimentoCpDto;
 import it.sirfin.contocorrentebancarioserver.dto.TuttiContiDto;
 import it.sirfin.contocorrentebancarioserver.model.Cliente;
 import it.sirfin.contocorrentebancarioserver.model.ContoPrestito;
+import it.sirfin.contocorrentebancarioserver.model.MovimentiContoDeposito;
 import it.sirfin.contocorrentebancarioserver.model.MovimentiContoPrestito;
 import it.sirfin.contocorrentebancarioserver.repository.ClienteRepository;
 import it.sirfin.contocorrentebancarioserver.repository.ContoCorrenteRepository;
@@ -136,4 +137,10 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
         movimentiContoPrestitoRepository.save(mcp);
 
     }
+
+    @Override
+    public MovimentiContoDeposito saldo(ContoDeposito cd, MovimentiContoDeposito mcd) {
+        List<ContoCorrente> cc = contoCorrenteRepository.findAll();
+    }
+
 }
