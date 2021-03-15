@@ -5,10 +5,8 @@
  */
 package it.sirfin.contocorrentebancarioserver.repository;
 
-import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCpDto;
 import it.sirfin.contocorrentebancarioserver.model.MovimentiContoPrestito;
-import java.time.LocalDate;
-import java.util.List;
+import java.util.Set;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -18,4 +16,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface MovimentiContoPrestitoRepository extends JpaRepository<MovimentiContoPrestito, Long> {
+    Set<MovimentiContoPrestito> findByContoPrestitoId(Long l);
 }

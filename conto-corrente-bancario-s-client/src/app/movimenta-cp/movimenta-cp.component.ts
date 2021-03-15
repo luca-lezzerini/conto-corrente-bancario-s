@@ -18,7 +18,7 @@ export class MovimentaCpComponent implements OnInit {
   contoSelezionato = "";
 
   movimentoCp = new MovimentiContoPrestito();
-  listaMovimentiCp: MovimentiContoPrestito[] = [];
+  listaMovimentiCp: MovimentiContoPrestito[] = [];  
 
   constructor(private http: HttpClient) { }
 

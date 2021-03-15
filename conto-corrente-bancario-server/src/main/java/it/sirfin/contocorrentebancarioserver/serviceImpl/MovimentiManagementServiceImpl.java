@@ -3,16 +3,10 @@ package it.sirfin.contocorrentebancarioserver.serviceImpl;
 import it.sirfin.contocorrentebancarioserver.dto.ContoPrestitoDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaClientiDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCdDto;
-import it.sirfin.contocorrentebancarioserver.dto.MessaggioPerUtenteDto;
-import it.sirfin.contocorrentebancarioserver.dto.TuttiContiDto;
-import it.sirfin.contocorrentebancarioserver.model.Cliente;
 import it.sirfin.contocorrentebancarioserver.model.ContoCorrente;
 import it.sirfin.contocorrentebancarioserver.model.ContoDeposito;
-import it.sirfin.contocorrentebancarioserver.model.ContoPrestito;
 import it.sirfin.contocorrentebancarioserver.model.MovimentiContoCorrente;
 import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCpDto;
-import it.sirfin.contocorrentebancarioserver.dto.MovimentaContoCorrenteDto;
-import it.sirfin.contocorrentebancarioserver.dto.MovimentoCpDto;
 import it.sirfin.contocorrentebancarioserver.dto.TuttiContiDto;
 import it.sirfin.contocorrentebancarioserver.model.Cliente;
 import it.sirfin.contocorrentebancarioserver.model.ContoPrestito;
@@ -24,14 +18,11 @@ import it.sirfin.contocorrentebancarioserver.repository.ContoDepositoRepository;
 import it.sirfin.contocorrentebancarioserver.repository.ContoPrestitoRepository;
 import it.sirfin.contocorrentebancarioserver.repository.MovimentiContoCorrenteRepository;
 import it.sirfin.contocorrentebancarioserver.repository.MovimentiContoDepositoRepository;
-import it.sirfin.contocorrentebancarioserver.service.MovimentiManagementService;
-import java.time.LocalDate;
 import java.util.Set;
 import it.sirfin.contocorrentebancarioserver.repository.MovimentiContoPrestitoRepository;
 import it.sirfin.contocorrentebancarioserver.service.MovimentiManagementService;
 import java.time.LocalDate;
 import java.util.List;
-import javax.naming.OperationNotSupportedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -131,17 +122,19 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
     @Override
     public ListaMovimentiCpDto salvaMovimento(MovimentiContoPrestito mcp, ContoPrestito cp) {
         associaMovimentoCp(mcp, cp);
-        ListaMovimentiCpDto lista = new ListaMovimentiCpDto(cp.getMovimentiContoPrestito());
+        ListaMovimentiCpDto lista = new ListaMovimentiCpDto(
+        movimentiContoPrestitoRepository.findByContoPrestitoId(cp.getId()));
+        System.out.println("quantità movimenti associati" + lista.getListaMovimentiCp().size());
         return lista;
     }
 
     private void associaMovimentoCp(MovimentiContoPrestito mcp, ContoPrestito cp) {
         mcp = movimentiContoPrestitoRepository.save(mcp);
         mcp.setContoPrestito(cp);
-        cp.getMovimentiContoPrestito().add(mcp);
+        Set <MovimentiContoPrestito> movimenti = cp.getMovimentiContoPrestito();
+        movimenti.add(mcp);
         contoPrestitoRepsitory.save(cp);
         movimentiContoPrestitoRepository.save(mcp);
-
     }
 
     @Override
