@@ -6,6 +6,7 @@
 package it.sirfin.contocorrentebancarioserver.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -21,7 +22,7 @@ import javax.persistence.OneToMany;
  * @author marco
  */
 @Entity
-public class ContoPrestito {
+public class ContoPrestito implements Serializable{
 
     @Id
     @GeneratedValue
@@ -32,8 +33,9 @@ public class ContoPrestito {
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
     private Cliente cliente;
-    @JsonIgnore
+
     @OneToMany(mappedBy = "contoPrestito")
+    @JsonIgnore
     private Set<MovimentiContoPrestito> MovimentiContoPrestito;
 
     public ContoPrestito() {
@@ -68,6 +70,7 @@ public class ContoPrestito {
         this.cliente = cliente;
     }
 
+    @JsonIgnore
     public Set<MovimentiContoPrestito> getMovimentiContoPrestito() {
         if (MovimentiContoPrestito == null) {
             MovimentiContoPrestito = new HashSet<>();

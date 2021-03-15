@@ -20,30 +20,30 @@ export class MovimentaCpComponent implements OnInit {
   movimentoCp = new MovimentiContoPrestito();
   listaMovimentiCp: MovimentiContoPrestito[] = [];
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
   }
 
-  cerca(){
+  cerca() {
     let dto = new RicercaContoCorrenteDto();
     dto.codiceEsatto = this.contoDaCercare.codice;
-    let oss = this.http.post<ContoPrestitoDto>("http://localhost:8080/cerca-cp",dto);
-    oss.subscribe(c =>{
+    let oss = this.http.post<ContoPrestitoDto>("http://localhost:8080/cerca-cp", dto);
+    oss.subscribe(c => {
       this.contoDaCercare = c.contoPrestito;
       this.contoSelezionato = c.contoPrestito.codice;
     });
     this.contoDaCercare = new ContoPrestito();
   }
 
-  esegui(){
+  esegui() {
     let dto = new MovimentoCpDto();
     dto.movimentoCp = this.movimentoCp;
     dto.contoPrestito = this.contoDaCercare;
-    let oss = this.http.post<ListaMovimentiCpDto>("http://localhost:8080/salva-movimento-cp",dto)
-    oss.subscribe(c =>{
-      this.listaMovimentiCp = c.listaMovimentiCp;
-    });
+    this.http.post<ListaMovimentiCpDto>("http://localhost:8080/salva-movimento-cp", dto)
+      .subscribe(c => {
+        this.listaMovimentiCp = c.listaMovimentiCp;
+      });
   }
 
 }

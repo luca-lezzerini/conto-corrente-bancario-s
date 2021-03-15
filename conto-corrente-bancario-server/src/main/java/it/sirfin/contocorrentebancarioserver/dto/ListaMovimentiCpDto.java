@@ -6,7 +6,6 @@
 package it.sirfin.contocorrentebancarioserver.dto;
 
 import it.sirfin.contocorrentebancarioserver.model.MovimentiContoPrestito;
-import java.util.List;
 import java.util.Set;
 
 public class ListaMovimentiCpDto {

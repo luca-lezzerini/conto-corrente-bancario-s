@@ -58,7 +58,7 @@ public class MovimentiManagementController {
     @RequestMapping("salva-movimento-cp")
     @ResponseBody
     public ListaMovimentiCpDto salvaMovimento(@RequestBody MovimentoCpDto dto1) {
-        return movimentiManagementService.salvaMovimento(dto1);
+        return movimentiManagementService.salvaMovimento(dto1.getMovimentoCp(), dto1.getContoPrestito());
     }
     
     @RequestMapping("salva-movimento-cd")

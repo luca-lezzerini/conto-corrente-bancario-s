@@ -3,16 +3,14 @@ package it.sirfin.contocorrentebancarioserver.service;
 import it.sirfin.contocorrentebancarioserver.dto.ContoPrestitoDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaClientiDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCdDto;
-import it.sirfin.contocorrentebancarioserver.dto.MessaggioPerUtenteDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCpDto;
-import it.sirfin.contocorrentebancarioserver.dto.MovimentaContoCorrenteDto;
 import it.sirfin.contocorrentebancarioserver.dto.MovimentoCpDto;
 import it.sirfin.contocorrentebancarioserver.dto.TuttiContiDto;
 import it.sirfin.contocorrentebancarioserver.model.Cliente;
 import it.sirfin.contocorrentebancarioserver.model.ContoDeposito;
+import it.sirfin.contocorrentebancarioserver.model.ContoPrestito;
 import it.sirfin.contocorrentebancarioserver.model.MovimentiContoDeposito;
 import it.sirfin.contocorrentebancarioserver.model.MovimentiContoPrestito;
-import java.util.List;
 
 public interface MovimentiManagementService {
 
@@ -27,7 +25,7 @@ public interface MovimentiManagementService {
 
     ContoPrestitoDto cercaContoCp(String c);
 
-    ListaMovimentiCpDto salvaMovimento(MovimentoCpDto dto);
+    ListaMovimentiCpDto salvaMovimento(MovimentiContoPrestito mcp, ContoPrestito cp);
 
     ListaMovimentiCdDto salvaMovimentoCd(ContoDeposito cd, MovimentiContoDeposito mcd);
     
