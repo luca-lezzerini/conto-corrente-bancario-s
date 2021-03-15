@@ -12,7 +12,7 @@ import { RicercaContoCorrenteDto } from '../dto/ricerca-conto-corrente-dto';
   styleUrls: ['./movimenta-cc.component.css']
 })
 export class MovimentaCcComponent implements OnInit {
-
+  tipoMovimento = "V";
   codiceConto = "";
   importo = "";
   contoSelezionato = "";
