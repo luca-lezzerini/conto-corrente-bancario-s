@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ContoCorrente } from '../conto-corrente';
+import { ContoDeposito } from '../conto-deposito';
+import { ContoDepositoDto } from '../dto/conto-deposito-dto';
 import { RicercaContoCorrenteDto } from '../dto/ricerca-conto-corrente-dto';
-import { TuttiContiDto } from '../dto/tutti-conti-dto';
 
 @Component({
   selector: 'app-movimenta-cd',
@@ -11,21 +11,33 @@ import { TuttiContiDto } from '../dto/tutti-conti-dto';
 })
 export class MovimentaCdComponent implements OnInit {
   codiceConto = "";
-  contiCorrente: ContoCorrente[] = [];
-  ContoSelezionato="";
-  importo:number;
+  contoDeposito = new ContoDeposito();
+  contoSelezionato = "";
+  importo: number;
+  erroreConto = "";
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
   }
   cerca() {
+    this.contoSelezionato = "";
     let ric = new RicercaContoCorrenteDto();
     ric.codiceEsatto = this.codiceConto;
-    this.http.post<TuttiContiDto>("http://localhost:8080/ricerca", ric)
-      .subscribe(r => {
-        this.contiCorrente = r.contiCorrenti;
-      });
+    if (this.codiceConto == "") {
+      console.log("Nessun conto selezionato");
+      this.erroreConto = "Nessun conto selezionato";
+    } else {
+      this.erroreConto = "";
+      this.http.post<ContoDepositoDto>("http://localhost:8080/ricerca-cd", ric)
+        .subscribe(r => {
+          if (r.contoDeposito == null) {
+            this.erroreConto = "Nessun conto trovato";
+          } else {
+            this.erroreConto = "";
+            this.contoSelezionato = r.contoDeposito.codice;
+          }
+        });
+    }
   }
-
   esegui() { }
 }
