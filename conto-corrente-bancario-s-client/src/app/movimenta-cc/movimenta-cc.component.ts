@@ -6,8 +6,8 @@ import { ContoCorrenteDto } from '../dto/conto-corrente-dto';
 import { ListaContiCorrenteDto } from '../dto/lista-conti-corrente-dto';
 import { ListaMovimentiCcDto } from '../dto/lista-movimenti-cc-dto';
 import { RicercaContoCorrenteDto } from '../dto/ricerca-conto-corrente-dto';
-import { MovimentaCc } from './movimenta-cc';
-import { Prova } from './prova';
+import { MovimentaCcDto } from './movimenta-cc-dto';
+import { Mov } from './mov';
 
 @Component({
   selector: 'app-movimenta-cc',
@@ -29,8 +29,8 @@ export class MovimentaCcComponent implements OnInit {
   statoErroreCliente = "";
   statoErroreConto = "";
   //CodiceConto = new ContoCorrente();
-  b = new MovimentaCc();
-  mov:MovimentaCc[] = [];
+  movimento = new MovimentaCcDto();
+  mov:MovimentaCcDto[] = [];
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -56,29 +56,24 @@ export class MovimentaCcComponent implements OnInit {
   }
 
   esegui() {
-    let dto = new MovimentaCc();
-    dto.Mov = this.b;
+    let dto = new MovimentaCcDto();
+    dto.MovimentaCc = this.movimento;
 
     let ox = this.http.post<ListaMovimentiCcDto>(
       this.url + "inserisci-movimento", dto
     );
     ox.subscribe(s => this.mov = s.listaMovimentiCc );
 
-    this.b = new MovimentaCc();
+    this.movimento = new MovimentaCcDto();
     /*
-    // prepariamo i dati da inviare al server
-    let dto = new AutoDto();
-    dto.automobile = this.auto;
-
-    // chiamiamo il servizio REST
-    let ox = this.http.post<ListeAutoDto>(
-      "http://localhost:8080/inserisci-auto",
-      dto
-    );
-    ox.subscribe(r => this.automobili = r.listaAuto);
-
-    // ripulisce i campi
-    this.auto = new Automobile();
+    let dto = new MovimentoCpDto();
+    dto.movimentoCp = this.movimentoCp;
+    dto.contoPrestito = this.contoDaCercare;
+    let oss = this.http.post<ListaMovimentiCpDto>("http://localhost:8080/salva-movimento-cp",dto)
+    oss.subscribe(c =>{
+      this.listaMovimentiCp = c.listaMovimentiCp;
+    });
+  }
     */
   }
 
