@@ -49,4 +49,9 @@ public class ContoCorrenteBancarioController {
     public ListaClientiDto confermaModificaCliente(@RequestBody ClienteDto dto) {
         return contoCorrenteService.confermaModificaCliente(dto.getCliente());
     }
+
+    @RequestMapping("/demo")
+    public void demo() {
+        contoCorrenteService.demo();
+    }
 }

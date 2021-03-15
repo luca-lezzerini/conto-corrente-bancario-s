@@ -30,10 +30,10 @@ public class ContoCorrenteServiceImpl implements ContoCorrenteService {
     @Override
     public void demo() {
 
-        clienteRepository.deleteAllInBatch();
         contoCorrenteRepository.deleteAllInBatch();
         contoDepositoRepository.deleteAllInBatch();
         contoPrestitoRepsitory.deleteAllInBatch();
+        clienteRepository.deleteAllInBatch();
     }
 
     @Override
