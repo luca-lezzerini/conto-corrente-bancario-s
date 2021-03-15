@@ -1,26 +1,27 @@
-<h1>{{stato}}</h1>
-<input type="text" [(ngModel)]="contoDeposito.codice" [disabled]="editableInput">
+<button (click)="nuovo()" *ngIf="stato == 'nuovo'">New</button>
+<div *ngIf="stato != 'nuovo'">
+    <input type="text" [(ngModel)]="contoDeposito.codice" [disabled]="editableInput">
 
-<span *ngIf="stato == 'Gestione-Cd'">
-    <button (click)="aggiungi()">Aggiungi</button>
-    <button (click)="nuovo()">New</button>
-</span>
+    <span *ngIf="stato == 'Gestione-Cd'">
+        <button (click)="aggiungi()">Aggiungi</button>
+    </span>
 
-<span *ngIf="stato != 'Gestione-Cd'">
-    <button (click)="conferma()">Conferma {{stato}}</button>
-    <button (click)="annulla()">Annulla {{stato}}</button>
-</span>
-<br>
-<br>
-<table *ngIf="contiDepositi.length >0 && stato == 'Gestione-Cd'">
-    <tr>
-        <th>Nome</th>
-        <th>Cancellazione</th>
-        <th>Modifica</th>
-    </tr>
-    <tr *ngFor="let c of contiDepositi">
-        <td>{{c.codice}}</td>
-        <td><button (click)="elimina(c)">Cancella</button></td>
-        <td><button (click)="seleziona(c)">seleziona</button></td>
-    </tr>
-</table>
+    <span *ngIf="stato != 'Gestione-Cd'">
+        <button (click)="conferma()">Conferma {{stato}}</button>
+        <button (click)="annulla()">Annulla {{stato}}</button>
+    </span>
+    <br>
+    <br>
+    <table *ngIf="contiDepositi.length >0 && stato == 'Gestione-Cd'">
+        <tr>
+            <th>Nome</th>
+            <th>Cancellazione</th>
+            <th>Modifica</th>
+        </tr>
+        <tr *ngFor="let c of contiDepositi">
+            <td>{{c.codice}}</td>
+            <td><button (click)="elimina(c)">Cancella</button></td>
+            <td><button (click)="seleziona(c)">seleziona</button></td>
+        </tr>
+    </table>
+</div>

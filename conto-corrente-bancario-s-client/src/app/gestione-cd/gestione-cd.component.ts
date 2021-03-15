@@ -13,21 +13,33 @@ export class GestioneCdComponent implements OnInit {
 
   contoDeposito = new ContoDeposito();
   contiDepositi: ContoDeposito[] = [];
-  stato = "Gestione-Cd";
+  stato = "nuovo";
   editableInput = false;
 
   constructor(private http: HttpClient) {
-    this.aggiorna();
+    this.aggiorna()
   }
 
   ngOnInit(): void {
   }
 
+  controllaRecord() {
+    this.aggiorna();
+    if (this.contiDepositi.length > 0) {
+      this.stato = "Gestione-Cd";
+      console.log(this.stato);
+    }
+  }
+
   aggiorna() {
     let oss = this.http.get<ListaContiDepositoDto>("http://localhost:8080/aggiorna-cd");
-    oss.subscribe(c =>
+    oss.subscribe(c => {
       this.contiDepositi = c.listaConti
-    );
+      if (this.contiDepositi.length > 0) {
+        this.stato = "Gestione-Cd";
+        console.log(this.stato);
+      }
+    });
   }
 
   aggiungi() {
@@ -47,7 +59,9 @@ export class GestioneCdComponent implements OnInit {
     this.editableInput = true;
   }
 
-  nuovo() { }
+  nuovo() {
+    this.stato = "Gestione-Cd";
+  }
 
   seleziona(c: ContoDeposito) {
     let dto = new ContoDepositoDto();
