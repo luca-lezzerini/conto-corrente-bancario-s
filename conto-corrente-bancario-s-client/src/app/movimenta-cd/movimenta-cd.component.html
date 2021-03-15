@@ -4,11 +4,11 @@
 <br>
 Conto selezionato:{{contoSelezionato}}
 <br>
-<select [(ngModel)]="movimentoCd.tipoMov">
+<select [(ngModel)]="movimentoCd.tipoMovimento">
     <option value="deposito">Deposito</option>
     <option value="riscatto">Riscatto</option>
 </select>
-<input type="text" placeholder="importo" [(ngModel)]="monimentoCd.importoMov">
+<input type="text" placeholder="importo" [(ngModel)]="movimentoCd.importoMov">
 <button (click)="esegui()">Esegui</button>
 <br>
 <br>
@@ -17,5 +17,8 @@ Conto selezionato:{{contoSelezionato}}
         <th>Data |</th>
         <th>Tipo movimento |</th>
         <th>Importo |</th>
+    </tr>
+    <tr>
+
     </tr>
 </table>
