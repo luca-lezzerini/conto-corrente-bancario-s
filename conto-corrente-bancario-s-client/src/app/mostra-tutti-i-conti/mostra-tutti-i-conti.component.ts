@@ -8,7 +8,8 @@ import { RicercaClienteDto } from '../dto/ricerca-cliente-dto';
 @Component({
   selector: 'app-mostra-tutti-i-conti',
   templateUrl: './mostra-tutti-i-conti.component.html',
-  styleUrls: ['./mostra-tutti-i-conti.component.css']
+  styleUrls: ['./mostra-tutti-i-conti.component.css', 
+  '../app.component.css']
 })
 export class MostraTuttiIContiComponent implements OnInit {
   clienti: Cliente[] = [];
