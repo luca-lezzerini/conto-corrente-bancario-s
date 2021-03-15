@@ -4,8 +4,14 @@ import it.sirfin.contocorrentebancarioserver.dto.ClienteDto;
 import it.sirfin.contocorrentebancarioserver.dto.ContoDepositoDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaClientiDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCdDto;
+import it.sirfin.contocorrentebancarioserver.dto.ContoPrestitoDto;
+import it.sirfin.contocorrentebancarioserver.dto.ListaClientiDto;
+import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCpDto;
+import it.sirfin.contocorrentebancarioserver.dto.MovimentoCpDto;
 import it.sirfin.contocorrentebancarioserver.dto.RicercaClienteDto;
+import it.sirfin.contocorrentebancarioserver.dto.RicercaContoCorrenteDto;
 import it.sirfin.contocorrentebancarioserver.dto.TuttiContiDto;
+import it.sirfin.contocorrentebancarioserver.model.ContoCorrente;
 import it.sirfin.contocorrentebancarioserver.service.MovimentiManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -43,13 +49,16 @@ public class MovimentiManagementController {
         return movimentiManagementService.cercaClienteSaldo(dto.getRicercaPerCognome());
     }
 
-
-    
-    
-    @RequestMapping("ricerca-movimenti-cd")
+    @RequestMapping("cerca-cp")
     @ResponseBody
-    public ListaMovimentiCdDto ricercaMovimentiCd(@RequestBody ContoDepositoDto dto) {
-        throw new UnsupportedOperationException();
+    public ContoPrestitoDto cercaContoCp(@RequestBody RicercaContoCorrenteDto dto) {
+        return movimentiManagementService.cercaContoCp(dto.getCodiceEsatto());
     }
 
+    @RequestMapping("salva-movimento-cp")
+    @ResponseBody
+    public ListaMovimentiCpDto salvaMovimento(@RequestBody MovimentoCpDto dto1) {
+        return movimentiManagementService.salvaMovimento(dto1);
+    }
 }
+

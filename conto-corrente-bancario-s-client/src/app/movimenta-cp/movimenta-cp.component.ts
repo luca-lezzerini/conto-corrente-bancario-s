@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ContoPrestito } from '../conto-prestito';
+import { ContoPrestitoDto } from '../dto/conto-prestito-dto';
 import { ListaMovimentiCpDto } from '../dto/lista-movimenti-cp-dto';
 import { MovimentoCpDto } from '../dto/movimento-cp-dto';
+import { RicercaContoCorrenteDto } from '../dto/ricerca-conto-corrente-dto';
 import { MovimentiContoPrestito } from '../movimenti-cp';
 
 @Component({
@@ -24,12 +26,12 @@ export class MovimentaCpComponent implements OnInit {
   }
 
   cerca(){
-    let dto = new ContoPrestito();
-    dto.codice = this.contoDaCercare.codice;
-    let oss = this.http.post<ContoPrestito>("http://localhost:8080/cerca-cp",dto);
+    let dto = new RicercaContoCorrenteDto();
+    dto.codiceEsatto = this.contoDaCercare.codice;
+    let oss = this.http.post<ContoPrestitoDto>("http://localhost:8080/cerca-cp",dto);
     oss.subscribe(c =>{
-      this.contoDaCercare = c;
-      this.contoSelezionato = c.codice;
+      this.contoDaCercare = c.contoPrestito;
+      this.contoSelezionato = c.contoPrestito.codice;
     });
     this.contoDaCercare = new ContoPrestito();
   }
@@ -37,7 +39,7 @@ export class MovimentaCpComponent implements OnInit {
   esegui(){
     let dto = new MovimentoCpDto();
     dto.movimentoCp = this.movimentoCp;
-
+    dto.contoPrestito = this.contoDaCercare;
     let oss = this.http.post<ListaMovimentiCpDto>("http://localhost:8080/salva-movimento-cp",dto)
     oss.subscribe(c =>{
       this.listaMovimentiCp = c.listaMovimentiCp;
