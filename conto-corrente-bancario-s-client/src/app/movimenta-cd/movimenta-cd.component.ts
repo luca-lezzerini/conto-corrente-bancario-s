@@ -25,7 +25,7 @@ export class MovimentaCdComponent implements OnInit {
 
   ngOnInit(): void {
     this.contactForm = this.fb.group({
-      operazione: [null]
+      operazione: [1]
     });
   }
   cerca() {
@@ -49,7 +49,13 @@ export class MovimentaCdComponent implements OnInit {
     }
   }
   esegui() {
-    console.log("Form Submitted")
+    console.log("Modulo inviato")
     console.log(this.contactForm.value)
+    //   if (this.contactForm.value) {
+    //     console.log("Sono nel deposito");
+    //   } else if (this.contactForm.value) {
+    //     console.log("Sono nel riscatto");
+    //   }
+    // }
   }
 }
