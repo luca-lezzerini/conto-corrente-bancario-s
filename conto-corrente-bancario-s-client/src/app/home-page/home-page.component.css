@@ -1,0 +1,40 @@
+h1 {
+    font-size: large;
+}
+
+h3 {
+    font-size: medium;
+}
+
+text {
+    font-family: verdana;
+}
+
+button {
+    color: green;
+}
+
+ button :disabled {
+     color: red;
+ }
+
+ input[type=text] {
+    border-width: 2px;
+ }
+
+ body {
+    background-color: rgb(85, 183, 216);
+ }
+
+ table{
+    text-align: center;
+    border-width: 1px;
+ }
+
+ header {
+    text-align: center;
+ }
+
+ tr {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+ }
