@@ -11,7 +11,7 @@ import { TuttiContiDto } from '../dto/tutti-conti-dto';
 @Component({
   selector: 'app-saldo-cd',
   templateUrl: './saldo-cd.component.html',
-  styleUrls: ['./saldo-cd.component.css']
+  styleUrls: ['./saldo-cd.component.css','../app.component.css']
 })
 export class SaldoCdComponent implements OnInit {
   clienti: Cliente[] = [];
