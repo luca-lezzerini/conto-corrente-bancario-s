@@ -50,7 +50,7 @@ public class ContoCorrenteBancarioController {
         return contoCorrenteService.confermaModificaCliente(dto.getCliente());
     }
 
-    @RequestMapping("/demo")
+    @RequestMapping("/demo1")
     public void demo() {
         contoCorrenteService.demo();
     }

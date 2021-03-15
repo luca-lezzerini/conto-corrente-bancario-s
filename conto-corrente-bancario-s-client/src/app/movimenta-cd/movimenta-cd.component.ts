@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ContoDeposito } from '../conto-deposito';
 import { ContoDepositoDto } from '../dto/conto-deposito-dto';
 import { RicercaContoCorrenteDto } from '../dto/ricerca-conto-corrente-dto';
@@ -10,14 +11,22 @@ import { RicercaContoCorrenteDto } from '../dto/ricerca-conto-corrente-dto';
   styleUrls: ['./movimenta-cd.component.css']
 })
 export class MovimentaCdComponent implements OnInit {
+  contactForm: FormGroup;
+  operazioni = [
+    { id: 1, name: "Deposito" },
+    { id: 2, name: "Riscatto" }
+  ];
   codiceConto = "";
   contoDeposito = new ContoDeposito();
   contoSelezionato = "";
   importo: number;
   erroreConto = "";
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.contactForm = this.fb.group({
+      operazione: [null]
+    });
   }
   cerca() {
     this.contoSelezionato = "";
@@ -39,5 +48,8 @@ export class MovimentaCdComponent implements OnInit {
         });
     }
   }
-  esegui() { }
+  esegui() {
+    console.log("Form Submitted")
+    console.log(this.contactForm.value)
+  }
 }

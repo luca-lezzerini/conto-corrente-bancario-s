@@ -163,5 +163,10 @@ public class AccountManagementController {
     public ListaContiDepositoDto confermaModificaCd(@RequestBody ContoDepositoDto dto) {
         return accountManagementService.ModificaCd(dto.getContoDeposito());
     }
+    
+    @RequestMapping("/demo2")
+    public void demo() {
+        accountManagementService.demo();
+    }
 
 }

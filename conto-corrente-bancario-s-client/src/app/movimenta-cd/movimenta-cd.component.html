@@ -4,21 +4,22 @@
 <br>
 Conto selezionato:{{contoSelezionato}}
 <br>
-<form name="form1" id="form1" action="/action_page.php">
-    Azione: <select name="subject" id="subject">
-        <option value="">Deposito:</option>
-        <option value="">Riscatto:</option>
-
-    </select>
+<form [formGroup]="contactForm" (ngSubmit)="esegui()">
+    <p>
+        <select formControlName="operazione">
+            <option [ngValue]="null" disabled>Seleziona Operazione</option>
+            <option *ngFor="let operazione of operazioni" [ngValue]="operazione.id">{{operazione.name}}</option>
+        </select>
+        <button type="esegui">Esegui</button>
+    </p>
 </form>
 <input type="text" placeholder="importo" [(ngModel)]="importo">
-<button (click)="esegui()">Esegui</button>
 <br>
 <br>
 <table>
     <tr>
-        <th>Data</th>
-        <th>Tipo movimento</th>
-        <th>Importo</th>
+        <th>Data |</th>
+        <th>Tipo movimento |</th>
+        <th>Importo |</th>
     </tr>
 </table>

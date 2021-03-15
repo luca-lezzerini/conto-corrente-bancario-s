@@ -45,7 +45,7 @@ public class AccountManagementServiceImpl implements AccountManagementService {
         contoCorrenteRepository.deleteAllInBatch();
         contoDepositoRepository.deleteAllInBatch();
         contoPrestitoRepository.deleteAllInBatch();
-
+        //Comment metodi inserimento
         //creazione archivio clienti
         Cliente c1 = new Cliente("Mario", "Verdi", "MroVrd00A12H501U", "Via le Mani dal Naso 10", "3518864367", LocalDate.of(2000, 1, 12));
         c1 = clienteRepository.save(c1);
