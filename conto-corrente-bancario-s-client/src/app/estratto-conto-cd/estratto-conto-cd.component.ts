@@ -5,9 +5,12 @@ import { ContoCorrente } from '../conto-corrente';
 import { ContoDeposito } from '../conto-deposito';
 import { ContoPrestito } from '../conto-prestito';
 import { ClienteDto } from '../dto/cliente-dto';
+import { ContoDepositoDto } from '../dto/conto-deposito-dto';
 import { ListaClientiDto } from '../dto/lista-clienti-dto';
+import { ListaMovimentiCdDto } from '../dto/lista-movimenti-cd-dto';
 import { RicercaClienteDto } from '../dto/ricerca-cliente-dto';
 import { TuttiContiDto } from '../dto/tutti-conti-dto';
+import { MovimentiContoDeposito } from '../movimenti-cd';
 
 @Component({
   selector: 'app-estratto-conto-cd',
@@ -19,8 +22,8 @@ export class EstrattoContoCdComponent implements OnInit {
   ricercaCliente = "";
   clienti: Cliente[] = [];
   contiDeposito: ContoDeposito[] = [];
-  contiCorrenti: ContoCorrente[] = [];
-  contiPrestito: ContoPrestito[] = [];
+  movimentiCd: MovimentiContoDeposito[] = [];
+
 
   constructor(private http: HttpClient) { }
 
@@ -41,5 +44,13 @@ export class EstrattoContoCdComponent implements OnInit {
       .subscribe(tt => {
         this.contiDeposito = tt.contiDeposito;
       });
+  }
+
+  estrattoConto(cd: ContoDeposito) {
+    let dto = new ContoDepositoDto();
+    dto.contoDeposito = cd;
+    this.http.post<ListaMovimentiCdDto>("http://localhost:8080/ricerca-movimenti-cd", dto)
+      .subscribe(c => this.movimentiCd = c.listaMovimentiCd);
+
   }
 }
