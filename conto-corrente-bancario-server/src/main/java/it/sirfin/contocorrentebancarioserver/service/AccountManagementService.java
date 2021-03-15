@@ -61,4 +61,6 @@ public interface AccountManagementService {
 
     MessaggioPerUtenteDto associaCp(Cliente c, ContoPrestito cp);
 
+    void demo();
+
 }
