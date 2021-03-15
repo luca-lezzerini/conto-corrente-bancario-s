@@ -10,18 +10,4 @@ export class AppComponent {
 
   constructor(private http: HttpClient) { }
 
-  nuovo() {
-
-  }
-  aggiungi() {
-
-  }
-  modifica() {
-
-  }
-  cancella() {
-
-  }
-
-
 }
