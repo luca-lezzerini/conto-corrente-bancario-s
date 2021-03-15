@@ -5,6 +5,7 @@
  */
 package it.sirfin.contocorrentebancarioserver.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -31,6 +32,7 @@ public class ContoPrestito {
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
     private Cliente cliente;
+    @JsonIgnore
     @OneToMany(mappedBy = "contoPrestito")
     private Set<MovimentiContoPrestito> MovimentiContoPrestito;
 

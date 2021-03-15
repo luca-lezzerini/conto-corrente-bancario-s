@@ -123,8 +123,17 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
 
     @Override
     public ListaMovimentiCpDto salvaMovimento(MovimentoCpDto dto) {
-        movimentiContoPrestitoRepository.save(dto.getMovimentoCp());
-        ListaMovimentiCpDto lista = new ListaMovimentiCpDto(movimentiContoPrestitoRepository.findAll());
+        associaMovimentoCp(dto.getMovimentoCp(), dto.getContoPrestito());
+        ListaMovimentiCpDto lista = new ListaMovimentiCpDto(dto.getContoPrestito().getMovimentiContoPrestito());
         return lista;
+    }
+
+    private void associaMovimentoCp(MovimentiContoPrestito mcp, ContoPrestito cp) {
+        mcp = movimentiContoPrestitoRepository.save(mcp);
+        mcp.setContoPrestito(cp);
+        cp.getMovimentiContoPrestito().add(mcp);
+        contoPrestitoRepsitory.save(cp);
+        movimentiContoPrestitoRepository.save(mcp);
+
     }
 }
