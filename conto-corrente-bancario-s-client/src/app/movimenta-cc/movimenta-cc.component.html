@@ -7,14 +7,13 @@
 <input type="text" placeholder="Conto selezionato" readonly [(ngModel)]="contoSelezionato">
 <br> <br>
 
-<form name="form1" id="form1" action="/action_page.php">
-  Azione: <select name="subject" id="subject">
-    <option value="">Versamento:</option>
-    <option value="">Prelievo:</option>
-    <option value="">Bonifico:</option>
-  </select>
-</form>
-<input type="text" placeholder=" Importo" [(ngModel)]=" importo">
+<select name="profile" [(ngModel)]="tipoMovimento">
+  <option ngValue="V">Versamento</option>
+  <option ngValue="B">Bonifico</option>
+  <option ngValue="P">Prelievo</option>
+</select>
+{{ contoSelezionato }}
+<input type="text" placeholder="Importo" [(ngModel)]="importo">
 <button (click)="esegui()">Esegui</button>
 <br><br>
 <table border=3px>
