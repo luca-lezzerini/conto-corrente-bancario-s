@@ -8,7 +8,7 @@ import { ListaContiPrestitoDto } from '../dto/lista-conti-prestito-dto';
 @Component({
   selector: 'app-gestione-cp',
   templateUrl: './gestione-cp.component.html',
-  styleUrls: ['./gestione-cp.component.css']
+  styleUrls: ['./gestione-cp.component.css','../app.component.css']
 })
 export class GestioneCpComponent implements OnInit {
   contoPrestito: ContoPrestito = new ContoPrestito();

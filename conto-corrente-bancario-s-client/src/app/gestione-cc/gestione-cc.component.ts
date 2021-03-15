@@ -8,7 +8,7 @@ import { ListaContiCorrenteDto } from '../dto/lista-conti-corrente-dto';
 @Component({
   selector: 'app-gestione-cc',
   templateUrl: './gestione-cc.component.html',
-  styleUrls: ['./gestione-cc.component.css']
+  styleUrls: ['./gestione-cc.component.css','../app.component.css']
 })
 export class GestioneCcComponent implements OnInit {
   contoCorrente = new ContoCorrente();

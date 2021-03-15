@@ -7,7 +7,7 @@ import { ListaClientiDto } from '../dto/lista-clienti-dto';
 @Component({
   selector: 'app-gestione-clienti',
   templateUrl: './gestione-clienti.component.html',
-  styleUrls: ['./gestione-clienti.component.css']
+  styleUrls: ['./gestione-clienti.component.css','../app.component.css']
 })
 export class GestioneClientiComponent implements OnInit {
 
