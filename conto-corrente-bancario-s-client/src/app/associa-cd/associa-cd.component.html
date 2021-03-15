@@ -14,7 +14,7 @@
         <td><button (click)="associa(c)">Associa</button></td>
     </tr>
 </table>
-<input type="text" placeholder="ricercaConto" [(ngModel)]="ricercaConto">
+<input type="text" placeholder="Ricerca Conto" [(ngModel)]="ricercaConto">
 <button (click)="cercaContoDeposito()">Cerca</button>
 <br>
 <div *ngIf="contoDeposito.id">C/D trovato: {{cdTrovato}}</div>
