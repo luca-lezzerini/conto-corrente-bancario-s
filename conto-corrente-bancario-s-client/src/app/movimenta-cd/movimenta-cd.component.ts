@@ -3,7 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ContoDeposito } from '../conto-deposito';
 import { ContoDepositoDto } from '../dto/conto-deposito-dto';
+import { ListaMovimentiCdDto } from '../dto/lista-movimenti-cd-dto';
+import { MovimentoCdDto } from '../dto/movimento-cd-dto';
 import { RicercaContoCorrenteDto } from '../dto/ricerca-conto-corrente-dto';
+import { MovimentiContoDeposito } from '../movimenti-cd';
 
 @Component({
   selector: 'app-movimenta-cd',
@@ -11,28 +14,22 @@ import { RicercaContoCorrenteDto } from '../dto/ricerca-conto-corrente-dto';
   styleUrls: ['./movimenta-cd.component.css']
 })
 export class MovimentaCdComponent implements OnInit {
-  contactForm: FormGroup;
-  operazioni = [
-    { id: 1, name: "Deposito" },
-    { id: 2, name: "Riscatto" }
-  ];
-  codiceConto = "";
+
   contoDeposito = new ContoDeposito();
   contoSelezionato = "";
-  importo: number;
+  importo = 0;
   erroreConto = "";
-  constructor(private http: HttpClient, private fb: FormBuilder) { }
+  movimentoCd = new MovimentiContoDeposito();
+  movimentiCd: MovimentiContoDeposito[] = [];
 
-  ngOnInit(): void {
-    this.contactForm = this.fb.group({
-      operazione: [1]
-    });
-  }
+  constructor(private http: HttpClient) { }
+
+  ngOnInit(): void { }
   cerca() {
     this.contoSelezionato = "";
     let ric = new RicercaContoCorrenteDto();
-    ric.codiceEsatto = this.codiceConto;
-    if (this.codiceConto == "") {
+    ric.codiceEsatto = this.contoDeposito.codice;
+    if (this.contoDeposito.codice == "") {
       console.log("Nessun conto selezionato");
       this.erroreConto = "Nessun conto selezionato";
     } else {
@@ -49,13 +46,12 @@ export class MovimentaCdComponent implements OnInit {
     }
   }
   esegui() {
-    console.log("Modulo inviato")
-    console.log(this.contactForm.value)
-    //   if (this.contactForm.value) {
-    //     console.log("Sono nel deposito");
-    //   } else if (this.contactForm.value) {
-    //     console.log("Sono nel riscatto");
-    //   }
-    // }
+    let dto = new MovimentoCdDto();
+    dto.movimentoCd = this.movimentoCd;
+    dto.contoDeposito = this.contoDeposito;
+    this.http.post<ListaMovimentiCdDto>("http://localhost:8080/salva-movimento-cd", dto)
+      .subscribe(r => {
+        this.movimentiCd = r.listaMovimentiCd;
+      });
   }
 }

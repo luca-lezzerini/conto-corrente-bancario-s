@@ -1,3 +1,7 @@
+import { ContoDeposito } from "../conto-deposito";
+import { MovimentiContoDeposito } from "../movimenti-cd";
+
 export class MovimentoCdDto {
-    importo: 0;
+    movimentoCd = new MovimentiContoDeposito();
+    contoDeposito = new ContoDeposito();
 }
