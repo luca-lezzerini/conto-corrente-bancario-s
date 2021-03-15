@@ -1,4 +1,4 @@
-<input type="text" placeholder="ricercaCliente" [(ngModel)]="ricercaCliente">
+<input type="text" placeholder="Ricerca Cliente" [(ngModel)]="ricercaCliente">
 <button (click)="cercaCliente()">Cerca</button>
 <div *ngIf="statoErroreCliente=='e'">{{erroreCliente}}</div>
 <table *ngIf="clienti.length>0">
