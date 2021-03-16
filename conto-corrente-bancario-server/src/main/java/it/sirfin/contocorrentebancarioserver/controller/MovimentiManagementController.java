@@ -96,4 +96,10 @@ public class MovimentiManagementController {
     public RitMovimentiCdDto ricercaCd(@RequestBody RicercaContoCorrenteDto dto) {
         return movimentiManagementService.ritMovimentiCd(dto.getCodiceEsatto());
     }
+
+//    @RequestMapping("seleziona-e-c-cc")
+//    @ResponseBody
+//    public TuttiContiDto selezionaECCC(@RequestBody ClienteDto dto) {
+//        return movimentiManagementService.selezionaECCC(dto.getCliente());
+//    }
 }

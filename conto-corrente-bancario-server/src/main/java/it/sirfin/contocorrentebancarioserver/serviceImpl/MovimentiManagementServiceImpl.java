@@ -1,6 +1,7 @@
 package it.sirfin.contocorrentebancarioserver.serviceImpl;
 
 import it.sirfin.contocorrentebancarioserver.dto.ListaClientiDto;
+import it.sirfin.contocorrentebancarioserver.dto.ListaContiCorrenteDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCcDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCdDto;
 import it.sirfin.contocorrentebancarioserver.model.ContoCorrente;
@@ -195,4 +196,11 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
                 conto.getContoDeposito().getId()));
         return conto;
     }
+
+//    @Override
+//    public ListaContiCorrenteDto selezionaECCC(Cliente c) {
+//
+//    }
+    
+    
 }
