@@ -1,8 +1,8 @@
 package it.sirfin.contocorrentebancarioserver.controller;
 
 import it.sirfin.contocorrentebancarioserver.dto.ClienteDto;
+import it.sirfin.contocorrentebancarioserver.dto.ContoDepositoDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCdDto;
-import it.sirfin.contocorrentebancarioserver.dto.ContoPrestitoDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaClientiDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCpDto;
 import it.sirfin.contocorrentebancarioserver.dto.MovimentaCdDto;
@@ -44,6 +44,12 @@ public class MovimentiManagementController {
         return movimentiManagementService.ricercaContiAssociatiCliente(dto.getCliente());
     }
 
+    @RequestMapping("ricerca-movimenti-cd")
+    @ResponseBody
+    public ListaMovimentiCdDto estrattoContoCd(@RequestBody ContoDepositoDto dto) {
+       return movimentiManagementService.estrattoContoCd(dto.getContoDeposito());
+    }
+
     @RequestMapping("ricerca-cliente-saldo-cc")
     @ResponseBody
     public ListaClientiDto cercaClienteSaldo(@RequestBody RicercaClienteDto dto) {
@@ -61,20 +67,19 @@ public class MovimentiManagementController {
     public ListaMovimentiCpDto salvaMovimento(@RequestBody MovimentoCpDto dto1) {
         return movimentiManagementService.salvaMovimento(dto1.getMovimentoCp(), dto1.getContoPrestito());
     }
-    
+
     @RequestMapping("salva-movimento-cd")
     @ResponseBody
     public ListaMovimentiCdDto salvaMovimento(@RequestBody MovimentaCdDto dto) {
-        ContoDeposito cd=dto.getContoDeposito();
-        MovimentiContoDeposito mc=dto.getMovimentoCd();
+        ContoDeposito cd = dto.getContoDeposito();
+        MovimentiContoDeposito mc = dto.getMovimentoCd();
         return movimentiManagementService.salvaMovimentoCd(cd, mc);
     }
-    
+
     @RequestMapping("ricerca-cliente-e-c-cc")
     @ResponseBody
     public ListaClientiDto ricercaClienteECCC(@RequestBody RicercaClienteDto dto) {
         return movimentiManagementService.cercaClienteECCC(dto.getRicercaPerCognome());
     }
-    
-}
 
+}

@@ -23,6 +23,7 @@ export class EstrattoContoCdComponent implements OnInit {
   clienti: Cliente[] = [];
   contiDeposito: ContoDeposito[] = [];
   movimentiCd: MovimentiContoDeposito[] = [];
+  contoDepositoSelezionato = "";
 
 
   constructor(private http: HttpClient) { }
@@ -47,6 +48,7 @@ export class EstrattoContoCdComponent implements OnInit {
   }
 
   estrattoConto(cd: ContoDeposito) {
+    this.contoDepositoSelezionato = cd.codice;
     let dto = new ContoDepositoDto();
     dto.contoDeposito = cd;
     this.http.post<ListaMovimentiCdDto>("http://localhost:8080/ricerca-movimenti-cd", dto)

@@ -28,28 +28,28 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class MovimentiManagementServiceImpl implements MovimentiManagementService {
-
+    
     @Autowired
     ClienteRepository clienteRepository;
-
+    
     @Autowired
     ContoCorrenteRepository contoCorrenteRepository;
-
+    
     @Autowired
     ContoDepositoRepository contoDepositoRepository;
-
+    
     @Autowired
     ContoPrestitoRepository contoPrestitoRepsitory;
-
+    
     @Autowired
     MovimentiContoCorrenteRepository movimentiContoCorrenteRepository;
-
+    
     @Autowired
     MovimentiContoPrestitoRepository movimentiContoPrestitoRepository;
-
+    
     @Autowired
     MovimentiContoDepositoRepository movimentiContoDepositoRepository;
-
+    
     @Override
     public void demo3() {
         //Creazione dati di test
@@ -73,23 +73,23 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
         cC1 = contoCorrenteRepository.save(cC1);
         cC2 = contoCorrenteRepository.save(cC2);
         cC3 = contoCorrenteRepository.save(cC3);
-
+        
     }
-
+    
     @Override
     public ListaClientiDto cercaClienteLike(String c) {
         ListaClientiDto lista = new ListaClientiDto(
                 clienteRepository.findByCognomeContaining(c));
         return lista;
     }
-
+    
     @Override
     public ListaClientiDto cercaClienteSaldo(String c) {
         ListaClientiDto lista2 = new ListaClientiDto(
                 clienteRepository.findByCognomeContaining(c));
         return lista2;
     }
-
+    
     @Override
     public TuttiContiDto ricercaContiAssociatiCliente(Cliente c) {
         TuttiContiDto conti = new TuttiContiDto();
@@ -116,11 +116,11 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
     public MovimentiAssCpDto cercaContoCp(String c) {
         MovimentiAssCpDto conto = new MovimentiAssCpDto();
         conto.setContoPrestito(contoPrestitoRepsitory.findByCodice(c));
-        conto.setMovimentiContoPrestito( movimentiContoPrestitoRepository.findByContoPrestitoId(
-        conto.getContoPrestito().getId()));
+        conto.setMovimentiContoPrestito(movimentiContoPrestitoRepository.findByContoPrestitoId(
+                conto.getContoPrestito().getId()));
         return conto;
     }
-
+    
     @Override
     public ListaMovimentiCpDto salvaMovimento(MovimentiContoPrestito mcp, ContoPrestito cp) {
         associaMovimentoCp(mcp, cp);
@@ -129,7 +129,7 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
         System.out.println("quantità movimenti associati" + lista.getListaMovimentiCp().size());
         return lista;
     }
-
+    
     private void associaMovimentoCp(MovimentiContoPrestito mcp, ContoPrestito cp) {
         mcp = movimentiContoPrestitoRepository.save(mcp);
         mcp.setContoPrestito(cp);
@@ -138,7 +138,7 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
         contoPrestitoRepsitory.save(cp);
         movimentiContoPrestitoRepository.save(mcp);
     }
-
+    
     @Override
     public ListaMovimentiCdDto salvaMovimentoCd(ContoDeposito cd, MovimentiContoDeposito mcd) {
         associaMovimentoCd(mcd, cd);
@@ -146,7 +146,7 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
                 movimentiContoDepositoRepository.findByContoDepositoId(cd.getId()));
         return lista;
     }
-
+    
     private void associaMovimentoCd(MovimentiContoDeposito mcd, ContoDeposito cd) {
         mcd = movimentiContoDepositoRepository.save(mcd);
         mcd.setContoDeposito(cd);
@@ -155,7 +155,14 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
         contoDepositoRepository.save(cd);
         movimentiContoDepositoRepository.save(mcd);
     }
-
+    
+    @Override
+    public ListaMovimentiCdDto estrattoContoCd(ContoDeposito cd) {
+        ListaMovimentiCdDto movimenti = new ListaMovimentiCdDto(
+                movimentiContoDepositoRepository.findByContoDepositoId(cd.getId()));
+        return movimenti;
+    }
+    
     @Override
     public ListaClientiDto cercaClienteECCC(String c) {
         throw new UnsupportedOperationException("Not supported yet.");
@@ -163,5 +170,5 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
         //movimentiContoCorrenteRepository.findByCognomeContaining(c));
         //return lista;
     }
-
+    
 }
