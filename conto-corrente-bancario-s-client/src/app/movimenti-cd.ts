@@ -1,7 +1,7 @@
 export class MovimentiContoDeposito{
 
     id:bigint;
-    dataMov:Date;
+    dataMov:Date = new Date();
     tipoMovimento = "";
     importoMov:number;
 }

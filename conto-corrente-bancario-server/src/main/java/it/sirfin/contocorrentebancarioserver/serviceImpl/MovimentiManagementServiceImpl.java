@@ -22,7 +22,6 @@ import java.util.Set;
 import it.sirfin.contocorrentebancarioserver.repository.MovimentiContoPrestitoRepository;
 import it.sirfin.contocorrentebancarioserver.service.MovimentiManagementService;
 import java.time.LocalDate;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -123,7 +122,7 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
     public ListaMovimentiCpDto salvaMovimento(MovimentiContoPrestito mcp, ContoPrestito cp) {
         associaMovimentoCp(mcp, cp);
         ListaMovimentiCpDto lista = new ListaMovimentiCpDto(
-        movimentiContoPrestitoRepository.findByContoPrestitoId(cp.getId()));
+                movimentiContoPrestitoRepository.findByContoPrestitoId(cp.getId()));
         System.out.println("quantità movimenti associati" + lista.getListaMovimentiCp().size());
         return lista;
     }
@@ -131,7 +130,7 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
     private void associaMovimentoCp(MovimentiContoPrestito mcp, ContoPrestito cp) {
         mcp = movimentiContoPrestitoRepository.save(mcp);
         mcp.setContoPrestito(cp);
-        Set <MovimentiContoPrestito> movimenti = cp.getMovimentiContoPrestito();
+        Set<MovimentiContoPrestito> movimenti = cp.getMovimentiContoPrestito();
         movimenti.add(mcp);
         contoPrestitoRepsitory.save(cp);
         movimentiContoPrestitoRepository.save(mcp);
@@ -139,10 +138,19 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
 
     @Override
     public ListaMovimentiCdDto salvaMovimentoCd(ContoDeposito cd, MovimentiContoDeposito mcd) {
-        MovimentiContoDeposito mc = new MovimentiContoDeposito(LocalDate.now(), mcd.getTipoMovimento(), mcd.getImportoMov());
-        movimentiContoDepositoRepository.save(mc);
-        List<MovimentiContoDeposito> lista = movimentiContoDepositoRepository.findAll();
-        return new ListaMovimentiCdDto(lista);
+        associaMovimentoCd(mcd, cd);
+        ListaMovimentiCdDto lista = new ListaMovimentiCdDto(
+                movimentiContoDepositoRepository.findByContoDepositoId(cd.getId()));
+        return lista;
+    }
+
+    private void associaMovimentoCd(MovimentiContoDeposito mcd, ContoDeposito cd) {
+        mcd = movimentiContoDepositoRepository.save(mcd);
+        mcd.setContoDeposito(cd);
+        Set<MovimentiContoDeposito> movimentiCd = cd.getMovimentiContoDeposito();
+        movimentiCd.add(mcd);
+        contoDepositoRepository.save(cd);
+        movimentiContoDepositoRepository.save(mcd);
     }
 
     @Override
@@ -152,7 +160,5 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
         //movimentiContoCorrenteRepository.findByCognomeContaining(c));
         //return lista;
     }
-    
-}
 
-    
+}

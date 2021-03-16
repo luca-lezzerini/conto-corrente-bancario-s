@@ -33,8 +33,9 @@ public class ContoDeposito implements Serializable {
     @JoinColumn(referencedColumnName = "id")
     private Cliente cliente;
 
-    @JsonIgnore
+    
     @OneToMany(mappedBy = "contoDeposito")
+    @JsonIgnore
     private Set<MovimentiContoDeposito> movimentiContoDeposito;
 
     public ContoDeposito() {
@@ -68,7 +69,8 @@ public class ContoDeposito implements Serializable {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-
+    
+    @JsonIgnore
     public Set<MovimentiContoDeposito> getMovimentiContoDeposito() {
         if (movimentiContoDeposito == null) {
             movimentiContoDeposito = new HashSet<>();
