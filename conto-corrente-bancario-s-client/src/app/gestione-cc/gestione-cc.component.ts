@@ -91,8 +91,12 @@ export class GestioneCcComponent implements OnInit {
   }
 
   aggiorna() {
+    console.log("sto aggiornando")
     this.http.get<ListaContiCorrenteDto>("http://localhost:8080/aggiorna-cc")
-      .subscribe(r => this.contiCorrente = r.listaContiCorrente);
+      .subscribe(r => {
+        console.log(r.listaContiCorrente.length);
+        this.contiCorrente = r.listaContiCorrente;
+      });
   }
 
 

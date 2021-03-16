@@ -78,6 +78,7 @@ public class ContoCorrente implements Serializable {
         this.cliente = cliente;
     }
 
+    @JsonIgnore
     public Set<MovimentiContoCorrente> getMovimentiContoCorrente() {
         if (MovimentiContoCorrente == null) {
             MovimentiContoCorrente = new HashSet<>();
@@ -85,6 +86,7 @@ public class ContoCorrente implements Serializable {
         return MovimentiContoCorrente;
     }
 
+    @JsonIgnore
     public void setMovimentiContoCorrente(Set<MovimentiContoCorrente> MovimentiContoCorrente) {
         if (MovimentiContoCorrente == null) {
             MovimentiContoCorrente = new HashSet<>();
