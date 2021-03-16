@@ -41,7 +41,7 @@ public class ContoCorrenteBancarioController {
     @RequestMapping("/modifica-cliente")
     @ResponseBody
     public ClienteDto modificaCliente(@RequestBody ClienteDto dto) {
-        return contoCorrenteService.ModificaCliente(dto.getCliente());
+        return contoCorrenteService.modificaCliente(dto.getCliente());
     }
 
     @RequestMapping("/conferma-modifica-cliente")

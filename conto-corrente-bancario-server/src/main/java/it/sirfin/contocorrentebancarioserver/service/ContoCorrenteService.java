@@ -14,7 +14,7 @@ public interface ContoCorrenteService {
 
     ListaClientiDto cancella(Cliente c);
     
-    ClienteDto ModificaCliente(Cliente c);
+    ClienteDto modificaCliente(Cliente c);
     
     ListaClientiDto confermaModificaCliente(Cliente c);
 }

@@ -123,6 +123,7 @@ public class AccountManagementServiceImpl implements AccountManagementService {
         }
         //salvo su db
         contoCorrenteRepository.save(cc);
+        System.out.println("cc = " + cc);
         //implementare in seguito il metodo aggiorna
         return aggiornaContiCorrente();
     }
@@ -155,7 +156,7 @@ public class AccountManagementServiceImpl implements AccountManagementService {
         cc.setCliente(c);
         contoCorrenteRepository.save(cc);
 
-        Set<ContoCorrente> ccs = c.getContiCorrente();
+        Set<ContoCorrente> ccs = c.getContiCorrenti();
         ccs.add(cc);
         clienteRepository.save(c);
 

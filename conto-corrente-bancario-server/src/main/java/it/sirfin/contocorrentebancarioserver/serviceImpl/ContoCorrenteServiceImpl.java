@@ -37,8 +37,7 @@ public class ContoCorrenteServiceImpl implements ContoCorrenteService {
         contoDepositoRepository.deleteAllInBatch();
         contoPrestitoRepsitory.deleteAllInBatch();
         clienteRepository.deleteAllInBatch();
-        
-        
+
     }
 
     @Override
@@ -60,26 +59,32 @@ public class ContoCorrenteServiceImpl implements ContoCorrenteService {
     }
 
     @Override
-    public ClienteDto ModificaCliente(Cliente c) {
+    public ClienteDto modificaCliente(Cliente c) {
         ClienteDto dtoRes = new ClienteDto(clienteRepository
                 .findById(c.getId()).get());
+        System.out.println("=====1");
+        System.out.println("Cliente " + dtoRes.getCliente());
+        System.out.println("=====2");
         return dtoRes;
     }
 
     @Override
     public ListaClientiDto confermaModificaCliente(Cliente c) {
-        clienteRepository.save(c);
+        Cliente c2 = clienteRepository.findById(c.getId()).get();
+        System.out.println("C2 " + c2);
+        c  = clienteRepository.save(c);
+        Set<ContoCorrente> cc = c.getContiCorrenti();
+        System.out.println("Cliente = " + c);
         return new ListaClientiDto(
                 clienteRepository.findAll());
     }
 
-    private void associaClienteCC (Cliente c, ContoCorrente cc){
+    private void associaClienteCC(Cliente c, ContoCorrente cc) {
         cc.setCliente(c);
         contoCorrenteRepository.save(cc);
-        Set<ContoCorrente> conti = c.getContiCorrente();
+        Set<ContoCorrente> conti = c.getContiCorrenti();
         conti.add(cc);
         clienteRepository.save(c);
     }
-    
-}
 
+}

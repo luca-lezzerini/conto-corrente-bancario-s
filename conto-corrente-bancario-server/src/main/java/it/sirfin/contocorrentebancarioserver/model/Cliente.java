@@ -6,6 +6,7 @@
 package it.sirfin.contocorrentebancarioserver.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -39,15 +40,15 @@ public class Cliente implements Serializable {
     @Column
     private LocalDate dataDiNascita;
 
-    @JsonIgnore
+    @JsonIgnoreProperties(value = "cliente", allowSetters = true)
     @OneToMany(mappedBy = "cliente")
     private Set<ContoDeposito> contiDeposito;
 
-    @JsonIgnore
+    @JsonIgnoreProperties(value = "cliente", allowSetters = true)
     @OneToMany(mappedBy = "cliente")
-    private Set<ContoCorrente> contiCorrente;
+    private Set<ContoCorrente> contiCorrenti;
     
-    @JsonIgnore
+    @JsonIgnoreProperties(value = "cliente", allowSetters = true)
     @OneToMany(mappedBy = "cliente")
     private Set<ContoPrestito> contiPrestito;
 
@@ -134,18 +135,18 @@ public class Cliente implements Serializable {
         this.contiDeposito = contiDeposito;
     }
 
-    public Set<ContoCorrente> getContiCorrente() {
-        if (contiCorrente == null) {
-            contiCorrente = new HashSet<>();
+    public Set<ContoCorrente> getContiCorrenti() {
+        if (contiCorrenti == null) {
+            contiCorrenti = new HashSet<>();
         }
-        return contiCorrente;
+        return contiCorrenti;
     }
 
-    public void setContiCorrente(Set<ContoCorrente> contiCorrente) {
-        if (contiCorrente == null) {
-            contiCorrente = new HashSet<>();
+    public void setContiCorrenti(Set<ContoCorrente> contiCorrenti) {
+        if (contiCorrenti == null) {
+            contiCorrenti = new HashSet<>();
         }
-        this.contiCorrente = contiCorrente;
+        this.contiCorrenti = contiCorrenti;
     }
 
     public Set<ContoPrestito> getContiPrestito() {
@@ -164,7 +165,7 @@ public class Cliente implements Serializable {
 
     @Override
     public String toString() {
-        return "Cliente{" + "id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", codiceFiscale=" + codiceFiscale + ", indirizzo=" + indirizzo + ", telefono=" + telefono + ", dataDiNascita=" + dataDiNascita + ", contiDeposito=" + contiDeposito + ", contiCorrente=" + contiCorrente + ", contiPrestito=" + contiPrestito + '}';
+        return "Cliente{" + "id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", codiceFiscale=" + codiceFiscale + ", indirizzo=" + indirizzo + ", telefono=" + telefono + ", dataDiNascita=" + dataDiNascita + ", contiDeposito=" + contiDeposito + ", contiCorrente=" + contiCorrenti + ", contiPrestito=" + contiPrestito + '}';
     }
 
     

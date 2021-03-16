@@ -6,11 +6,13 @@
 package it.sirfin.contocorrentebancarioserver.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -30,21 +32,22 @@ public class ContoCorrente implements Serializable {
     @Column
     private String numeroConto;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(referencedColumnName = "id")
     private Cliente cliente;
 
-    @JsonIgnore
+    @JsonIgnoreProperties(value = "contoCorrente", allowSetters = true)
+//    @JsonIgnore
+    @OneToMany(mappedBy = "contoCorrente", fetch = FetchType.LAZY)
+    private Set<MovimentiContoCorrente> movimentiContoCorrente;
+
+    @JsonIgnoreProperties(value = "contoCorrente", allowSetters = true)
     @OneToMany(mappedBy = "contoCorrente")
-    private Set<MovimentiContoCorrente> MovimentiContoCorrente;
+    private Set<MovimentiContoDeposito> movimentiContoDeposito;
 
     @JsonIgnore
     @OneToMany(mappedBy = "contoCorrente")
-    private Set<MovimentiContoDeposito> MovimentiContoDeposito;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "contoCorrente")
-    private Set<MovimentiContoPrestito> MovimentiContoPrestito;
+    private Set<MovimentiContoPrestito> movimentiContoPrestito;
 
     public ContoCorrente() {
     }
@@ -80,52 +83,55 @@ public class ContoCorrente implements Serializable {
 
     @JsonIgnore
     public Set<MovimentiContoCorrente> getMovimentiContoCorrente() {
-        if (MovimentiContoCorrente == null) {
-            MovimentiContoCorrente = new HashSet<>();
+        if (movimentiContoCorrente == null) {
+            movimentiContoCorrente = new HashSet<>();
         }
-        return MovimentiContoCorrente;
+        return movimentiContoCorrente;
     }
 
     @JsonIgnore
-    public void setMovimentiContoCorrente(Set<MovimentiContoCorrente> MovimentiContoCorrente) {
-        if (MovimentiContoCorrente == null) {
-            MovimentiContoCorrente = new HashSet<>();
+    public void setMovimentiContoCorrente(Set<MovimentiContoCorrente> movimentiContoCorrente) {
+        if (movimentiContoCorrente == null) {
+            movimentiContoCorrente = new HashSet<>();
         }
-        this.MovimentiContoCorrente = MovimentiContoCorrente;
+        this.movimentiContoCorrente = movimentiContoCorrente;
     }
 
     public Set<MovimentiContoDeposito> getMovimentiContoDeposito() {
-        if (MovimentiContoDeposito == null) {
-            MovimentiContoDeposito = new HashSet<>();
+        if (movimentiContoDeposito == null) {
+            movimentiContoDeposito = new HashSet<>();
         }
-        return MovimentiContoDeposito;
+        return movimentiContoDeposito;
     }
 
-    public void setMovimentiContoDeposito(Set<MovimentiContoDeposito> MovimentiContoDeposito) {
-        if (MovimentiContoDeposito == null) {
-            MovimentiContoDeposito = new HashSet<>();
+    public void setMovimentiContoDeposito(Set<MovimentiContoDeposito> movimentiContoDeposito) {
+        if (movimentiContoDeposito == null) {
+            movimentiContoDeposito = new HashSet<>();
         }
-        this.MovimentiContoDeposito = MovimentiContoDeposito;
+        this.movimentiContoDeposito = movimentiContoDeposito;
     }
 
     public Set<MovimentiContoPrestito> getMovimentiContoPrestito() {
-        if (MovimentiContoPrestito == null) {
-            MovimentiContoPrestito = new HashSet<>();
+        if (movimentiContoPrestito == null) {
+            movimentiContoPrestito = new HashSet<>();
         }
 
-        return MovimentiContoPrestito;
+        return movimentiContoPrestito;
     }
 
-    public void setMovimentiContoPrestito(Set<MovimentiContoPrestito> MovimentiContoPrestito) {
-        if (MovimentiContoPrestito == null) {
-            MovimentiContoPrestito = new HashSet<>();
+    public void setMovimentiContoPrestito(Set<MovimentiContoPrestito> movimentiContoPrestito) {
+        if (movimentiContoPrestito == null) {
+            movimentiContoPrestito = new HashSet<>();
         }
-        this.MovimentiContoPrestito = MovimentiContoPrestito;
+        this.movimentiContoPrestito = movimentiContoPrestito;
     }
 
     @Override
     public String toString() {
-        return "ContoCorrente{" + "id=" + id + ", numeroConto=" + numeroConto + ", cliente=" + cliente + ", MovimentiContoCorrente=" + MovimentiContoCorrente + ", MovimentiContoDeposito=" + MovimentiContoDeposito + ", MovimentiContoPrestito=" + MovimentiContoPrestito + '}';
+        return "ContoCorrente{" + "id=" + id + ", numeroConto=" + numeroConto + ", cliente=" + cliente.getId() + ", movimentiContoCorrente=" + movimentiContoCorrente + ", movimentiContoDeposito=" + movimentiContoDeposito + ", movimentiContoPrestito=" + movimentiContoPrestito + '}';
     }
+
+   
+
 
 }
