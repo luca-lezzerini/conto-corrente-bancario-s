@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 public interface AccountManagementService {
 
+    ListaContiCorrenteDto inserisciMovimento(MovimentiContoCorrente movimentiContoCorrente);
+    
     ListaContiCorrenteDto aggiungiCc(ContoCorrente cc);
 
     ListaContiCorrenteDto eliminaCc(ContoCorrente cc);

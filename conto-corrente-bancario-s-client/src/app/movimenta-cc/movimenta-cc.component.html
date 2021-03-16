@@ -1,19 +1,17 @@
 <input type="text" placeholder="Codice conto" [(ngModel)]="codiceConto">
 
 <button (click)="cerca()">Cerca</button>
-{{contoSelezionato}}
 {{erroreConto}}
 <br> <br>
-<input type="text" placeholder="Conto selezionato" readonly [(ngModel)]="contoSelezionato">
+conto selezionato: {{contoDaCercare.numeroConto}}
 <br> <br>
-
-<select name="profile" [(ngModel)]="tipoMovimento">
+<select name="profile" [(ngModel)]="movimento.tipoMovimento">
   <option ngValue="V">Versamento</option>
   <option ngValue="B">Bonifico</option>
   <option ngValue="P">Prelievo</option>
 </select>
-{{ tipoMovimento }}
-<input type="text" placeholder="Importo" [(ngModel)]="b.importo">
+{{ movimento.tipoMovimento }}
+<input type="text" placeholder="Importo" [(ngModel)]="movimento.importoMov">
 <button (click)="esegui()">Esegui</button>
 <br><br>
 <table border=3px>
@@ -21,6 +19,8 @@
   <td>Tipo movimento</td>
   <td>Importo</td>
   <tr *ngFor="let a of contiCorrente">
-    <td>{{a.importo}}</td>
+    <td>{{a.date}}</td>
+    <td>{{a.tipoMovimento}}</td>
+    <td>{{a.importoMov}}</td>
   </tr>
 </table>

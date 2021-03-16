@@ -1,19 +1,15 @@
-<input type="text" placeholder="codiceConto" [(ngModel)]="codiceConto">
+<input type="text" placeholder="codiceConto" [(ngModel)]="contoDeposito.codice">
 <button (click)="cerca()">Cerca</button>
 {{erroreConto}}
 <br>
 Conto selezionato:{{contoSelezionato}}
 <br>
-<form [formGroup]="contactForm" (ngSubmit)="esegui()">
-    <p>
-        <select formControlName="operazione">
-            <option [ngValue]="null" disabled>Seleziona Operazione</option>
-            <option *ngFor="let operazione of operazioni" [ngValue]="operazione.id">{{operazione.name}}</option>
-        </select>
-        <button type="esegui">Esegui</button>
-    </p>
-</form>
-<input type="text" placeholder="importo" [(ngModel)]="importo">
+<select [(ngModel)]="movimentoCd.tipoMovimento">
+    <option value="deposito">Deposito</option>
+    <option value="riscatto">Riscatto</option>
+</select>
+<input type="text" placeholder="importo" [(ngModel)]="movimentoCd.importoMov">
+<button (click)="esegui()">Esegui</button>
 <br>
 <br>
 <table>
@@ -21,5 +17,10 @@ Conto selezionato:{{contoSelezionato}}
         <th>Data |</th>
         <th>Tipo movimento |</th>
         <th>Importo |</th>
+    </tr>
+    <tr *ngFor="let c of movimentiCd">
+        <td>{{c.dataMov}}</td>
+        <td>{{c.tipoMovimento}}</td>
+        <td>{{c.importoMov}}</td>
     </tr>
 </table>

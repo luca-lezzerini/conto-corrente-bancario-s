@@ -266,4 +266,10 @@ public class AccountManagementServiceImpl implements AccountManagementService {
         return new ListaContiDepositoDto(contoDepositoRepository.findAll());
     }
 
+    @Override
+    public ListaContiCorrenteDto inserisciMovimento(MovimentiContoCorrente movimentiContoCorrente) {
+        movimentiContoCorrenteRepository.save(movimentiContoCorrente);
+        return new ListaContiCorrenteDto();
+    }
+
 }

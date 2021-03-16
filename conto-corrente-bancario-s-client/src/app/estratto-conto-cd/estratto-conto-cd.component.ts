@@ -15,7 +15,7 @@ import { MovimentiContoDeposito } from '../movimenti-cd';
 @Component({
   selector: 'app-estratto-conto-cd',
   templateUrl: './estratto-conto-cd.component.html',
-  styleUrls: ['./estratto-conto-cd.component.css']
+  styleUrls: ['./estratto-conto-cd.component.css','../app.component.css']
 })
 export class EstrattoContoCdComponent implements OnInit {
 
@@ -23,6 +23,7 @@ export class EstrattoContoCdComponent implements OnInit {
   clienti: Cliente[] = [];
   contiDeposito: ContoDeposito[] = [];
   movimentiCd: MovimentiContoDeposito[] = [];
+  contoDepositoSelezionato = "";
 
 
   constructor(private http: HttpClient) { }
@@ -47,6 +48,7 @@ export class EstrattoContoCdComponent implements OnInit {
   }
 
   estrattoConto(cd: ContoDeposito) {
+    this.contoDepositoSelezionato = cd.codice;
     let dto = new ContoDepositoDto();
     dto.contoDeposito = cd;
     this.http.post<ListaMovimentiCdDto>("http://localhost:8080/ricerca-movimenti-cd", dto)

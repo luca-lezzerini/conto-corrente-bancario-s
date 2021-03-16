@@ -5,8 +5,8 @@
  */
 package it.sirfin.contocorrentebancarioserver.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.HashSet;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +19,7 @@ import javax.persistence.ManyToOne;
  * @author marco
  */
 @Entity
-public class MovimentiContoCorrente {
+public class MovimentiContoCorrente implements Serializable {
 
     @Id
     @GeneratedValue

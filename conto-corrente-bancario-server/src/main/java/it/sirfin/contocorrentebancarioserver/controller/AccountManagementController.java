@@ -27,6 +27,12 @@ public class AccountManagementController {
 
     @Autowired
     AccountManagementService accountManagementService;
+    
+    public ListaContiCorrenteDto inserisciMovimento(@RequestBody ContoCorrenteDto dto) {
+        System.out.println("Sono in inserisciMovimento " + dto);
+        throw new UnsupportedOperationException();
+       // return accountManagementService.inserisciMovimento(dto.getContoCorrente());
+    }
 
     @RequestMapping("/aggiungi-cc")
     @ResponseBody

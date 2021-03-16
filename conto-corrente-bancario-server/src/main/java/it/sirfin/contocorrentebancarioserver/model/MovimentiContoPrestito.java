@@ -94,4 +94,8 @@ public class MovimentiContoPrestito {
         this.contoPrestito = contoPrestito;
     }
 
+    @Override
+    public String toString() {
+        return "MovimentiContoPrestito{" + "id=" + id + ", tipoMovimento=" + tipoMovimento + ", importoMov=" + importoMov + '}';
+    }  
 }

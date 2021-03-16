@@ -12,7 +12,7 @@ import { RicercaContoCorrenteDto } from '../dto/ricerca-conto-corrente-dto';
 @Component({
   selector: 'app-associa-cp',
   templateUrl: './associa-cp.component.html',
-  styleUrls: ['./associa-cp.component.css']
+  styleUrls: ['./associa-cp.component.css', '../app.component.css']
 })
 export class AssociaCpComponent implements OnInit {
   clienti: Cliente[] = [];

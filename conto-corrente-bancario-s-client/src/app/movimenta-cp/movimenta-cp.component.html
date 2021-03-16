@@ -1,7 +1,10 @@
 <input type="text" placeholder="codice conto" [(ngModel)]="contoDaCercare.codice">
 <button (click)="cerca()">Cerca</button>
+<br>
+<br>
 {{contoSelezionato}}
-
+<br>
+<br>
 <select [(ngModel)]="movimentoCp.tipoMovimento">
     <option value="concessione">Concessione</option>
     <option value="erogazione">Erogazione</option>
@@ -20,6 +23,6 @@
     <tr *ngFor="let cp of listaMovimentiCp">
         <td>{{cp.dataMov}}</td>
         <td>{{cp.tipoMovimento}}</td>
-        <td>{{cp.importo}}</td>
+        <td>{{cp.importoMov}}</td>
     </tr>
 </table>

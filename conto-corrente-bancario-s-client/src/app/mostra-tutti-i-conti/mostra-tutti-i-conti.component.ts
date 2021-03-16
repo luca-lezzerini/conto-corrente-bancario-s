@@ -8,7 +8,8 @@ import { RicercaClienteDto } from '../dto/ricerca-cliente-dto';
 @Component({
   selector: 'app-mostra-tutti-i-conti',
   templateUrl: './mostra-tutti-i-conti.component.html',
-  styleUrls: ['./mostra-tutti-i-conti.component.css']
+  styleUrls: ['./mostra-tutti-i-conti.component.css',
+    '../app.component.css']
 })
 export class MostraTuttiIContiComponent implements OnInit {
   clienti: Cliente[] = [];
@@ -17,7 +18,6 @@ export class MostraTuttiIContiComponent implements OnInit {
   ricercaCliente: string;
   statoErroreCliente: string;
   erroreCliente: string;
-
 
   constructor(private http: HttpClient) { }
 
@@ -36,8 +36,8 @@ export class MostraTuttiIContiComponent implements OnInit {
         .subscribe(r => this.clienti = r.listaClienti);
       this.statoErroreCliente = "";
       this.ricercaCliente = "";
-    }}
-
+    }
+  }
 
   mostraConti() {
   }

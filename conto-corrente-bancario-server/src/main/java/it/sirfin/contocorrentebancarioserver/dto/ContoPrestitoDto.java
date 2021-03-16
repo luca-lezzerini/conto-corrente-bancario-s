@@ -6,7 +6,7 @@ import it.sirfin.contocorrentebancarioserver.model.ContoPrestito;
 public class ContoPrestitoDto {
     
     private ContoPrestito contoPrestito;
-
+    
     public ContoPrestitoDto() {
     }
 

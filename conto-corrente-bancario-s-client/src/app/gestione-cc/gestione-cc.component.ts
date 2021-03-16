@@ -8,7 +8,7 @@ import { ListaContiCorrenteDto } from '../dto/lista-conti-corrente-dto';
 @Component({
   selector: 'app-gestione-cc',
   templateUrl: './gestione-cc.component.html',
-  styleUrls: ['./gestione-cc.component.css']
+  styleUrls: ['./gestione-cc.component.css','../app.component.css']
 })
 export class GestioneCcComponent implements OnInit {
   contoCorrente = new ContoCorrente();
@@ -91,8 +91,12 @@ export class GestioneCcComponent implements OnInit {
   }
 
   aggiorna() {
+    console.log("sto aggiornando")
     this.http.get<ListaContiCorrenteDto>("http://localhost:8080/aggiorna-cc")
-      .subscribe(r => this.contiCorrente = r.listaContiCorrente);
+      .subscribe(r => {
+        console.log(r.listaContiCorrente.length);
+        this.contiCorrente = r.listaContiCorrente;
+      });
   }
 
 

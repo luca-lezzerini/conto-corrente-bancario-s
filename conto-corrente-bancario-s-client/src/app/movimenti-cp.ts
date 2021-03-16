@@ -1,6 +1,6 @@
 export class MovimentiContoPrestito{
     id:bigint;
-    dataMov:Date;
+    dataMov:Date = new Date();
     tipoMovimento = "";
     importoMov:number;
 }
