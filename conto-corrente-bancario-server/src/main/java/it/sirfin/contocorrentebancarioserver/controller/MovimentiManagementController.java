@@ -12,6 +12,7 @@ import it.sirfin.contocorrentebancarioserver.dto.MovimentiAssCpDto;
 import it.sirfin.contocorrentebancarioserver.dto.MovimentoCpDto;
 import it.sirfin.contocorrentebancarioserver.dto.RicercaClienteDto;
 import it.sirfin.contocorrentebancarioserver.dto.RicercaContoCorrenteDto;
+import it.sirfin.contocorrentebancarioserver.dto.RitMovimentiCdDto;
 import it.sirfin.contocorrentebancarioserver.dto.TuttiContiDto;
 import it.sirfin.contocorrentebancarioserver.model.ContoDeposito;
 import it.sirfin.contocorrentebancarioserver.model.MovimentiContoDeposito;
@@ -90,4 +91,9 @@ public class MovimentiManagementController {
         return movimentiManagementService.cercaClienteECCC(dto.getRicercaPerCognome());
     }
 
+    @RequestMapping("cd-ricerca")
+    @ResponseBody
+    public RitMovimentiCdDto ricercaCd(@RequestBody RicercaContoCorrenteDto dto) {
+        return movimentiManagementService.ritMovimentiCd(dto.getCodiceEsatto());
+    }
 }

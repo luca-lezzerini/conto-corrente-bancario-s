@@ -8,6 +8,7 @@ import it.sirfin.contocorrentebancarioserver.model.ContoDeposito;
 import it.sirfin.contocorrentebancarioserver.model.MovimentiContoCorrente;
 import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCpDto;
 import it.sirfin.contocorrentebancarioserver.dto.MovimentiAssCpDto;
+import it.sirfin.contocorrentebancarioserver.dto.RitMovimentiCdDto;
 import it.sirfin.contocorrentebancarioserver.dto.TuttiContiDto;
 import it.sirfin.contocorrentebancarioserver.model.Cliente;
 import it.sirfin.contocorrentebancarioserver.model.ContoPrestito;
@@ -186,4 +187,12 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
         movimentiContoCorrenteRepository.save(mcc);
     }
 
+    @Override
+    public RitMovimentiCdDto ritMovimentiCd(String c) {
+        RitMovimentiCdDto conto = new RitMovimentiCdDto();
+        conto.setContoDeposito(contoDepositoRepository.findByCodice(c));
+        conto.setMovimentiContoDeposito(movimentiContoDepositoRepository.findByContoDepositoId(
+                conto.getContoDeposito().getId()));
+        return conto;
+    }
 }
