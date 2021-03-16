@@ -33,6 +33,7 @@ export class MovimentaCpComponent implements OnInit {
     oss.subscribe(c => {
       this.contoDaCercare = c.contoPrestito;
       this.contoSelezionato = c.contoPrestito.codice;
+      this.listaMovimentiCp = c.movimentiContoPrestito;
     });
     this.contoDaCercare = new ContoPrestito();
   }

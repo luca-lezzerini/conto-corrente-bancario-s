@@ -116,6 +116,8 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
     public MovimentiAssCpDto cercaContoCp(String c) {
         MovimentiAssCpDto conto = new MovimentiAssCpDto();
         conto.setContoPrestito(contoPrestitoRepsitory.findByCodice(c));
+        conto.setMovimentiContoPrestito( movimentiContoPrestitoRepository.findByContoPrestitoId(
+        conto.getContoPrestito().getId()));
         return conto;
     }
 
