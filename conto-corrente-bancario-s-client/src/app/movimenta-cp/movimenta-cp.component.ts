@@ -11,7 +11,7 @@ import { MovimentiContoPrestito } from '../movimenti-cp';
 @Component({
   selector: 'app-movimenta-cp',
   templateUrl: './movimenta-cp.component.html',
-  styleUrls: ['./movimenta-cp.component.css']
+  styleUrls: ['./movimenta-cp.component.css', '../app.component.css']
 })
 export class MovimentaCpComponent implements OnInit {
 
