@@ -11,7 +11,7 @@ h3 {
 }
 
 text {
-    font-family: verdana;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 button {
@@ -40,5 +40,5 @@ button {
  }
 
  tr {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
  }
