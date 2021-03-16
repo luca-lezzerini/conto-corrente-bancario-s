@@ -165,10 +165,9 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
     
     @Override
     public ListaClientiDto cercaClienteECCC(String c) {
-        throw new UnsupportedOperationException("Not supported yet.");
-        //ListaClientiDto lista = new ListaClientiDto(
-        //movimentiContoCorrenteRepository.findByCognomeContaining(c));
-        //return lista;
+        ListaClientiDto lista = new ListaClientiDto(
+        clienteRepository.findByCognomeContaining(c));
+        return lista;
     }
     
 }
