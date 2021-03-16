@@ -179,8 +179,8 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
     }
 
     private void associaMovimentiCC(MovimentiContoCorrente mcc, ContoCorrente cc) {
-        mcc = movimentiContoCorrenteRepository.save(mcc);
         mcc.setContoCorrente(cc);
+        mcc = movimentiContoCorrenteRepository.save(mcc);
         Set<MovimentiContoCorrente> movimentiCc = cc.getMovimentiContoCorrente();
         movimentiCc.add(mcc);
         contoCorrenteRepository.save(cc);

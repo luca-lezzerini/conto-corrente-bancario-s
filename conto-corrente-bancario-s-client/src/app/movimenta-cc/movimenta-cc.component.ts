@@ -62,12 +62,7 @@ export class MovimentaCcComponent implements OnInit {
     dto.contoCorrente = this.contoDaCercare; //e il conto da cercare,mandandoli nel dto
     this.http.post<ListaMovimentiCcDto>(this.url + "salva-movimento-cc", dto)
       .subscribe(u => this.listaMovimentiCc = u.listaMovimentiCc);
-
-
-
-
   }
-
 
   seleziona() { }
 
