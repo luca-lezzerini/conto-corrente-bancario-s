@@ -1,8 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { ContoDeposito } from '../conto-deposito';
-import { ContoDepositoDto } from '../dto/conto-deposito-dto';
 import { ListaMovimentiCdDto } from '../dto/lista-movimenti-cd-dto';
 import { MovimentoCdDto } from '../dto/movimento-cd-dto';
 import { RicercaContoCorrenteDto } from '../dto/ricerca-conto-corrente-dto';
