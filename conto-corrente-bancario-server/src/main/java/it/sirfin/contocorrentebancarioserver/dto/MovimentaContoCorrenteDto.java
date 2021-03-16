@@ -5,52 +5,45 @@
  */
 package it.sirfin.contocorrentebancarioserver.dto;
 
+import it.sirfin.contocorrentebancarioserver.model.ContoCorrente;
+import it.sirfin.contocorrentebancarioserver.model.MovimentiContoCorrente;
+
 /**
  *
  * @author aleur
  */
 public class MovimentaContoCorrenteDto {
-    private String tipoMovimento;
-    private String codiceConto;
-    private double Importo;
+
+    MovimentiContoCorrente movimentoCc;
+    ContoCorrente contoCorrente;
 
     public MovimentaContoCorrenteDto() {
     }
 
-    public MovimentaContoCorrenteDto(String tipoMovimento, String codiceConto, double Importo) {
-        this.tipoMovimento = tipoMovimento;
-        this.codiceConto = codiceConto;
-        this.Importo = Importo;
+    public MovimentaContoCorrenteDto(MovimentiContoCorrente movimentoCc, ContoCorrente contoCorrente) {
+        this.movimentoCc = movimentoCc;
+        this.contoCorrente = contoCorrente;
     }
 
-    public String getTipoMovimento() {
-        return tipoMovimento;
+    public MovimentiContoCorrente getMovimentoCc() {
+        return movimentoCc;
     }
 
-    public void setTipoMovimento(String tipoMovimento) {
-        this.tipoMovimento = tipoMovimento;
+    public void setMovimentoCc(MovimentiContoCorrente movimentoCc) {
+        this.movimentoCc = movimentoCc;
     }
 
-    public String getCodiceConto() {
-        return codiceConto;
+    public ContoCorrente getContoCorrente() {
+        return contoCorrente;
     }
 
-    public void setCodiceConto(String codiceConto) {
-        this.codiceConto = codiceConto;
-    }
-
-    public double getImporto() {
-        return Importo;
-    }
-
-    public void setImporto(double Importo) {
-        this.Importo = Importo;
+    public void setContoCorrente(ContoCorrente contoCorrente) {
+        this.contoCorrente = contoCorrente;
     }
 
     @Override
     public String toString() {
-        return "MovimentaContoCorrenteDto{" + "tipoMovimento=" + tipoMovimento + ", codiceConto=" + codiceConto + ", Importo=" + Importo + '}';
+        return "MovimentaContoCorrenteDto{" + "movimentoCc=" + movimentoCc + ", contoCorrente=" + contoCorrente + '}';
     }
-    
-    
+
 }

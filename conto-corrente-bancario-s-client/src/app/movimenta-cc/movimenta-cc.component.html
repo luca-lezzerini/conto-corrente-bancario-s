@@ -5,12 +5,12 @@
 <br> <br>
 conto selezionato: {{contoDaCercare.numeroConto}}
 <br> <br>
-<select name="profile" [(ngModel)]="tipoMovimento">
+<select name="profile" [(ngModel)]="movimento.tipoMovimento">
   <option ngValue="V">Versamento</option>
   <option ngValue="B">Bonifico</option>
   <option ngValue="P">Prelievo</option>
 </select>
-{{ tipoMovimento }}
+{{ movimento.tipoMovimento }}
 <input type="text" placeholder="Importo" [(ngModel)]="movimento.importoMov">
 <button (click)="esegui()">Esegui</button>
 <br><br>

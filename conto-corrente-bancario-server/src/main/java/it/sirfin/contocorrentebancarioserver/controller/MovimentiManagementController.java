@@ -4,8 +4,10 @@ import it.sirfin.contocorrentebancarioserver.dto.ClienteDto;
 import it.sirfin.contocorrentebancarioserver.dto.ContoDepositoDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCdDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaClientiDto;
+import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCcDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCpDto;
 import it.sirfin.contocorrentebancarioserver.dto.MovimentaCdDto;
+import it.sirfin.contocorrentebancarioserver.dto.MovimentaContoCorrenteDto;
 import it.sirfin.contocorrentebancarioserver.dto.MovimentiAssCpDto;
 import it.sirfin.contocorrentebancarioserver.dto.MovimentoCpDto;
 import it.sirfin.contocorrentebancarioserver.dto.RicercaClienteDto;
@@ -47,7 +49,7 @@ public class MovimentiManagementController {
     @RequestMapping("ricerca-movimenti-cd")
     @ResponseBody
     public ListaMovimentiCdDto estrattoContoCd(@RequestBody ContoDepositoDto dto) {
-       return movimentiManagementService.estrattoContoCd(dto.getContoDeposito());
+        return movimentiManagementService.estrattoContoCd(dto.getContoDeposito());
     }
 
     @RequestMapping("ricerca-cliente-saldo-cc")
@@ -74,6 +76,12 @@ public class MovimentiManagementController {
         ContoDeposito cd = dto.getContoDeposito();
         MovimentiContoDeposito mc = dto.getMovimentoCd();
         return movimentiManagementService.salvaMovimentoCd(cd, mc);
+    }
+
+    @RequestMapping("salva-movimento-cc")
+    @ResponseBody
+    public ListaMovimentiCcDto salvaMovimento(@RequestBody MovimentaContoCorrenteDto dto) {
+        return movimentiManagementService.salvaMovimentoCc(dto.getContoCorrente(), dto.getMovimentoCc());
     }
 
     @RequestMapping("ricerca-cliente-e-c-cc")

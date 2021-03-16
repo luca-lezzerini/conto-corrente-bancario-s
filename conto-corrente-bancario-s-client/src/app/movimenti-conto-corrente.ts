@@ -1,6 +1,6 @@
 export class MovimentiContoCorrente {
     id: bigint;
-    dataMov: Date;
+    dataMov: Date = new Date();
     tipoMovimento = "";
     importoMov = 0;
 }

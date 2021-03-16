@@ -15,7 +15,7 @@ import { MovimentiContoCorrente } from '../movimenti-conto-corrente';
   styleUrls: ['./movimenta-cc.component.css', '../app.component.css']
 })
 export class MovimentaCcComponent implements OnInit {
-  tipoMovimento = "";
+  
   codiceConto = "";
   importo = "";
   contoSelezionato = "";
@@ -60,7 +60,7 @@ export class MovimentaCcComponent implements OnInit {
     let dto = new MovimentoCcDto(); //gli passo il movimento
     dto.movimentoCc = this.movimento; //gli mando il movimento 
     dto.contoCorrente = this.contoDaCercare; //e il conto da cercare,mandandoli nel dto
-    this.http.post<ListaMovimentiCcDto>(this.url + "movimenta-cc", dto)
+    this.http.post<ListaMovimentiCcDto>(this.url + "salva-movimento-cc", dto)
       .subscribe(u => this.listaMovimentiCc = u.listaMovimentiCc);
 
 
