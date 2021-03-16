@@ -6,6 +6,7 @@ import it.sirfin.contocorrentebancarioserver.dto.ContoPrestitoDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaClientiDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCpDto;
 import it.sirfin.contocorrentebancarioserver.dto.MovimentaCdDto;
+import it.sirfin.contocorrentebancarioserver.dto.MovimentiAssCpDto;
 import it.sirfin.contocorrentebancarioserver.dto.MovimentoCpDto;
 import it.sirfin.contocorrentebancarioserver.dto.RicercaClienteDto;
 import it.sirfin.contocorrentebancarioserver.dto.RicercaContoCorrenteDto;
@@ -51,7 +52,7 @@ public class MovimentiManagementController {
 
     @RequestMapping("cerca-cp")
     @ResponseBody
-    public ContoPrestitoDto cercaContoCp(@RequestBody RicercaContoCorrenteDto dto) {
+    public MovimentiAssCpDto cercaContoCp(@RequestBody RicercaContoCorrenteDto dto) {
         return movimentiManagementService.cercaContoCp(dto.getCodiceEsatto());
     }
 

@@ -4,6 +4,7 @@ import it.sirfin.contocorrentebancarioserver.dto.ContoPrestitoDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaClientiDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCdDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCpDto;
+import it.sirfin.contocorrentebancarioserver.dto.MovimentiAssCpDto;
 import it.sirfin.contocorrentebancarioserver.dto.MovimentoCpDto;
 import it.sirfin.contocorrentebancarioserver.dto.TuttiContiDto;
 import it.sirfin.contocorrentebancarioserver.model.Cliente;
@@ -23,7 +24,7 @@ public interface MovimentiManagementService {
     void demo3();
     //MovimentaContoCorrenteDto movimentacC(MovimentaContoCorrenteDto i);
 
-    ContoPrestitoDto cercaContoCp(String c);
+    MovimentiAssCpDto cercaContoCp(String c);
 
     ListaMovimentiCpDto salvaMovimento(MovimentiContoPrestito mcp, ContoPrestito cp);
 

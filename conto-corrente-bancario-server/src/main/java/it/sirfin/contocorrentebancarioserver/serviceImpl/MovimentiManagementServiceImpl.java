@@ -7,6 +7,7 @@ import it.sirfin.contocorrentebancarioserver.model.ContoCorrente;
 import it.sirfin.contocorrentebancarioserver.model.ContoDeposito;
 import it.sirfin.contocorrentebancarioserver.model.MovimentiContoCorrente;
 import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCpDto;
+import it.sirfin.contocorrentebancarioserver.dto.MovimentiAssCpDto;
 import it.sirfin.contocorrentebancarioserver.dto.TuttiContiDto;
 import it.sirfin.contocorrentebancarioserver.model.Cliente;
 import it.sirfin.contocorrentebancarioserver.model.ContoPrestito;
@@ -112,9 +113,9 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
     }
      */
     @Override
-    public ContoPrestitoDto cercaContoCp(String c) {
-        ContoPrestitoDto conto = new ContoPrestitoDto(
-                contoPrestitoRepsitory.findByCodice(c));
+    public MovimentiAssCpDto cercaContoCp(String c) {
+        MovimentiAssCpDto conto = new MovimentiAssCpDto();
+        conto.setContoPrestito(contoPrestitoRepsitory.findByCodice(c));
         return conto;
     }
 
