@@ -11,7 +11,7 @@ import { MovimentiContoCorrente } from '../movimenti-conto-corrente';
 @Component({
   selector: 'app-movimenta-cc',
   templateUrl: './movimenta-cc.component.html',
-  styleUrls: ['./movimenta-cc.component.css']
+  styleUrls: ['./movimenta-cc.component.css', '../app.component.css']
 })
 export class MovimentaCcComponent implements OnInit {
   tipoMovimento = "";
