@@ -11,7 +11,7 @@ import { RicercaContoCorrenteDto } from '../dto/ricerca-conto-corrente-dto';
 @Component({
   selector: 'app-associa-cd',
   templateUrl: './associa-cd.component.html',
-  styleUrls: ['./associa-cd.component.css']
+  styleUrls: ['./associa-cd.component.css', '../app.component.css']
 })
 export class AssociaCdComponent implements OnInit {
 
