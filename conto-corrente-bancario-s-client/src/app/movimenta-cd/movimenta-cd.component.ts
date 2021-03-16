@@ -6,6 +6,7 @@ import { ContoDepositoDto } from '../dto/conto-deposito-dto';
 import { ListaMovimentiCdDto } from '../dto/lista-movimenti-cd-dto';
 import { MovimentoCdDto } from '../dto/movimento-cd-dto';
 import { RicercaContoCorrenteDto } from '../dto/ricerca-conto-corrente-dto';
+import { RitMovimentiCdDto } from '../dto/rit-movimenti-cd-dto';
 import { MovimentiContoDeposito } from '../movimenti-cd';
 
 @Component({
@@ -34,7 +35,7 @@ export class MovimentaCdComponent implements OnInit {
       this.erroreConto = "Nessun conto selezionato";
     } else {
       this.erroreConto = "";
-      this.http.post<ContoDepositoDto>("http://localhost:8080/ricerca-cd", ric)
+      this.http.post<RitMovimentiCdDto>("http://localhost:8080/cd-ricerca", ric)
         .subscribe(r => {
           if (r.contoDeposito == null) {
             this.erroreConto = "Nessun conto trovato";
@@ -42,6 +43,7 @@ export class MovimentaCdComponent implements OnInit {
             this.erroreConto = "";
             this.contoSelezionato = r.contoDeposito.codice;
             this.contoDeposito = r.contoDeposito;
+            this.movimentiCd = r.movimentiContoDeposito;
           }
         });
       this.contoDeposito = new ContoDeposito();
