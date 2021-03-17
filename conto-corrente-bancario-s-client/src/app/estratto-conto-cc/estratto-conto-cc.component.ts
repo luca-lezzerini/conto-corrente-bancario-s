@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { url } from 'node:inspector';
 import { Cliente } from '../cliente';
 import { ContoCorrente } from '../conto-corrente';
 import { ClienteDto } from '../dto/cliente-dto';
