@@ -1,5 +1,6 @@
 package it.sirfin.contocorrentebancarioserver.service;
 
+import it.sirfin.contocorrentebancarioserver.dto.ContoCorrenteDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaClientiDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaContiCorrenteDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCcDto;
@@ -44,4 +45,6 @@ public interface MovimentiManagementService {
     TuttiContiDto selezionaECCC(Cliente c);
     
     SaldoCdDto saldoCd(ContoDeposito cd, MovimentiContoDeposito mcd);
+    
+    ListaMovimentiCcDto estrattoContoCC(ContoCorrente cc);
 }

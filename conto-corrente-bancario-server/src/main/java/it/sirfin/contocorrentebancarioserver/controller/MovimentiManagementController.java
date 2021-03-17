@@ -1,6 +1,7 @@
 package it.sirfin.contocorrentebancarioserver.controller;
 
 import it.sirfin.contocorrentebancarioserver.dto.ClienteDto;
+import it.sirfin.contocorrentebancarioserver.dto.ContoCorrenteDto;
 import it.sirfin.contocorrentebancarioserver.dto.ContoDepositoDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCdDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaClientiDto;
@@ -110,6 +111,13 @@ public class MovimentiManagementController {
     public SaldoCdDto saldoCd(@RequestBody MovimentaCdDto dto) {
         return movimentiManagementService.saldoCd(
                 dto.getContoDeposito(), dto.getMovimentoCd());
+    }
+
+    @RequestMapping("estratto-conto-cc")
+    @ResponseBody
+    public ListaMovimentiCcDto estrattoContoCC(@RequestBody ContoCorrenteDto dto) {
+        return movimentiManagementService.estrattoContoCC(
+                dto.getContoCorrente());
     }
 
 }

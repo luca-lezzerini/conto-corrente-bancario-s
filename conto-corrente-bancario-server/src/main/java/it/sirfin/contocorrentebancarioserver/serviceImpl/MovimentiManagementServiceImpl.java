@@ -226,4 +226,11 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
         return new SaldoCdDto(s.getSaldo());
     }
 
+    @Override
+    public ListaMovimentiCcDto estrattoContoCC(ContoCorrente cc) {
+        ListaMovimentiCcDto movimentiCC = new ListaMovimentiCcDto(
+                movimentiContoCorrenteRepository.findByContoCorrenteId(cc.getId()));
+        return movimentiCC;
+    }
+
 }

@@ -3,8 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { Cliente } from '../cliente';
 import { ContoCorrente } from '../conto-corrente';
 import { ClienteDto } from '../dto/cliente-dto';
+import { ContoCorrenteDto } from '../dto/conto-corrente-dto';
 import { ListaClientiDto } from '../dto/lista-clienti-dto';
 import { ListaContiCorrenteDto } from '../dto/lista-conti-corrente-dto';
+import { ListaMovimentiCcDto } from '../dto/lista-movimenti-cc-dto';
 import { RicercaClienteDto } from '../dto/ricerca-cliente-dto';
 import { TuttiContiDto } from '../dto/tutti-conti-dto';
 import { MovimentiContoCorrente } from '../movimenti-conto-corrente';
@@ -19,6 +21,7 @@ export class EstrattoContoCcComponent implements OnInit {
   clienti: Cliente[] = [];
   contiCorrente: ContoCorrente[] = [];
   movimentiCC: MovimentiContoCorrente[] = [];
+  contoSelezionato = "";
   url = "http://localhost:8080/";
   constructor(private http: HttpClient) { }
 
@@ -41,7 +44,11 @@ export class EstrattoContoCcComponent implements OnInit {
       .subscribe(r => this.contiCorrente = r.contiCorrenti);
 
   }
-  estrattoConto() {
-
+  estrattoConto(cc: ContoCorrente) {
+    this.contoSelezionato = cc.numeroConto;
+    let dto = new ContoCorrenteDto();
+    dto.contoCorrente = cc;
+    this.http.post<ListaMovimentiCcDto>(this.url + "estratto-conto-cc", dto)
+      .subscribe(r => this.movimentiCC = r.listaMovimentiCc);
   }
 }
