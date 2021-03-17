@@ -1,6 +1,7 @@
 package it.sirfin.contocorrentebancarioserver.serviceImpl;
 
 import it.sirfin.contocorrentebancarioserver.dto.ListaClientiDto;
+import it.sirfin.contocorrentebancarioserver.dto.ListaContiCorrenteDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCcDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCdDto;
 import it.sirfin.contocorrentebancarioserver.model.ContoCorrente;
@@ -199,10 +200,14 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
         return conto;
     }
 
-//    @Override
-//    public ListaContiCorrenteDto selezionaECCC(Cliente c) {
-//
-//    }
+    @Override
+    public TuttiContiDto selezionaECCC(Cliente c) {
+        TuttiContiDto contiCC = new TuttiContiDto();
+        Cliente cliente = clienteRepository.findById(c.getId()).get();
+        contiCC.setContiCorrenti(cliente.getContiCorrenti());
+        return contiCC;
+    }
+
     @Override
     public SaldoCdDto saldoCd(ContoDeposito cd, MovimentiContoDeposito mcd) {
         SaldoCdDto s = new SaldoCdDto();

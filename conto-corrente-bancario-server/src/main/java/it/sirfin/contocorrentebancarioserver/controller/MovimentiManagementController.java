@@ -4,6 +4,7 @@ import it.sirfin.contocorrentebancarioserver.dto.ClienteDto;
 import it.sirfin.contocorrentebancarioserver.dto.ContoDepositoDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCdDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaClientiDto;
+import it.sirfin.contocorrentebancarioserver.dto.ListaContiCorrenteDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCcDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCpDto;
 import it.sirfin.contocorrentebancarioserver.dto.MovimentaCdDto;
@@ -98,11 +99,12 @@ public class MovimentiManagementController {
         return movimentiManagementService.ritMovimentiCd(dto.getCodiceEsatto());
     }
 
-//    @RequestMapping("seleziona-e-c-cc")
-//    @ResponseBody
-//    public TuttiContiDto selezionaECCC(@RequestBody ClienteDto dto) {
-//        return movimentiManagementService.selezionaECCC(dto.getCliente());
-//    }
+    @RequestMapping("seleziona-e-c-cc")
+    @ResponseBody
+    public TuttiContiDto selezionaECCC(@RequestBody ClienteDto dto) {
+        return movimentiManagementService.selezionaECCC(dto.getCliente());
+    }
+
     @RequestMapping("saldo-cd")
     @ResponseBody
     public SaldoCdDto saldoCd(@RequestBody MovimentaCdDto dto) {

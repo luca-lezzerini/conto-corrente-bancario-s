@@ -31,9 +31,6 @@ public class ListaContiCorrenteDto {
         this.listaContiCorrente = listaContiCorrente;
     }
 
-    @Override
-    public String toString() {
-        return "ListaContiCorrente{" + "listaContiCorrente=" + listaContiCorrente + '}';
-    }
+    
 
 }

@@ -37,8 +37,8 @@ export class EstrattoContoCcComponent implements OnInit {
   seleziona(c: Cliente) {
     let dto = new ClienteDto();
     dto.cliente = c;
-    this.http.post<ListaContiCorrenteDto>(this.url + "seleziona-e-c-cc", dto)
-      .subscribe(r => this.contiCorrente = r.listaContiCorrente);
+    this.http.post<TuttiContiDto>(this.url + "seleziona-e-c-cc", dto)
+      .subscribe(r => this.contiCorrente = r.contiCorrenti);
 
   }
   estrattoConto() {
