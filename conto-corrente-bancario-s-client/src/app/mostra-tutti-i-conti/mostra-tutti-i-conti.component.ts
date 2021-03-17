@@ -3,10 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Cliente } from '../cliente';
 import { ContoCorrente } from '../conto-corrente';
 import { ListaClientiDto } from '../dto/lista-clienti-dto';
-import { ListaMovimentiTotaliDto } from '../dto/lista-movimenti-totali-dto';
 import { RicercaClienteDto } from '../dto/ricerca-cliente-dto';
-import { RicercaContoCorrenteDto } from '../dto/ricerca-conto-corrente-dto';
-import { TuttiIMovimenti } from '../tutti-i-movimenti';
+
+
 
 @Component({
   selector: 'app-mostra-tutti-i-conti',
@@ -23,7 +22,8 @@ export class MostraTuttiIContiComponent implements OnInit {
   statoErroreCliente = "";
   erroreCliente = "";
   numeroConto="";
-  movimenti: TuttiIMovimenti[]=[];
+  
+  
  
 
   constructor(private http: HttpClient) { }
@@ -41,7 +41,8 @@ export class MostraTuttiIContiComponent implements OnInit {
     
   }
 
-  mostraConti() {
+  mostraConti(c: Cliente) {
+    
   }
 
 }
