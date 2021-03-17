@@ -1,7 +1,6 @@
 package it.sirfin.contocorrentebancarioserver.serviceImpl;
 
 import it.sirfin.contocorrentebancarioserver.dto.ListaClientiDto;
-import it.sirfin.contocorrentebancarioserver.dto.ListaContiCorrenteDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCcDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCdDto;
 import it.sirfin.contocorrentebancarioserver.model.ContoCorrente;
@@ -10,6 +9,7 @@ import it.sirfin.contocorrentebancarioserver.model.MovimentiContoCorrente;
 import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCpDto;
 import it.sirfin.contocorrentebancarioserver.dto.MovimentiAssCpDto;
 import it.sirfin.contocorrentebancarioserver.dto.RitMovimentiCdDto;
+import it.sirfin.contocorrentebancarioserver.dto.SaldoCdDto;
 import it.sirfin.contocorrentebancarioserver.dto.TuttiContiDto;
 import it.sirfin.contocorrentebancarioserver.model.Cliente;
 import it.sirfin.contocorrentebancarioserver.model.ContoPrestito;
@@ -51,6 +51,8 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
 
     @Autowired
     MovimentiContoDepositoRepository movimentiContoDepositoRepository;
+
+    double ss = 0.0;
 
     @Override
     public void demo3() {
@@ -201,6 +203,22 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
 //    public ListaContiCorrenteDto selezionaECCC(Cliente c) {
 //
 //    }
-    
-    
+    @Override
+    public SaldoCdDto saldoCd(ContoDeposito cd, MovimentiContoDeposito mcd) {
+        SaldoCdDto s = new SaldoCdDto();
+        ss = s.getSaldo();
+        Set<MovimentiContoDeposito> c
+                = movimentiContoDepositoRepository.findByContoDepositoId(cd.getId());
+        c.forEach(r -> {
+            if (r.getTipoMovimento().equals("deposito")) {
+                ss += r.getImportoMov();
+                s.setSaldo(ss);
+            } else if (r.getTipoMovimento().equals("riscatto")) {
+                ss -= r.getImportoMov();
+                s.setSaldo(ss);
+            }
+        });
+        return new SaldoCdDto(s.getSaldo());
+    }
+
 }

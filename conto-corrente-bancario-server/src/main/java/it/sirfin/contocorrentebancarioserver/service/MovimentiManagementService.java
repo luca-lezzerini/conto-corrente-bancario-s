@@ -1,12 +1,12 @@
 package it.sirfin.contocorrentebancarioserver.service;
 
 import it.sirfin.contocorrentebancarioserver.dto.ListaClientiDto;
-import it.sirfin.contocorrentebancarioserver.dto.ListaContiCorrenteDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCcDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCdDto;
 import it.sirfin.contocorrentebancarioserver.dto.ListaMovimentiCpDto;
 import it.sirfin.contocorrentebancarioserver.dto.MovimentiAssCpDto;
 import it.sirfin.contocorrentebancarioserver.dto.RitMovimentiCdDto;
+import it.sirfin.contocorrentebancarioserver.dto.SaldoCdDto;
 import it.sirfin.contocorrentebancarioserver.dto.TuttiContiDto;
 import it.sirfin.contocorrentebancarioserver.model.Cliente;
 import it.sirfin.contocorrentebancarioserver.model.ContoCorrente;
@@ -41,4 +41,5 @@ public interface MovimentiManagementService {
     RitMovimentiCdDto ritMovimentiCd(String c);
 
 //    ListaContiCorrenteDto selezionaECCC(Cliente c);
+    SaldoCdDto saldoCd(ContoDeposito cd, MovimentiContoDeposito mcd);
 }

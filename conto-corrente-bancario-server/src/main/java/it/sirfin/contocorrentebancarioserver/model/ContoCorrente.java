@@ -126,12 +126,4 @@ public class ContoCorrente implements Serializable {
         this.movimentiContoPrestito = movimentiContoPrestito;
     }
 
-    @Override
-    public String toString() {
-        return "ContoCorrente{" + "id=" + id + ", numeroConto=" + numeroConto + ", cliente=" + cliente.getId() + ", movimentiContoCorrente=" + movimentiContoCorrente + ", movimentiContoDeposito=" + movimentiContoDeposito + ", movimentiContoPrestito=" + movimentiContoPrestito + '}';
-    }
-
-   
-
-
 }
