@@ -15,7 +15,7 @@ import { MovimentiContoCorrente } from '../movimenti-conto-corrente';
   styleUrls: ['./movimenta-cc.component.css', '../app.component.css']
 })
 export class MovimentaCcComponent implements OnInit {
-  
+
   codiceConto = "";
   importo = "";
   contoSelezionato = "";
@@ -30,7 +30,6 @@ export class MovimentaCcComponent implements OnInit {
   statoErroreConto = "";
   movimento = new MovimentiContoCorrente();
   listaMovimentiCc: MovimentiContoCorrente[] = []; //genero un array che nel momento in cui con la lambda mi arriva la risposta,inserisco i pezzi della risposta qui dentro per poterli poi visualizzare
-  //CodiceConto = new ContoCorrente();
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {

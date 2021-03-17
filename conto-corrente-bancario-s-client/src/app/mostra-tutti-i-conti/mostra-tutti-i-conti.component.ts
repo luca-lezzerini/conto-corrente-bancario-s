@@ -4,6 +4,7 @@ import { Cliente } from '../cliente';
 import { ContoCorrente } from '../conto-corrente';
 import { ListaClientiDto } from '../dto/lista-clienti-dto';
 import { RicercaClienteDto } from '../dto/ricerca-cliente-dto';
+import { RicercaContoCorrenteDto } from '../dto/ricerca-conto-corrente-dto';
 
 @Component({
   selector: 'app-mostra-tutti-i-conti',
@@ -14,10 +15,12 @@ import { RicercaClienteDto } from '../dto/ricerca-cliente-dto';
 export class MostraTuttiIContiComponent implements OnInit {
   clienti: Cliente[] = [];
   cliente = new Cliente();
-  contoCorrente = new ContoCorrente();
-  ricercaCliente: string;
-  statoErroreCliente: string;
-  erroreCliente: string;
+  contoCorrenteDaMostrare = new ContoCorrente();
+  ricercaCliente = "";
+  url = "http://localhost:8080/";
+  statoErroreCliente = "";
+  erroreCliente = "";
+  numeroConto="";
 
   constructor(private http: HttpClient) { }
 
@@ -25,18 +28,12 @@ export class MostraTuttiIContiComponent implements OnInit {
   }
 
   cerca() {
+    /*
     let dto = new RicercaClienteDto();
-    dto.ricercaPerCognome = this.ricercaCliente;
-    if (this.ricercaCliente == "") {
-      this.statoErroreCliente = "e";
-      console.log("Nessun criterio ricerca cliente inserito");
-      this.erroreCliente = "Nessun criterio ricerca cliente inserito";
-    } else {
-      this.http.post<ListaClientiDto>("http://localhost:8080/ricerca-c", dto)
-        .subscribe(r => this.clienti = r.listaClienti);
-      this.statoErroreCliente = "";
-      this.ricercaCliente = "";
-    }
+    dto.ricercaPerCognome= this.contoCorrenteDaMostrare;
+    let dto = new RicercaContoCorrenteDto();
+    dto.codiceEsatto = this.codiceConto;
+  */ 
   }
 
   mostraConti() {

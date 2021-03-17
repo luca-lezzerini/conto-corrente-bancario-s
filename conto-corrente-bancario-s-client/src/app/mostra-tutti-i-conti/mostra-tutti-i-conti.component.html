@@ -1,12 +1,10 @@
 <input type="text" placeholder="Cognome cliente">
 <button (click)="cerca()">Cerca</button>
 <table border=3px>
+    <tr *ngFor="let a of clienti"></tr>
     <td>Cognome cliente </td>
     <td>Conto</td>
-    <td>Gestisci </td>
-
-    <tr *ngFor="let a of clienti"></tr>
-    <!--   <td>{{a.Cognome}}</td>
-    <td>{{a.Conto}}</td> -->
+    <td>{{cliente.cognome}}</td>
+    <td>{{numeroConto}}</td>
     <td><button (click)="mostraConti()">Mostra conti</button></td>
 </table>
