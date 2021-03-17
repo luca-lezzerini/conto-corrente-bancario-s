@@ -37,7 +37,10 @@ export class EstrattoContoCcComponent implements OnInit {
       let dto = new RicercaClienteDto();
       dto.ricercaPerCognome = this.ricercaCliente;
       this.http.post<ListaClientiDto>(this.url + "ricerca-cliente-e-c-cc", dto)
-        .subscribe(r => this.clienti = r.listaClienti);
+        .subscribe(r => {
+          this.clienti = r.listaClienti;
+          this.ricercaCliente = "";
+        });
     }
     this.stato = "clienti";
   }
