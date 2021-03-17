@@ -1,9 +1,10 @@
 .Home {
-text-align: left;
+    text-align: left;
 }
 
 h1 {
     font-size: large;
+    text-align: center;
 }
 
 h3 {
@@ -18,27 +19,28 @@ button {
     color: green;
 }
 
- button :disabled {
-     color: red;
- }
+button :disabled {
+    color: red;
+}
 
- input[type=text] {
+input[type=text] {
     border-width: 2px;
- }
+}
 
- body {
+body {
     background-color: rgb(85, 183, 216);
- }
+    text-align: center;
+}
 
- table{
+table {
     text-align: center;
     border-width: 1px;
- }
+}
 
- header {
+header {
     text-align: center;
- }
+}
 
- tr {
+tr {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
- }
+}
