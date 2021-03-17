@@ -1,8 +1,12 @@
-<h2>E/C Conto Corrente</h2>
-<input type="text" [(ngModel)]="ricercaCliente">
-<button (click)="cercaCliente()">Cerca Cliente</button>
+<div *ngIf=" stato =='ricerca' || 'clienti' || 'conti'">
+    <h2>E/C Conto Corrente</h2>
+    <input type="text" [(ngModel)]="ricercaCliente">
+    <button (click)="cercaCliente()">Cerca Cliente</button>
+    <br>
+    <h4>{{erroreRicerca}}</h4>
+</div>
 <br>
-<table *ngIf="clienti.length > 0 ">
+<table *ngIf="clienti.length > 0 && stato == 'clienti'">
     <tr>
         <th>Nome</th>
         <th>Cognome</th>
@@ -23,21 +27,25 @@
         </td>
     </tr>
 </table>
-<h3>Conti Associati</h3>
-<table>
-    <tr>
-        <th>Codice conto</th>
-    </tr>
-    <tr *ngFor="let cc of contiCorrente">
-        <td>{{cc.numeroConto}}</td>
-        <td><button (click)="estrattoConto(cc)">Estratto Conto</button>
-        </td>
-    </tr>
-</table>
-<h3>Estratto Conto CC: {{contoSelezionato}}</h3>
-<table>
-    <tr *ngFor="let mcc of movimentiCC">
-        <td>{{mcc.dataMov}}</td>
-        <td>{{mcc.tipoMovimento}}</td>
-        <td>{{mcc.importoMov}}</td>
-</table>
+<div *ngIf="stato == 'conti'">
+    <h3>Conti Associati</h3>
+    <table>
+        <tr>
+            <th>Codice conto</th>
+        </tr>
+        <tr *ngFor="let cc of contiCorrente">
+            <td>{{cc.numeroConto}}</td>
+            <td><button (click)="estrattoConto(cc)">Estratto Conto</button>
+            </td>
+        </tr>
+    </table>
+</div>
+<div *ngIf="stato == 'estrattoConto'">
+    <h3>Estratto Conto CC: {{contoSelezionato}}</h3>
+    <table>
+        <tr *ngFor="let mcc of movimentiCC">
+            <td>{{mcc.dataMov}}</td>
+            <td>{{mcc.tipoMovimento}}</td>
+            <td>{{mcc.importoMov}}</td>
+    </table>
+</div>
