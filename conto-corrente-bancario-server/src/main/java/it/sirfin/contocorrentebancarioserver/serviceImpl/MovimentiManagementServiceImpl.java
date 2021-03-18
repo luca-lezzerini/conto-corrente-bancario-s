@@ -232,7 +232,14 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
                 movimentiContoCorrenteRepository.findByContoCorrenteId(cc.getId()));
         return movimentiCC;
     }
-
+    
+    /**
+     * Recupera tutti i CC, CD, CP di un cliente dato.
+     * Non gestisce il caso di cliente non esistente.
+     * 
+     * @param cli il cliente per cui cercare i conti
+     * @return un DTO con le collezioni (distinte) di CC, CP, CD
+     */
     @Override
     public TuttiContiDto trovaTuttiContiCliente(Cliente cli) {
         // recupero il cliente da DB (con tutte le sue relazioni)
