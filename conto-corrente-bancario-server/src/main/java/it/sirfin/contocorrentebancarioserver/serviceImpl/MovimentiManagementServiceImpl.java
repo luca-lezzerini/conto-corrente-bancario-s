@@ -233,4 +233,24 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
         return movimentiCC;
     }
 
+    @Override
+    public TuttiContiDto trovaTuttiContiCliente(Cliente cli) {
+        // recupero il cliente da DB (con tutte le sue relazioni)
+        cli = clienteRepository.findById(cli.getId()).get();
+        
+        // ottengo tutti i CC
+        Set<ContoCorrente> scc = cli.getContiCorrenti();
+        // ottengo tutti i CD
+        Set<ContoDeposito> scd = cli.getContiDeposito();
+        // ottengo tutti i CP
+        Set<ContoPrestito> scp = cli.getContiPrestito();
+
+        // preparo il DTO
+        TuttiContiDto dto = new TuttiContiDto(scd, scc, scp);
+        
+        return dto;
+    }
+    
+    
+
 }

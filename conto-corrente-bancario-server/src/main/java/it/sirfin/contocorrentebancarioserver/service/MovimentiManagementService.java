@@ -47,4 +47,6 @@ public interface MovimentiManagementService {
     SaldoCdDto saldoCd(ContoDeposito cd, MovimentiContoDeposito mcd);
     
     ListaMovimentiCcDto estrattoContoCC(ContoCorrente cc);
+    
+    TuttiContiDto trovaTuttiContiCliente(Cliente cli);
 }
