@@ -34,6 +34,10 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
     @Query("select c from Cliente c where cognome = :cogn")
     List<Cliente> trovaClientePerCognomeList(@Param("cogn") String cognome);
 
+    @Query("select c from Cliente c where nome in :elenco")
+    List<Cliente> trovaClientePerNomeInElenco(
+            @Param("elenco") Collection<String> elenco);
+
     @Query("select c from Cliente c where cognome = :cogn")
     Stream<Cliente> trovaClientePerCognomeStream(@Param("cogn") String cognome);
 

@@ -45,12 +45,20 @@ public class SystemAdminServiceImpl implements SystemAdminService{
 //        Stream<Cliente> strCli = clienteRepository.trovaClientePerCognomeStream("Persichetti");
 //        System.out.println(strCli);
 
-        // vado a pagina 6, con 10 elementi a pagina
+        // vado a pagina 0, con 10 elementi a pagina
         Sort ss = Sort.by(Sort.Direction.DESC, "id");
         PageRequest pag = PageRequest.of(0, 10, ss);
         lisCli = clienteRepository.cercaClientiPaginato(pag);
         System.out.println("Elementi " + lisCli.size());
         System.out.println(lisCli);
+        
+        // cerca per nomi in elenco di nomi
+        List<String> listaNomi = new ArrayList<>();
+        listaNomi.add("Mario");
+        listaNomi.add("Giorgio");
+        listaNomi.add("Antonella");
+        lisCli = clienteRepository.trovaClientePerNomeInElenco(listaNomi);
+        System.out.println("Lista clienti in elenco \n\n" + lisCli);
     }
 
 }
