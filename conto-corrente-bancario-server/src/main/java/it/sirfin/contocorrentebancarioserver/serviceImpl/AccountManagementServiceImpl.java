@@ -19,11 +19,14 @@ import it.sirfin.contocorrentebancarioserver.repository.ContoDepositoRepository;
 import it.sirfin.contocorrentebancarioserver.repository.ContoPrestitoRepository;
 import it.sirfin.contocorrentebancarioserver.repository.MovimentiContoCorrenteRepository;
 import it.sirfin.contocorrentebancarioserver.service.AccountManagementService;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class AccountManagementServiceImpl implements AccountManagementService {
@@ -41,8 +44,8 @@ public class AccountManagementServiceImpl implements AccountManagementService {
     @Autowired
     ContoPrestitoRepository contoPrestitoRepository;
 
+    @Transactional(isolation = Isolation.READ_UNCOMMITTED)
     public void demo() {
-
         movimentiContoCorrenteRepository.deleteAllInBatch();
         contoCorrenteRepository.deleteAllInBatch();
         clienteRepository.deleteAllInBatch();
@@ -194,6 +197,7 @@ public class AccountManagementServiceImpl implements AccountManagementService {
         return new ListaContiPrestitoDto(lista);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public ListaClientiDto ricercaC(String c) {
         List<Cliente> lista = clienteRepository.findByCognome(c);
