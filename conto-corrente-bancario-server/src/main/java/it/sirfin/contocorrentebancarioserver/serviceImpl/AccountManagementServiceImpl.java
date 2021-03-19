@@ -192,6 +192,7 @@ public class AccountManagementServiceImpl implements AccountManagementService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public ListaContiPrestitoDto aggiornaContiPrestito() {
         List<ContoPrestito> lista = contoPrestitoRepository.findAll();
         return new ListaContiPrestitoDto(lista);
@@ -204,12 +205,14 @@ public class AccountManagementServiceImpl implements AccountManagementService {
         return new ListaClientiDto(lista);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public ContoCorrenteDto ricercaCc(String n) {
         ContoCorrente conto = contoCorrenteRepository.findByNumeroConto(n);
         return new ContoCorrenteDto(conto);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public ContoDepositoDto ricercaCd(String n) {
         ContoDeposito cd = contoDepositoRepository.findByCodice(n);
