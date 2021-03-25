@@ -226,25 +226,90 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
         return new SaldoCdDto(s.getSaldo());
     }
 
+    public SaldoCdDto saldoCd2(ContoDeposito cd, MovimentiContoDeposito mcd) {
+        SaldoCdDto s = new SaldoCdDto();
+        ss = 0;
+        Set<MovimentiContoDeposito> c
+                = movimentiContoDepositoRepository.findByContoDepositoId(cd.getId());
+        c.forEach(r -> {
+            switch (r.getTipoMovimento()) {
+                case "deposito":
+                    ss += r.getImportoMov();
+                    break;
+                case "riscatto":
+                    ss -= r.getImportoMov();
+                    break;
+                default:
+                    System.out.println("Errore!");
+                    break;
+            }
+        });
+        s.setSaldo(ss);
+        return new SaldoCdDto(s.getSaldo());
+    }
+
+    public SaldoCdDto saldoCd3(ContoDeposito cd, MovimentiContoDeposito mcd) {
+        SaldoCdDto s = new SaldoCdDto();
+        ss = 0;
+        Set<MovimentiContoDeposito> collMCD
+                = movimentiContoDepositoRepository.findByContoDepositoId(cd.getId());
+        for (MovimentiContoDeposito r : collMCD) {
+            ss += switch (r.getTipoMovimento()) {
+                case "deposito","versamento" ->
+                    r.getImportoMov();
+                case "riscatto" ->
+                    -r.getImportoMov();
+                default ->
+                    0;
+            };
+        }
+        s.setSaldo(ss);
+        return new SaldoCdDto(s.getSaldo());
+    }
+
+    // Map-Reduce -> Trasforma e sintetizza (somma)
+    public SaldoCdDto saldoCd4(ContoDeposito cd, MovimentiContoDeposito mcd) {
+        SaldoCdDto s = new SaldoCdDto();
+        double ss = 0;
+        Set<MovimentiContoDeposito> collMCD
+                = movimentiContoDepositoRepository.findByContoDepositoId(cd.getId());
+        
+        ss = collMCD.parallelStream()
+                .mapToDouble(r
+                        -> switch (r.getTipoMovimento()) {
+                                case "deposito","versamento" ->
+                                    r.getImportoMov();
+                                case "riscatto" ->
+                                    -r.getImportoMov();
+                                default ->
+                                    0;
+        }).sum();
+        
+        s.setSaldo(ss);
+        return new SaldoCdDto(s.getSaldo());
+    }
+
     @Override
-    public ListaMovimentiCcDto estrattoContoCC(ContoCorrente cc) {
+    public ListaMovimentiCcDto estrattoContoCC(ContoCorrente cc
+    ) {
         ListaMovimentiCcDto movimentiCC = new ListaMovimentiCcDto(
                 movimentiContoCorrenteRepository.findByContoCorrenteId(cc.getId()));
         return movimentiCC;
     }
-    
+
     /**
-     * Recupera tutti i CC, CD, CP di un cliente dato.
-     * Non gestisce il caso di cliente non esistente.
-     * 
+     * Recupera tutti i CC, CD, CP di un cliente dato. Non gestisce il caso di
+     * cliente non esistente.
+     *
      * @param cli il cliente per cui cercare i conti
      * @return un DTO con le collezioni (distinte) di CC, CP, CD
      */
     @Override
-    public TuttiContiDto trovaTuttiContiCliente(Cliente cli) {
+    public TuttiContiDto trovaTuttiContiCliente(Cliente cli
+    ) {
         // recupero il cliente da DB (con tutte le sue relazioni)
         cli = clienteRepository.findById(cli.getId()).get();
-        
+
         // ottengo tutti i CC
         Set<ContoCorrente> scc = cli.getContiCorrenti();
         // ottengo tutti i CD
@@ -254,10 +319,8 @@ public class MovimentiManagementServiceImpl implements MovimentiManagementServic
 
         // preparo il DTO
         TuttiContiDto dto = new TuttiContiDto(scd, scc, scp);
-        
+
         return dto;
     }
-    
-    
 
 }
